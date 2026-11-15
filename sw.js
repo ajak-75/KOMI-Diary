@@ -1,5 +1,5 @@
 /* KOMI's K-Culture Diary — service worker (offline-first shell) */
-const CACHE = 'komidiary-v5';
+const CACHE = 'komidiary-v6';
 const SHELL = [
   './',
   './index.html',
