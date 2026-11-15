@@ -32,7 +32,7 @@ const T = {
   en: {
     tagline:'Everyday Korea with KOMI',
     home:'Home', search:'Search', post:'Post', mydiary:'My Diary',
-    todayBanner:'Today\u2019s K-Culture Diary',
+    todayBanner:'Today\u2019s K-Culture Diary', transPending:'Translations for global fans coming soon',
     translate:'Translate', seeOriginal:'See original', translatedBy:'Translated for global fans',
     newPost:'New diary', cancel:'Cancel', publish:'Post', posted:'Posted \ud83c\udf8a',
     nickPlaceholder:"KOMI's Unnie", bodyPlaceholder:'What did Korea feel like today?',
@@ -128,7 +128,7 @@ const T = {
   es: {
     tagline:'Corea de cada d\u00eda con KOMI',
     home:'Inicio', search:'Buscar', post:'Publicar', mydiary:'Mi diario',
-    todayBanner:'Diario K-culture de hoy',
+    todayBanner:'Diario K-culture de hoy', transPending:'Pronto habr\u00e1 traducci\u00f3n para fans del mundo',
     translate:'Traducir', seeOriginal:'Ver original', translatedBy:'Traducido para fans del mundo',
     newPost:'Nuevo diario', cancel:'Cancelar', publish:'Publicar', posted:'Publicado \ud83c\udf8a',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'\u00bfQu\u00e9 tal fue Corea hoy?',
@@ -193,14 +193,14 @@ const SAMPLES = [
   },
   {
     nick: "KOMI's Unnie", handle: '@ajakstudio.lab', avatar: './img/komi-avatar.jpg', mine: true,
-    body: "Gingko gold at Nami Island \ud83c\udf2a\nKOMI: sweet potato. MOMO: a whole paper bag of roasted chestnuts, refusing to share. Weekdate rule: one tree, one snack each, zero mercy. What is your autumn date move?",
+    body: "Gingko gold at Nami Island \ud83c\udf42\nKOMI: sweet potato. MOMO: a whole paper bag of roasted chestnuts, refusing to share. Weekdate rule: one tree, one snack each, zero mercy. What is your autumn date move?",
     tags: ['namiisland','autumn','koreatrip'],
     photos: ['./img/nami.jpg'],
     translations: {
-      ko: "\ub0a8\uc774\uc12c \uc740\ud589\ub098\ubb34 \uae08\uc0c9 \ud83c\udf2a\n\ucf54\ubbf8\ub294 \uace0\uad6c\ub9c8, \ubaa8\ubaa8\ub294 \uad7f\uac01\uc740 \uc740\ud565 \uc885\uc9c0\ubd81\uc774 \uc788\ub294 \uc911 \uacf5\uc720 \uac70\ubd80. \uc8fc\uac04 \ub370\uc774\ud2b8 \uadc0\uce59: \ud55c \ub098\ubb34\uc5d0 \uc5b5\uc838\uc694 \uc549\uc744\ub54c\ub2e4 \uc815\ub9d0 \ub9db\uc788\ub124\uc694. \uac00\uc744 \ub370\uc774\ud2b8 \uce78\uc9c0\ub294 \ubb34\uc5c7\uc778\uac00\uc694?",
-      ja: "\u5357\u30a4\u30bb\u30fc\u5c9b\u306e\u30a4\u30c1\u30e7\u30a6\u306e\u9ec4\u91d1 \ud83c\udf2a\nKOMI\u306f\u713c\u304d\u828b\u3001MOMO\u306f\u713c\u304d\u6817\u306e\u8c46\u5168\u90e8\u6301\u3061\u5e30\u5bb6\u4e2d\u3002\u4e00\u672c\u306e\u6728\u306e\u4e0b\u3067\u30b9\u30ca\u30c3\u30af\u2014\u5206\u3051\u5408\u3044\u306f\u52d8\u76ee\u4e00\u676f\u3002\u79cb\u306e\u30c7\u30fc\u30c8\u5b9a\u756a\u306f\u4f55\uff1f",
-      zh: "\u5357\u6021\u5c9b\u7684\u94f6\u674f\u91d1\u8272 \ud83c\udf2a\nKOMI\u62ff\u7740\u70e4\u7ea2\u85af\uff0cMOMO\u62b1\u7740\u6574\u888b\u7cd6\u7092\u677e\u5b50\u4e0d\u80af\u5206\u4eab\u3002\u4e00\u68f5\u6811\u4e0b\u5403\u70b9\u5fc3\u2014\u4e0d\u8bb2\u60c5\u9762\u3002\u4f60\u4eec\u90a3\u91cc\u79cb\u5929\u7ea6\u4f1a\u90fd\u53bb\u54ea\uff1f",
-      es: "Oro de ginkgo en la isla de Nami \ud83c\udf2a\nKOMI con su boniato asado, MOMO con toda una bolsa de casta\u00f1as que no piensa compartir. Regla de la cita de oto\u00f1o: un \u00e1rbol, un snack cada uno, sin piedad. \u00bfCu\u00e1l es vuestro plan de oto\u00f1o?",
+      ko: "\ub0a8\uc774\uc12c \uc740\ud589\ub098\ubb34 \uae08\uc0c9 \ud83c\udf42\n\ucf54\ubbf8\ub294 \uace0\uad6c\ub9c8, \ubaa8\ubaa8\ub294 \uad7f\uac01\uc740 \uc740\ud565 \uc885\uc9c0\ubd81\uc774 \uc788\ub294 \uc911 \uacf5\uc720 \uac70\ubd80. \uc8fc\uac04 \ub370\uc774\ud2b8 \uadc0\uce59: \ud55c \ub098\ubb34\uc5d0 \uc5b5\uc838\uc694 \uc549\uc744\ub54c\ub2e4 \uc815\ub9d0 \ub9db\uc788\ub124\uc694. \uac00\uc744 \ub370\uc774\ud2b8 \uce78\uc9c0\ub294 \ubb34\uc5c7\uc778\uac00\uc694?",
+      ja: "\u5357\u30a4\u30bb\u30fc\u5c9b\u306e\u30a4\u30c1\u30e7\u30a6\u306e\u9ec4\u91d1 \ud83c\udf42\nKOMI\u306f\u713c\u304d\u828b\u3001MOMO\u306f\u713c\u304d\u6817\u306e\u8c46\u5168\u90e8\u6301\u3061\u5e30\u5bb6\u4e2d\u3002\u4e00\u672c\u306e\u6728\u306e\u4e0b\u3067\u30b9\u30ca\u30c3\u30af\u2014\u5206\u3051\u5408\u3044\u306f\u52d8\u76ee\u4e00\u676f\u3002\u79cb\u306e\u30c7\u30fc\u30c8\u5b9a\u756a\u306f\u4f55\uff1f",
+      zh: "\u5357\u6021\u5c9b\u7684\u94f6\u674f\u91d1\u8272 \ud83c\udf42\nKOMI\u62ff\u7740\u70e4\u7ea2\u85af\uff0cMOMO\u62b1\u7740\u6574\u888b\u7cd6\u7092\u677e\u5b50\u4e0d\u80af\u5206\u4eab\u3002\u4e00\u68f5\u6811\u4e0b\u5403\u70b9\u5fc3\u2014\u4e0d\u8bb2\u60c5\u9762\u3002\u4f60\u4eec\u90a3\u91cc\u79cb\u5929\u7ea6\u4f1a\u90fd\u53bb\u54ea\uff1f",
+      es: "Oro de ginkgo en la isla de Nami \ud83c\udf42\nKOMI con su boniato asado, MOMO con toda una bolsa de casta\u00f1as que no piensa compartir. Regla de la cita de oto\u00f1o: un \u00e1rbol, un snack cada uno, sin piedad. \u00bfCu\u00e1l es vuestro plan de oto\u00f1o?",
     },
     likes: 143, reposts: 22, ago: 50 * HOUR, following: false,
     comments: [
@@ -566,7 +566,7 @@ function postHTML(p){
     + (hasTr
         ? '<div class="translate-row"><button type="button" class="translate-btn" data-translate="' + escAttr(p.id) + '">'
           + ICO.globe + '<span>' + t('translate') + '</span></button></div>'
-        : (p.mine ? '<div class="translate-row"><span class="translate-meta">HTTPS://ajak-75.github.io \u00b7 ' + t('translatedBy') + '</span></div>' : ''))
+        : (p.mine ? '<div class="translate-row"><span class="translate-meta">' + esc(t('transPending')) + '</span></div>' : ''))
     + '<div class="post-actions">'
     +   '<button type="button" class="act' + (p.liked ? ' is-liked' : '') + '" data-act="like" aria-pressed="' + (p.liked ? 'true' : 'false') + '">' + ICO.heart() + '<span class="cnt">' + (p.likes || '') + '</span></button>'
     +   '<button type="button" class="act" data-act="comment">' + ICO.bubble + '<span class="cnt">' + (p.comments.length || '') + '</span></button>'
