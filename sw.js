@@ -1,5 +1,5 @@
 /* KOMI's K-Culture Diary — service worker (offline-first shell) */
-const CACHE = 'komidiary-v7';
+const CACHE = 'komidiary-v8';
 const SHELL = [
   './',
   './index.html',
@@ -26,9 +26,19 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(caches.keys()
-    .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
-    .then(() => self.clients.claim()));
+  e.waitUntil((async () => {
+    const keys = await caches.keys();
+    const oldKeys = keys.filter((k) => k !== CACHE);
+    await Promise.all(oldKeys.map((k) => caches.delete(k)));
+    await self.clients.claim();
+    /* An update rather than a first install: reload open tabs once, so a visitor
+       whose browser still held the previous version sees the new first page on
+       this very refresh instead of the next one. */
+    if (oldKeys.length) {
+      const wins = await self.clients.matchAll({ type: 'window' });
+      wins.forEach((c) => { try { c.navigate(c.url); } catch (err) {} });
+    }
+  })());
 });
 
 self.addEventListener('fetch', (e) => {
