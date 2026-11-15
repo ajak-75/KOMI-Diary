@@ -361,6 +361,24 @@ svg { display: block; }
 /* ---------- empty / offline ---------- */
 .empty { padding: 60px 24px; text-align: center; color: var(--ink-3); }
 .empty b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 4px; }
+
+/* ---------- empty first page ---------- */
+.empty-home {
+  margin: 26px 16px 40px; padding: 38px 22px 32px;
+  text-align: center; background: #fff;
+  border: 1px solid var(--line); border-radius: 22px;
+}
+.empty-home .empty-flower { margin: 0 auto 16px; }
+.empty-home .empty-title {
+  display: block; color: var(--ink);
+  font-size: 17px; font-weight: 700; letter-spacing: -0.01em;
+}
+.empty-home .empty-sub {
+  margin: 9px auto 22px; max-width: 30ch;
+  color: var(--ink-3); font-size: 13.5px; line-height: 1.68; word-break: keep-all;
+}
+.empty-home .empty-cta { padding: 12px 22px; font-size: 14px; }
+.empty-home .empty-cta:active { transform: scale(.98); }
 .offline-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 90;
   background: var(--ink); color: #fff; text-align: center;

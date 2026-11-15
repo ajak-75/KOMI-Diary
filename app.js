@@ -48,6 +48,9 @@ const T = {
     trending:'Dancheong tags', results:'Results', clearFilter:'Show all',
     searchingFor:'Showing', emptyFeed:'No diaries yet.', emptySearch:'Nothing found.',
     emptyMine:'No diaries yet \u2014 write the first one!', emptyLikes:'No liked diaries yet.',
+    emptyHomeTitle:'The first page is yours',
+    emptyHomeSub:'A quiet white thread for everyday Korea. Leave your first K-culture diary \u2014 K-food, K-place, K-beauty.',
+    emptyHomeCta:'Write the first diary',
     posts:'Diaries', likes:'Likes', followed:'Following KOMI \ud83d\udc9b', unfollowed:'Follow',
     offline:'You are offline \u2014 showing saved diaries', updated:'Feed refreshed',
     deleteComment:'Delete',
@@ -72,6 +75,9 @@ const T = {
     trending:'단청 태그', results:'검색 결과', clearFilter:'전체 보기',
     searchingFor:'표시 중', emptyFeed:'아직 다이어리가 없어요.', emptySearch:'검색 결과가 없어요.',
     emptyMine:'첫 다이어리를 써보세요!', emptyLikes:'아직 좋아요한 다이어리가 없어요.',
+    emptyHomeTitle:'첫 장은 비워 두었어요',
+    emptyHomeSub:'매일의 한국을 담는 조용한 흰 스레드. 오늘의 K-컬쳐 다이어리로 첫 장을 열어 주세요.',
+    emptyHomeCta:'첫 다이어리 쓰기',
     posts:'다이어리', likes:'좋아요', followed:'코미 팔로우 중 \ud83d\udc9b', unfollowed:'팔로우',
     offline:'오프라인 \u2014 저장된 다이어리를 보여드려요', updated:'피드를 새로 불러왔어요',
     deleteComment:'삭제',
@@ -96,6 +102,9 @@ const T = {
     trending:'単青（タンチョン）タグ', results:'検索結果', clearFilter:'すべて表示',
     searchingFor:'表示中', emptyFeed:'まだダイアリーがありません。', emptySearch:'見つかりません。',
     emptyMine:'最初のダイアリーを書いてみましょう！', emptyLikes:'いいねしたダイアリーはまだありません。',
+    emptyHomeTitle:'最初のページはあなたの番です',
+    emptyHomeSub:'毎日の韓国をつなぐ静かな白いスレッド。今日のK-カルチャーダイアリーを書いてみましょう。',
+    emptyHomeCta:'最初のダイアリーを書く',
     posts:'ダイアリー', likes:'いいね', followed:'フォロー中 \ud83d\udc9b', unfollowed:'フォロー',
     offline:'オフライン \u2014 保存済みのダイアリーを表示中', updated:'フィードを更新しました',
     deleteComment:'削除',
@@ -120,6 +129,9 @@ const T = {
     trending:'丹青标签', results:'搜索结果', clearFilter:'显示全部',
     searchingFor:'正在显示', emptyFeed:'还没有日记。', emptySearch:'没有找到内容。',
     emptyMine:'来写第一篇日记吧！', emptyLikes:'还没有点赞的日记。',
+    emptyHomeTitle:'第一页留给你',
+    emptyHomeSub:'连接每日韩国的安静白色小屋。写下今天的K-文化日记吧。',
+    emptyHomeCta:'写第一篇日记',
     posts:'日记', likes:'点赞', followed:'已关注 \ud83d\udc9b', unfollowed:'关注',
     offline:'离线中 \u2014 显示已保存的日记', updated:'信息流已更新',
     deleteComment:'删除',
@@ -144,6 +156,9 @@ const T = {
     trending:'Etiquetas dancheong', results:'Resultados', clearFilter:'Mostrar todo',
     searchingFor:'Mostrando', emptyFeed:'A\u00fan no hay diarios.', emptySearch:'Sin resultados.',
     emptyMine:'\u00a1Escribe el primer diario!', emptyLikes:'A\u00fan no hay diarios con me gusta.',
+    emptyHomeTitle:'La primera p\u00e1gina es tuya',
+    emptyHomeSub:'Un hilo blanco y tranquilo para la Corea de cada d\u00eda. Escribe tu primer diario K-culture.',
+    emptyHomeCta:'Escribir el primer diario',
     posts:'Diarios', likes:'Me gusta', followed:'Siguiendo a KOMI \ud83d\udc9b', unfollowed:'Seguir',
     offline:'Sin conexi\u00f3n \u2014 mostrando diarios guardados', updated:'Feed actualizado',
     deleteComment:'Eliminar',
@@ -151,81 +166,8 @@ const T = {
   },
 };
 
-/* ---------- sample content (multilingual) ---------- */
-const HOUR = 3600 * 1000, MIN = 60 * 1000;
-
-const SAMPLES = [
-  {
-    nick: "KOMI's Unnie", handle: '@ajakstudio.lab', avatar: './img/komi-avatar.jpg', mine: true,
-    body: "Annyeong! \uc548\ub155, \ucf54\ubbf8 \uc5b8\ub2c8\uc57c \ud83d\udc36\ud388\nKOMI's K-Culture Diary opens today \u2014 a little white thread where the world meets everyday Korea. First stop: Myeongdong street food with MOMO \ud83c\udf61\nFollow along, say annyeong in your language!",
-    tags: ['koreadiary','myeongdong','kfood'],
-    photos: ['./img/myeongdong.jpg'],
-    translations: {
-      ko: "\uc548\ub155! \uc548\ub155, \ucf54\ubbf8 \uc5b8\ub2c8\uc57c \ud83d\udc36\ud388\n\ucf54\ubbf8\uc758 K-\uceec\ucc98 \ub2e4\uc774\uc5b4\ub9ac\uac00 \uc624\ub298 \uc5f4\ub824\uc694 \u2014 \uc804 \uc138\uacc4\uc640 \ub9e4\uc77c\uc758 \ud55c\uad6d\ub9cc\ub098\ub294 \uc2ec\ud50c\ud55c \ud770 \uc2a4\ub808\ub4dc. \uccab \ubc29\ubb38\uc9c0\ub294 \ubaa8\ubaa8\uc640 \ud568\uaed8\ud558\ub294 \uba85\ub3d9 \ubd81\uc544\ubc25 \uac70\ub9ac \uc608\uc694 \ud83c\udf61\n\ub2e4\uc591\ud55c \uc5b8\uc5b4\ub85c \uc548\ub155\uc778\uc0ac \ubd80\ud0c1\ud574\uc694!",
-      ja: "\u3053\u3093\u306b\u3061\u306f\uff01\u30b3\u30df\u306e\u304a\u59c9\u3055\u3093\u3067\u3059 \ud83d\udc36\ud388\nKOMI\u306eK-\u30ab\u30eb\u30c1\u30e3\u30fc\u30c0\u30a4\u30a2\u30ea\u30fc\u304c\u4eca\u65e5\u958b\u8a2d\uff01\u4e16\u754c\u3068\u6bce\u65e5\u306e\u97d3\u56fd\u3092\u3064\u306a\u3050\u3057\u3093\u3077\u308b\u306a\u767d\u3044\u30b9\u30ec\u30c3\u30c9\u3002\u6700\u521d\u306fMOMO\u3068\u884c\u304f\u660e\u6d1e\u5c4b\u53f0\u8857 \ud83c\udf61\n\u304a\u597d\u304d\u306a\u8a00\u8449\u3067\u30a2\u30f3\u30cb\u30e7\u30f3\u3057\u3066\u306d\uff01",
-      zh: "\u5927\u5bb6\u597d\uff01\u6211\u662f\u79d1\u7c73\u59d0\u59d0 \ud83d\udc36\ud388\nKOMI\u7684K-\u6587\u5316\u65e5\u8bb0\u4eca\u5929\u5f00\u901a \u2014 \u8fde\u63a5\u4e16\u754c\u4e0e\u97e9\u56fd\u65e5\u5e38\u7684\u7b80\u7ea6\u767d\u8272\u5c0f\u5c4b\u3002\u7b2c\u4e00\u7ad9\u662f\u548cMOMO\u901b\u660e\u6d1e\u5c0f\u5403\u8857 \ud83c\udf61\n\u7528\u4f60\u7684\u8bed\u8a00\u6253\u58f0\u62db\u547c\u5427\uff01",
-      es: "\u00a1Hola! Soy la Unnie de KOMI \ud83d\udc36\ud388\nHoy abre el Diario K-culture de KOMI \u2014 un hilo blanco y sencillo donde el mundo conoce la Corea de cada d\u00eda. Primera parada: el mercado callejero de Myeongdong con MOMO \ud83c\udf61\n\u00a1Saluda en tu idioma!",
-    },
-    likes: 127, reposts: 18, ago: 2 * HOUR, following: false,
-    comments: [
-      { nick:'Yuki \ud83c\uddef\ud83c\uddf5', handle:'@yuki_tokyo', text:'\u521d\u3081\u307e\u3057\u3066\u3001\u30b3\u30df\uff01\u65e5\u672c\u304b\u3089\u5fdc\u63f4\u3057\u3066\u307e\u3059\ud83d\udc95 \u307b\u3063\u3053\u713c\u304d\u7f8e\u5473\u3057\u305d\u3046\uff01', ago: 95 * MIN },
-      { nick:'Emily \ud83c\uddfa\ud83c\uddf8', handle:'@em_in_nyc', text:'Omg the street food looks unreal \ud83e\udd64 KOMI diary is my new nightly read!', ago: 40 * MIN },
-      { nick:'\u5c0f\u7f8e \ud83c\udde8\ud83c\uddf3', handle:'@xiaomei_bj', text:'\u597d\u559c\u6b22\u97e9\u56fd\u8857\u5934\u5c0f\u5403\uff01\u4e0b\u6b21\u53bb\u9996\u5c14\u4e00\u5b9a\u53bb\u660e\u6d1e \ud83c\udf5f', ago: 12 * MIN },
-      { nick:'Luc\u00eda \ud83c\uddea\ud83c\uddF8', handle:'@lucia_mad', text:'\u00a1Annyeong desde Madrid! \u00bfCu\u00e1l es tu bungeoppang favorito, KOMI?', ago: 6 * MIN },
-    ],
-  },
-  {
-    nick: "KOMI's Unnie", handle: '@ajakstudio.lab', avatar: './img/komi-avatar.jpg', mine: true,
-    body: "Bukchon Hanok Village in late autumn \ud83c\udf41\nPersimmons on the old walls, hot hotteok in my paws, MOMO pretending he is not cold. This is the Korea postcard never shows you \u2014 the quiet streets before the tour buses come. 7:30am. Go. Thank me later.",
-    tags: ['bukchon','hanok','kplace'],
-    photos: ['./img/bukchon.jpg'],
-    translations: {
-      ko: "\uac00\uc744 \ub05d\uc790\ub9ac \ubd81\ucd0c\ud55c\uc625\ub9c8\uc744 \ud83c\udf41\n\uc5b4\ub290 \ub2ec\uc778 \ub3c1\uc774\uc640, \ubcf4\uc628 \ud638\ub5d0\uc37d, \uccb1\uc7c0\uc774\ub77c\ub3c4 \uc544\ub2c8\ub77c\ub294 \ub4ef \ubaa8\ubaa8. \ud3ec\uc2a4\ud2b8\uce74\ub4dc\uac00 \uc548 \ubcf4\uc5ec\uc8fc\ub294 \ud55c\uad6d\uc774\uc5d0\uc694 \u2014 \uc8fc\ub9c9\uc6a9 \ubc84\uc2a4\uac00 \uc624\uae30 \uc804\uc758 \uc870\uc6a9\ud55c \uae38. \uc544\uce68 7\uc2dc 30\ubd84. \uadf8\ub0e5 \uac00\uc138\uc694.",
-      ja: "\u79cb\u306e\u672b\u308a\u306e\u5317\u6751\u97d3\u5c4b\u6751 \ud83c\udf41\n\u53e4\u3044\u58c1\u306e\u67ff\u3001\u3042\u3063\u3064\u3042\u3064\u306e\u30db\u30c8\u30af\u3001\u5bd2\u304f\u306a\u3044\u3075\u308a\u306eMOMO\u3002\u30d0\u30b9\u304c\u6765\u308b\u524d\u306e\u9759\u304b\u306a\u8def\u5730\u5915\u65b9\u2014\u3053\u308c\u3053\u305d\u672c\u7269\u306e\u97d3\u56fd\u3002\u671d7\u664230\u5206\u3001\u305c\u3072\u884c\u3063\u3066\uff01",
-      zh: "\u6df1\u79cb\u7684\u5317\u6751\u97e9\u5c4b\u6751 \ud83c\udf41\n\u8001\u5899\u4e0a\u7684\u67ff\u5b50\uff0c\u70ed\u4e4e\u4e4e\u7684\u7cd6\u997c\uff0c\u88c5\u4f5c\u4e0d\u51b7\u7684MOMO\u3002\u8fd9\u624d\u662f\u660e\u4fe1\u7247\u4e0d\u7ed9\u4f60\u770b\u7684\u97e9\u56fd \u2014 \u65c5\u6e38\u5927\u5df4\u8fd8\u6ca1\u6765\u65f6\u5b89\u9759\u7684\u80e1\u540c\u3002\u65e9\u4e0a7\u70b9\u534a\uff0c\u53bb\u5c31\u5bf9\u4e86\uff01",
-      es: "Bukchon Hanok a finales de oto\u00f1o \ud83c\udf41\nCaquis en las paredes viejas, hotteok caliente en mis patas y MOMO fingiendo que no tiene fr\u00edo. \u00c9sta es la Corea que no sale en las postales \u2014 las calles tranquilas antes de los autobuses tur\u00edsticos. 7:30 de la ma\u00f1ana. Ve. Ya me agradecer\u00e1s.",
-    },
-    likes: 98, reposts: 11, ago: 26 * HOUR, following: false,
-    comments: [
-      { nick:'Hana \ud83c\uddf0\ud83c\uddf7', handle:'@hana_seoul', text:'\uadf8 \uc2dc\uac04\ub300 \uc870\uc6a9\ud560 \ub54c \uc870\uc548 \uc5f0\uc778\ub9ac\uc5d0\uc11c \uacf5\ubd80\ud558\ub358 \uc0dd\uac01 \ub098\ub124\uc6a4 \ud83c\udf49', ago: 20 * HOUR },
-      { nick:'Tan \ud83c\uddf9\ud83c\udded', handle:'@tan_bkk', text:'Persimmon season is the best season \ud83e\udded adding Bukchon to my list!', ago: 9 * HOUR },
-    ],
-  },
-  {
-    nick: "KOMI's Unnie", handle: '@ajakstudio.lab', avatar: './img/komi-avatar.jpg', mine: true,
-    body: "Gingko gold at Nami Island \ud83c\udf42\nKOMI: sweet potato. MOMO: a whole paper bag of roasted chestnuts, refusing to share. Weekdate rule: one tree, one snack each, zero mercy. What is your autumn date move?",
-    tags: ['namiisland','autumn','koreatrip'],
-    photos: ['./img/nami.jpg'],
-    translations: {
-      ko: "\ub0a8\uc774\uc12c \uc740\ud589\ub098\ubb34 \uae08\uc0c9 \ud83c\udf42\n\ucf54\ubbf8\ub294 \uace0\uad6c\ub9c8, \ubaa8\ubaa8\ub294 \uad7f\uac01\uc740 \uc740\ud565 \uc885\uc9c0\ubd81\uc774 \uc788\ub294 \uc911 \uacf5\uc720 \uac70\ubd80. \uc8fc\uac04 \ub370\uc774\ud2b8 \uadc0\uce59: \ud55c \ub098\ubb34\uc5d0 \uc5b5\uc838\uc694 \uc549\uc744\ub54c\ub2e4 \uc815\ub9d0 \ub9db\uc788\ub124\uc694. \uac00\uc744 \ub370\uc774\ud2b8 \uce78\uc9c0\ub294 \ubb34\uc5c7\uc778\uac00\uc694?",
-      ja: "\u5357\u30a4\u30bb\u30fc\u5c9b\u306e\u30a4\u30c1\u30e7\u30a6\u306e\u9ec4\u91d1 \ud83c\udf42\nKOMI\u306f\u713c\u304d\u828b\u3001MOMO\u306f\u713c\u304d\u6817\u306e\u8c46\u5168\u90e8\u6301\u3061\u5e30\u5bb6\u4e2d\u3002\u4e00\u672c\u306e\u6728\u306e\u4e0b\u3067\u30b9\u30ca\u30c3\u30af\u2014\u5206\u3051\u5408\u3044\u306f\u52d8\u76ee\u4e00\u676f\u3002\u79cb\u306e\u30c7\u30fc\u30c8\u5b9a\u756a\u306f\u4f55\uff1f",
-      zh: "\u5357\u6021\u5c9b\u7684\u94f6\u674f\u91d1\u8272 \ud83c\udf42\nKOMI\u62ff\u7740\u70e4\u7ea2\u85af\uff0cMOMO\u62b1\u7740\u6574\u888b\u7cd6\u7092\u677e\u5b50\u4e0d\u80af\u5206\u4eab\u3002\u4e00\u68f5\u6811\u4e0b\u5403\u70b9\u5fc3\u2014\u4e0d\u8bb2\u60c5\u9762\u3002\u4f60\u4eec\u90a3\u91cc\u79cb\u5929\u7ea6\u4f1a\u90fd\u53bb\u54ea\uff1f",
-      es: "Oro de ginkgo en la isla de Nami \ud83c\udf42\nKOMI con su boniato asado, MOMO con toda una bolsa de casta\u00f1as que no piensa compartir. Regla de la cita de oto\u00f1o: un \u00e1rbol, un snack cada uno, sin piedad. \u00bfCu\u00e1l es vuestro plan de oto\u00f1o?",
-    },
-    likes: 143, reposts: 22, ago: 50 * HOUR, following: false,
-    comments: [
-      { nick:'Minh \ud83c\uddfb\ud83c\uddf3', handle:'@minh_hn', text:'MOMO\u2019s side-eye while holding the whole bag \ud83d\ude02\ud83d\ude02 \u0111\u00e1ng y\u00eau qu\u00e1!', ago: 30 * HOUR },
-      { nick:'Sarah \ud83c\udde6\ud83c\uddfa', handle:'@sarah_aus', text:'The golden ginkgo \ud83e\udee9 we went last November and it looked EXACTLY like this', ago: 14 * HOUR },
-    ],
-  },
-  {
-    nick: 'KOMI', handle: '@komi.diary', avatar: null, mine: false,
-    body: "Woof. MOMO here. \ud83d\udc36\nKOMI hogs the mirror every morning (11 minutes, I counted). I let her, because one of us has to look like a K-drama lead. I look like the plot twist. Send snacks.",
-    tags: ['momo','petsofkorea'],
-    photos: [],
-    translations: {
-      ko: "\uba4d. \ubaa8\ubaa8\uc5d0\uc694. \ud83d\udc36\n\ucf54\ubbf8\uac00 \ub9e4\uc77c \uc544\uce68 \uac70\uc6b8 \uc55e\uc5d0\uc11c 11\ubd84\uc744 \ud638\uc9c1\ud574\uc694(\uc138\uc5b4 \ubd24\uc5b4\uc694). \uc6b0\ub9ac \uc911 \ud55c \ub179\uc740 K-\ub4dc\ub77c\ub9c8 \uc8fc\uc778\uacf5\uac19\uc744 \ud544\uc694\uac00 \uc788\ub2c8\uae4c\uc694. \ub09c \ubc18\uc804 \uc5ed\ud560\uc778 \uac83 \uac19\uc8e0. \uac04\uc2dd \ubcf4\ub0b4\uc8fc\uc138\uc694.",
-      ja: "\u30ef\u30f3\u3002MOMO\u3067\u3059 \ud83d\udc36\nKOMI\u306f\u6bce\u671d\u955c\u306e\u524d\u306711\u5206\uff08\u8a08\u3063\u305f\uff09\u4f7f\u3063\u3066\u308b\u3002\u97d3\u30c9\u30e9\u306e\u4e3b\u5f79\u306b\u898b\u3048\u308b\u4eba\u304c\u5fc5\u8981\u3060\u304b\u3089\u307e\u3041\u3044\u3044\u3051\u3069\u3002\u4ffa\u306f\u5c55\u958b\u306e\u30c9\u30f3\u30c7\u30f3\u56de\u3002\u304a\u3084\u3064\u9001\u3063\u3066\u3002",
-      zh: "\u65fa\u3002\u6211\u662fMOMO \ud83d\udc36\nKOMI\u6bcf\u5929\u65e9\u4e0a\u5360\u7740\u955c\u5b5011\u5206\u949f\uff08\u6211\u6570\u7684\uff09\u3002\u603b\u5f97\u6709\u4eba\u770b\u8d77\u6765\u50cf\u97e9\u5267\u4e3b\u89d2\uff0c\u6211\u5c31\u662f\u90a3\u4e2a\u53cd\u8f6c\u89d2\u8272\u3002\u96f6\u98df\u5feb\u5bc4\u8fc7\u6765\u3002",
-      es: "Guau. Aqu\u00ed MOMO \ud83d\udc36\nKOMI se roba el espejo cada ma\u00f1ana (11 minutos, los cont\u00e9). La dejo, porque alguien tiene que parecer protagonista de K-drama. Yo parezco el giro del gui\u00f3n. Manden snacks.",
-    },
-    likes: 212, reposts: 31, ago: 74 * HOUR, following: false,
-    comments: [
-      { nick:'Kenji \ud83c\uddef\ud83c\uddf5', handle:'@kenji_osaka', text:'\u62d9\u8005\u3001\u677e\u5c4b\u306e\u3055\u3064\u307e\u3044\u304a\u9001\u308a\u3057\u307e\u3059\ud83c\udf65\u7d9a\u304d\u3082\u898b\u305f\u3044\uff01', ago: 60 * HOUR },
-      { nick:'Zoe \ud83c\uddec\ud83c\udde7', handle:'@zoe_ldn', text:'\u201cI look like the plot twist\u201d \ud83d\ude02 MOMO you absolute icon', ago: 55 * HOUR },
-    ],
-  },
-];
+/* ---------- content ---------- */
+const MIN = 60 * 1000;
 
 /* ---------- utils ---------- */
 const $  = (s, r) => (r || document).querySelector(s);
@@ -269,21 +211,20 @@ function load(){
     d = {
       v: 1,
       me: { nick: "KOMI's Unnie", handle: '@me', following: false },
-      diaries: SAMPLES.map((s, i) => ({
-        id: 'seed' + i,
-        nick: s.nick, handle: s.handle, avatar: s.avatar || null,
-        body: s.body, tags: s.tags.slice(),
-        photos: s.photos.slice(),
-        translations: JSON.parse(JSON.stringify(s.translations)),
-        mine: !!s.mine, verified: true,
-        ts: Date.now() - s.ago,
-        likes: s.likes, liked: false,
-        reposts: s.reposts, reposted: false,
-        comments: s.comments.map((c, j) => ({ id:'c' + i + '_' + j, nick:c.nick, handle:c.handle, text:c.text, ts: Date.now() - c.ago })),
-      })),
+      diaries: [],
       filterTag: null, searchQuery: '', meTab: 'mine',
     };
     save(d);
+  }
+  /* one-time cleanup: drop the old built-in sample diaries (ids 'seed*') that
+     earlier visits cached in localStorage, so the first page starts empty. */
+  if (Array.isArray(d.diaries)) {
+    const kept = d.diaries.filter(p => !(p && typeof p.id === 'string' && p.id.indexOf('seed') === 0));
+    if (kept.length !== d.diaries.length) {
+      d.diaries = kept;
+      if (d.filterTag && !kept.some(p => (p.tags || []).indexOf(d.filterTag) >= 0)) d.filterTag = null;
+      save(d);
+    }
   }
   if (typeof d.filterTag !== 'string') d.filterTag = null;
   if (typeof d.searchQuery !== 'string') d.searchQuery = '';
@@ -600,15 +541,27 @@ function emptyHTML(msg){
   return '<div class="empty"><b>KOMI \ud83d\udc36</b>' + esc(msg) + '</div>';
 }
 
+function emptyHomeHTML(){
+  return (
+    '<div class="empty-home">'
+    + '<img class="empty-flower" src="./img/dancheong-flower.svg" alt="" width="68" height="68">'
+    + '<b class="empty-title">' + esc(t('emptyHomeTitle')) + '</b>'
+    + '<p class="empty-sub">' + esc(t('emptyHomeSub')) + '</p>'
+    + '<button type="button" class="pill primary empty-cta" data-empty-post="1">' + esc(t('emptyHomeCta')) + '</button>'
+    + '</div>'
+  );
+}
+
 function renderMain(){
   const main = $('#main');
   const v = currentView;
 
   if (v === 'home') {
+    const posts = visiblePosts();
     main.innerHTML =
       '<div class="feed-head-pad"></div>'
       + todayBannerHTML()
-      + visiblePosts().map(postHTML).join('');
+      + (posts.length ? posts.map(postHTML).join('') : emptyHomeHTML());
     return;
   }
   if (v === 'search') {
@@ -681,6 +634,9 @@ function findPostElFrom(node){
 
 function onMainClick(e){
   const target = e.target;
+
+  const emptyPostBtn = target.closest('[data-empty-post]');
+  if (emptyPostBtn) { openCompose(); return; }
 
   const translateBtn = target.closest('[data-translate]');
   if (translateBtn) {
