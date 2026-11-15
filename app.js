@@ -1061,9 +1061,13 @@ function bind(){
 
   $('#bodyInput').addEventListener('input', () => { $('#bodyCount').textContent = String($('#bodyInput').value.length); });
 
-  $('#photoBtn').addEventListener('click', () => $('#mediaInput').click());
-  $('#mediaInput').addEventListener('change', (e) => { addMediaFiles(e.target.files); e.target.value = ''; });
-  $('#photoStrip').addEventListener('click', (e) => {
+  /* guard: a browser holding an older cached index.html must not break boot */
+  const mediaInput = $('#mediaInput'), photoBtn = $('#photoBtn');
+  if (photoBtn && mediaInput) {
+    photoBtn.addEventListener('click', () => mediaInput.click());
+    mediaInput.addEventListener('change', (e) => { addMediaFiles(e.target.files); e.target.value = ''; });
+  }
+  if ($('#photoStrip')) $('#photoStrip').addEventListener('click', (e) => {
     const rm = e.target.closest('.rm');
     if (rm) {
       const i = parseInt(rm.dataset.i, 10);
