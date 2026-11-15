@@ -56,7 +56,7 @@ const T = {
   ko: {
     tagline:'코미와 함께하는 매일의 한국',
     home:'홈', search:'검색', post:'글쓰기', mydiary:'내 다이어리',
-    todayBanner:'오늘의 K-컬쳐 다이어리',
+    todayBanner:'오늘의 K-컬쳐 다이어리', transPending:'글로벌 팬 번역이 곧 추가될 글이에요',
     translate:'번역 보기', seeOriginal:'원문 보기', translatedBy:'글로벌 팬을 위한 번역',
     newPost:'새 다이어리', cancel:'취소', publish:'게시', posted:'게시했어요 \ud83c\udf8a',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'오늘 한국은 어땠나요?',
@@ -80,7 +80,7 @@ const T = {
   ja: {
     tagline:'KOMIと毎日の韓国',
     home:'ホーム', search:'検索', post:'投稿', mydiary:'マイダイアリー',
-    todayBanner:'今日のK-カルチャーダイアリー',
+    todayBanner:'今日のK-カルチャーダイアリー', transPending:'世界のファン向けの翻訳は準備中です',
     translate:'翻訳を見る', seeOriginal:'原文を見る', translatedBy:'グローバルファン向けの翻訳',
     newPost:'新しいダイアリー', cancel:'キャンセル', publish:'投稿', posted:'投稿しました \ud83c\udf8a',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今日の韓国はどうでしたか？',
@@ -104,7 +104,7 @@ const T = {
   zh: {
     tagline:'和KOMI一起过每天',
     home:'首页', search:'搜索', post:'发布', mydiary:'我的日记',
-    todayBanner:'今日的K-文化日记',
+    todayBanner:'今日的K-文化日记', transPending:'面向全球粉丝的翻译即将上线',
     translate:'查看翻译', seeOriginal:'查看原文', translatedBy:'为全球粉丝提供的翻译',
     newPost:'新的日记', cancel:'取消', publish:'发布', posted:'已发布 \ud83c\udf8a',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今天的韩国怎么样？',
