@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KOMI's K-Culture Diary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A global K-culture diary hosted by KOMI's Unnie. K-food, K-place, K-beauty and everyday Korea — read, reply and share with fans around the world.">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="icon" href="./icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="KOMI Diary">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KOMI's K-Culture Diary">
+<meta property="og:title" content="KOMI's K-Culture Diary">
+<meta property="og:description" content="Everyday Korea with KOMI — K-food, K-place, K-beauty. A global thread-like diary for fans of Korean culture.">
+<meta property="og:image" content="https://ajak-75.github.io/KOMI-Diary/icons/og-cover.jpg">
+<meta property="og:url" content="https://ajak-75.github.io/KOMI-Diary/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KOMI's K-Culture Diary">
+<meta name="twitter:description" content="Everyday Korea with KOMI — K-food, K-place, K-beauty.">
+<meta name="twitter:image" content="https://ajak-75.github.io/KOMI-Diary/icons/og-cover.jpg">
+
+<link rel="preload" as="image" href="./img/komi-avatar.jpg">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="./" aria-label="KOMI's K-Culture Diary">
+      <img class="brand-mark" src="./img/komi-avatar.jpg" alt="KOMI" width="34" height="34">
+      <span class="brand-copy">
+        <span class="brand-title"><img class="dc-emblem" src="./img/dancheong-flower.svg" alt="" width="17" height="17">KOMI's K-Culture Diary</span>
+        <span class="brand-sub" data-i18n="tagline">Everyday Korea with KOMI</span>
+      </span>
+    </a>
+    <div class="topbar-actions">
+      <div class="lang" id="lang">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span id="langCode">EN</span>
+        </button>
+        <div class="lang-menu" id="langMenu" role="listbox" aria-label="Language" hidden></div>
+      </div>
+      <button class="icon-btn" id="composeBtn" type="button" aria-label="New post">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main" id="main" tabindex="-1"></main>
+
+  <nav class="tabbar" aria-label="Main navigation">
+    <button class="tab" type="button" data-view="home">
+      <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>
+      <span class="tab-label" data-i18n="home">Home</span>
+    </button>
+    <button class="tab" type="button" data-view="search">
+      <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/></svg>
+      <span class="tab-label" data-i18n="search">Search</span>
+    </button>
+    <button class="tab tab-create" type="button" id="composeBtn2" aria-label="New post">
+      <span class="create-fab">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>
+      </span>
+      <span class="tab-label" data-i18n="post">Post</span>
+    </button>
+    <button class="tab" type="button" data-view="me">
+      <svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20.2c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6"/></svg>
+      <span class="tab-label" data-i18n="mydiary">My Diary</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Compose sheet -->
+<div class="scrim" id="scrim" hidden></div>
+<section class="sheet" id="composeSheet" role="dialog" aria-modal="true" aria-labelledby="composeTitle" hidden>
+  <div class="sheet-grip" aria-hidden="true"></div>
+  <header class="sheet-head">
+    <button class="text-btn" type="button" id="composeCancel" data-i18n="cancel">Cancel</button>
+    <h2 class="sheet-title" id="composeTitle" data-i18n="newPost">New diary</h2>
+    <button class="pill primary" type="button" id="composeSubmit" data-i18n="publish">Post</button>
+  </header>
+  <div class="sheet-body">
+    <div class="compose-row">
+      <img class="avatar avatar-40" src="./img/komi-avatar.jpg" alt="" width="40" height="40">
+      <div class="compose-fields">
+        <input id="nickInput" class="nick-input" type="text" maxlength="28" autocomplete="nickname" placeholder="KOMI's Unnie" aria-label="Nickname">
+        <textarea id="bodyInput" class="body-input" rows="5" maxlength="500" placeholder="What did Korea feel like today?" aria-label="Post text"></textarea>
+        <div class="compose-under">
+          <input id="tagInput" class="tag-input" type="text" maxlength="80" placeholder="#myeongdong #kfood" aria-label="Tags">
+          <span class="counter"><span id="bodyCount">0</span>/500</span>
+        </div>
+      </div>
+    </div>
+    <div class="photo-strip" id="photoStrip" hidden></div>
+    <div class="compose-tools">
+      <button class="tool-btn" type="button" id="photoBtn">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 4.5-4.5 4 4L16 12l4 4"/></svg>
+        <span data-i18n="photo">Photo</span>
+      </button>
+      <span class="tool-hint" id="photoHint" data-i18n="photoHint">Up to 4 photos</span>
+      <input id="photoInput" type="file" accept="image/*" multiple hidden>
+    </div>
+    <p class="hint" id="composeHint" data-i18n="composeHint">Your post is saved on this device.</p>
+  </div>
+</section>
+
+<!-- Image viewer -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo" hidden>
+  <button class="viewer-close" type="button" id="viewerClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <img id="viewerImg" alt="">
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="./app.js"></script>
+</body>
+</html>

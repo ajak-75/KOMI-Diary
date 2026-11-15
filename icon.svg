@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="KOMI's K-Culture Diary — dancheong flower">
+  <rect width="48" height="48" rx="11" fill="#FFFFFF"/>
+  <g>
+    <path d="M24 5.5c4.1 3.1 6 7.7 4.9 12.4-.5 2.3-2.6 4.1-4.9 4.1s-4.4-1.8-4.9-4.1C18 13.2 19.9 8.6 24 5.5Z" fill="#4B7F9F"/>
+    <path d="M24 5.5c4.1 3.1 6 7.7 4.9 12.4-.5 2.3-2.6 4.1-4.9 4.1s-4.4-1.8-4.9-4.1C18 13.2 19.9 8.6 24 5.5Z" fill="#E05A47" transform="rotate(72 24 24)"/>
+    <path d="M24 5.5c4.1 3.1 6 7.7 4.9 12.4-.5 2.3-2.6 4.1-4.9 4.1s-4.4-1.8-4.9-4.1C18 13.2 19.9 8.6 24 5.5Z" fill="#EB7A2D" transform="rotate(144 24 24)"/>
+    <path d="M24 5.5c4.1 3.1 6 7.7 4.9 12.4-.5 2.3-2.6 4.1-4.9 4.1s-4.4-1.8-4.9-4.1C18 13.2 19.9 8.6 24 5.5Z" fill="#6E946B" transform="rotate(216 24 24)"/>
+    <path d="M24 5.5c4.1 3.1 6 7.7 4.9 12.4-.5 2.3-2.6 4.1-4.9 4.1s-4.4-1.8-4.9-4.1C18 13.2 19.9 8.6 24 5.5Z" fill="#D9B44A" transform="rotate(288 24 24)"/>
+    <circle cx="24" cy="24" r="4" fill="#D9B44A"/>
+    <circle cx="24" cy="24" r="1.8" fill="#FFFFFF"/>
+  </g>
+</svg>

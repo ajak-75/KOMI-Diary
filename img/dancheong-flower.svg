@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Dancheong flower">
+  <defs></defs>
+  <!-- five dancheong petals: slate blue, coral red, warm orange, sage green, golden yellow -->
+  <g>
+    <path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="#4B7F9F" transform="rotate(0 24 24)"/>
+    <path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="#E05A47" transform="rotate(72 24 24)"/>
+    <path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="#EB7A2D" transform="rotate(144 24 24)"/>
+    <path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="#6E946B" transform="rotate(216 24 24)"/>
+    <path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="#D9B44A" transform="rotate(288 24 24)"/>
+    <circle cx="24" cy="24" r="4.6" fill="#D9B44A"/>
+    <circle cx="24" cy="24" r="2.1" fill="#FFFFFF"/>
+  </g>
+</svg>
