@@ -1211,7 +1211,6 @@ function shopEmptyHTML(){
     + '<img class="shop-empty-ava" src="./img/momo-avatar.jpg" alt="" width="76" height="76">'
     + '<b>' + esc(t('shopEmpty')) + '</b>'
     + '<p>' + esc(t('shopEmptySub')) + '</p>'
-    + '<button type="button" class="pill primary shop-add" data-shop-add="1">' + esc(t('shopAdd')) + '</button>'
     + '</div>';
 }
 
