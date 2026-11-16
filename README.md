@@ -11,7 +11,8 @@ A thread-style PWA where the whole world reads **KOMI's everyday-Korea diary** �
 - **Per-post live translate** — every post, the user's own included, has a 🌐 **Translate** toggle. It asks Google's translate endpoint (`translate_a/single`, `sl=auto`) for the language currently chosen in the header, keeps the result in memory for the session, and collapses back with **See original**. When the detected source already matches the target it says so instead.
 - **Write & attach photos or video** — nickname (default `KOMI's Unnie`), body (500 chars), hashtags, up to 4 attachments of `image/*` and `video/*`. Photos are re-encoded on a canvas (long edge ≤1280px, JPEG) and videos kept up to 15MB and clipped at 15s (10s recommended; the length is read from the file's metadata before attaching); both go into **IndexedDB** as blobs (`komidiary.media`), while `localStorage` keeps only the text and small `{id, kind}` refs. Videos play inline with `controls playsinline`. Older posts whose photos were stored as data-URLs in `localStorage` are migrated into IndexedDB on first load.
 - **Thread actions** — like ❤️, reply threads, repost 🔁, share (Web Share API → copy-link fallback, deep links like `#d=<id>`).
-- **Bottom navigation** — Home · Search (tag chips + text) · Post (+) · My Diary (my posts / liked).
+- **Bottom navigation** — Home · Search (tag chips + text) · Post (+) · MOMO Shop · My Diary (my posts / liked).
+- **🛍️ MOMO Shop** — Momo's tsundere shop tab (`renderShop`): a banner card built from the user's Momo artwork (`img/momo-shop-banner.jpg`, `img/momo-avatar.jpg`), a 5-language Momo line, and products the user adds herself — one photo (IndexedDB), name, price, shop link and **Momo's tsundere one-liner** shown in a speech bubble with the same 🌐 translate toggle as a post. Text lives in `localStorage` (`komidiary.shop.v1`), the shelf starts empty (no sample products), and each card has edit / delete / "Shop" link.
 - **PWA** — installable on Android Chrome ("Add to Home screen", standalone full-screen) and iOS Safari; offline shell via service worker.
 - **Dancheong accents** — a hand-made SVG 단청 꽃무늬 emblem (slate blue `#4B7F9F`, coral red `#E05A47`, warm orange `#EB7A2D`, sage green `#6E946B`, golden yellow `#D9B44A`) as the brand mark, the daily "오늘의 단청 스탬프" date banner, and tag-chip color points. Background stays clean white.
 
@@ -36,7 +37,7 @@ python3 -m http.server 8080
 | `manifest.webmanifest` | PWA manifest (standalone, icons) |
 | `sw.js` | Offline-first service worker cache |
 | `icon.svg`, `icons/` | Dancheong flower icon set (any + maskable) |
-| `img/` | KOMI avatar, dancheong emblem, leftover sample photos (no longer shown) |
+| `img/` | KOMI avatar, dancheong emblem, MOMO Shop banner + Momo avatar |
 
 ## Roadmap
 

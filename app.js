@@ -67,6 +67,22 @@ const T = {
     offline:'You are offline \u2014 showing saved diaries', updated:'Feed refreshed',
     deleteComment:'Delete',
     dateLocale:'en-US', needText:'Write something first \u2728',
+    shop:'MOMO Shop', shopSub:'The tsundere shop where Momo sells only to Kemi',
+    shopLine:'Hey, don\u2019t just buy anything. If you really need it, wash the dishes first and then buy it \ud83d\ude20',
+    shopAdd:'+ Add a product', shopShelf:'Momo\u2019s shelf',
+    shopNew:'New product', shopEdit:'Edit product',
+    shopNameL:'Product', shopNamePh:'e.g. Hyaluronic Serum 50ml',
+    shopPriceL:'Price', shopPricePh:'$18 \u00b7 24,000\u20a9',
+    shopLinkL:'Shop link', shopLinkPh:'https://...',
+    shopNoteL:'Momo\u2019s tsundere line',
+    shopNotePh:'Kemi, delivery takes forever \u2014 order it and forget it! It\u2019ll feel like a gift later!',
+    shopHint:'Products are saved on this device. One photo.',
+    shopPhoto:'Product photo', shopOpen:'Shop', shopNoLink:'No link',
+    shopEmpty:'Nothing on the shelf yet', shopEmptySub:'Only what Momo picks herself goes up here. Add the first product \u2014 a K-beauty find, a snack, anything.',
+    shopSaved:'Product added \ud83d\uded2', shopUpdated:'Product updated \ud83d\uded2',
+    shopDeleted:'Product removed', shopConfirmDelete:'Take this product down?',
+    shopNeedName:'Give the product a name first \u2728', shopLinkBad:'A link has to start with https://',
+    shopPhotoBad:'Could not read that photo',
   },
   ko: {
     tagline:'케미(Kemi)들과 함께하는 K-컬쳐 일상',
@@ -98,6 +114,22 @@ const T = {
     offline:'오프라인 \u2014 저장된 다이어리를 보여드려요', updated:'피드를 새로 불러왔어요',
     deleteComment:'삭제',
     dateLocale:'ko-KR', needText:'내용을 먼저 써주세요 \u2728',
+    shop:'모모 샵', shopSub:'츤데레 모모가 케미들에게만 파는 샵',
+    shopLine:'야, 아무거나 사지 마. 진짜 필요하면 엄마 설거지 한 판 하고 사 😠',
+    shopAdd:'+ 상품 올리기', shopShelf:'모모의 진열대',
+    shopNew:'새 상품', shopEdit:'상품 수정',
+    shopNameL:'상품명', shopNamePh:'예: 히알루론 세럼 50ml',
+    shopPriceL:'가격', shopPricePh:'$18 · 24,000원',
+    shopLinkL:'구매 링크', shopLinkPh:'https://...',
+    shopNoteL:'모모의 츤데레 한마디',
+    shopNotePh:'케미들 이거 배송 시간 오래 걸리니까 시키고 잊어버려! 나중에 선물처럼 갈꺼야!',
+    shopHint:'상품은 이 기기에 저장돼요. 사진은 1장.',
+    shopPhoto:'상품 사진', shopOpen:'구경하기', shopNoLink:'링크 없음',
+    shopEmpty:'아직 진열대가 비어 있어요', shopEmptySub:'모모가 직접 고른 상품만 올라가요. 첫 상품을 올려 주세요.',
+    shopSaved:'상품을 올렸어요 🛍️', shopUpdated:'상품을 수정했어요 🛍️',
+    shopDeleted:'상품을 내렸어요', shopConfirmDelete:'이 상품을 진열대에서 내릴까요?',
+    shopNeedName:'상품명을 먼저 적어 주세요 ✨', shopLinkBad:'링크는 https:// 로 시작해야 해요',
+    shopPhotoBad:'사진을 불러오지 못했어요',
   },
   ja: {
     tagline:'KemiとつながるK-カルチャーの毎日',
@@ -129,6 +161,22 @@ const T = {
     offline:'オフライン \u2014 保存済みのダイアリーを表示中', updated:'フィードを更新しました',
     deleteComment:'削除',
     dateLocale:'ja-JP', needText:'まず本文を書いてください \u2728',
+    shop:'MOMOショップ', shopSub:'ツンデレなMOMOがKemiにだけ売るショップ',
+    shopLine:'ねえ、何でも買わないで。本当に必要なら、お皿洗いをしてから買って 😠',
+    shopAdd:'＋商品を追加', shopShelf:'MOMOの棚',
+    shopNew:'新しい商品', shopEdit:'商品を編集',
+    shopNameL:'商品名', shopNamePh:'例：ヒアルロン酸セラム 50ml',
+    shopPriceL:'価格', shopPricePh:'¥2,600 · 24,000ウォン',
+    shopLinkL:'購入リンク', shopLinkPh:'https://...',
+    shopNoteL:'MOMOのツンデレ一言',
+    shopNotePh:'Kemi、これ配送に時間かかるから注文したら忘れてて！あとでプレゼントみたいになるよ！',
+    shopHint:'商品はこの端末に保存されます。写真は1枚。',
+    shopPhoto:'商品写真', shopOpen:'見に行く', shopNoLink:'リンクなし',
+    shopEmpty:'棚はまだ空です', shopEmptySub:'MOMOが自分で選んだ商品だけが並びます。最初の商品を追加してください。',
+    shopSaved:'商品を追加しました 🛍️', shopUpdated:'商品を更新しました 🛍️',
+    shopDeleted:'商品を削除しました', shopConfirmDelete:'この商品を棚から外しますか？',
+    shopNeedName:'先に商品名を入力してください ✨', shopLinkBad:'リンクは https:// で始めてください',
+    shopPhotoBad:'写真を読み込めませんでした',
   },
   zh: {
     tagline:'和Kemi一起分享的K-文化日常',
@@ -160,6 +208,22 @@ const T = {
     offline:'离线中 \u2014 显示已保存的日记', updated:'信息流已更新',
     deleteComment:'删除',
     dateLocale:'zh-CN', needText:'请先输入内容 \u2728',
+    shop:'MOMO小店', shopSub:'傲娇的MOMO只卖给Kemi的小店',
+    shopLine:'喂，别什么都买。真的需要的话，先帮妈妈洗完碗再买 😠',
+    shopAdd:'＋添加商品', shopShelf:'MOMO的货架',
+    shopNew:'新商品', shopEdit:'编辑商品',
+    shopNameL:'商品名称', shopNamePh:'例：玻尿酸精华 50ml',
+    shopPriceL:'价格', shopPricePh:'$18 · 24,000韩元',
+    shopLinkL:'购买链接', shopLinkPh:'https://...',
+    shopNoteL:'MOMO的傲娇金句',
+    shopNotePh:'Kemi，这个配送要很久，下单就忘掉吧！以后会像礼物一样到！',
+    shopHint:'商品保存在这台设备上。照片一张。',
+    shopPhoto:'商品照片', shopOpen:'去看看', shopNoLink:'没有链接',
+    shopEmpty:'货架还空着', shopEmptySub:'这里只放MOMO亲自挑选的商品。来添加第一件吧。',
+    shopSaved:'商品已添加 🛍️', shopUpdated:'商品已更新 🛍️',
+    shopDeleted:'商品已删除', shopConfirmDelete:'要把这件商品下架吗？',
+    shopNeedName:'请先填写商品名称 ✨', shopLinkBad:'链接必须以 https:// 开头',
+    shopPhotoBad:'无法读取这张照片',
   },
   es: {
     tagline:'Cultura K y tu d\u00eda a d\u00eda con Kemi',
@@ -191,6 +255,22 @@ const T = {
     offline:'Sin conexi\u00f3n \u2014 mostrando diarios guardados', updated:'Feed actualizado',
     deleteComment:'Eliminar',
     dateLocale:'es-ES', needText:'Escribe algo primero \u2728',
+    shop:'Tienda MOMO', shopSub:'La tienda tsundere donde MOMO solo vende a los Kemi',
+    shopLine:'Oye, no compres cualquier cosa. Si de verdad lo necesitas, lava los platos y luego lo compras 😠',
+    shopAdd:'＋ Añadir producto', shopShelf:'El estante de MOMO',
+    shopNew:'Nuevo producto', shopEdit:'Editar producto',
+    shopNameL:'Producto', shopNamePh:'Ej.: Sérum de ácido hialurónico 50ml',
+    shopPriceL:'Precio', shopPricePh:'$18 · 24.000₩',
+    shopLinkL:'Enlace de compra', shopLinkPh:'https://...',
+    shopNoteL:'La frase tsundere de MOMO',
+    shopNotePh:'Kemi, el envío tarda mucho: pídelo y olvídalo. ¡Después llegará como un regalo!',
+    shopHint:'Los productos se guardan en este dispositivo. Una foto.',
+    shopPhoto:'Foto del producto', shopOpen:'Ver tienda', shopNoLink:'Sin enlace',
+    shopEmpty:'El estante aún está vacío', shopEmptySub:'Aquí solo van los productos que MOMO elige. Añade el primero.',
+    shopSaved:'Producto añadido 🛍️', shopUpdated:'Producto actualizado 🛍️',
+    shopDeleted:'Producto eliminado', shopConfirmDelete:'¿Quitar este producto del estante?',
+    shopNeedName:'Primero ponle un nombre al producto ✨', shopLinkBad:'El enlace debe empezar por https://',
+    shopPhotoBad:'No se pudo leer la foto',
   },
 };
 
@@ -689,6 +769,7 @@ function closeSheet(sheet){
     scrim.hidden = true; sheet.hidden = true;
     /* a cancelled edit must not leave its previews behind */
     if (sheet === $('#composeSheet')) { editPostId = null; clearDraftMedia(); syncComposeMode(); }
+    if (sheet === $('#shopSheet')) { shopEditId = null; clearShopDraftPhoto(); syncSheetTitle(); }
   }, 230);
 }
 
@@ -767,9 +848,12 @@ function renderLangUI(){
   $$('#langMenu .lang-item').forEach(b => b.setAttribute('aria-selected', String(b.dataset.code === code)));
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   syncComposeMode();
+  syncSheetTitle();
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
   $('#tagInput').placeholder = t('tagPlaceholder');
+  [['#shopNameInput', 'shopNamePh'], ['#shopPriceInput', 'shopPricePh'], ['#shopLinkInput', 'shopLinkPh'], ['#shopNoteInput', 'shopNotePh']]
+    .forEach(pair => { const el = $(pair[0]); if (el) el.placeholder = t(pair[1]); });
   document.documentElement.lang = code;
 }
 
@@ -779,6 +863,8 @@ const ICO = {
   repeat: (cls) => '<svg class="ico ' + (cls || '') + '" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2.5 21 6.5l-4 4"/><path d="M21 6.5H8a4 4 0 0 0-4 4v1"/><path d="M7 21.5l-4-4 4-4"/><path d="M3 17.5h13a4 4 0 0 0 4-4v-1"/></svg>',
   send: '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5 11 13"/><path d="M21.5 2.5 15 21.5l-4-8.5-8.5-4Z"/></svg>',
   globe: '<svg class="globe" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>',
+  pencil: '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4.2L19.1 9.1a2.35 2.35 0 0 0-3.3-3.3L4.9 16.7Z"/><path d="M14.4 7.2l2.4 2.4"/></svg>',
+  trash: '<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6.5 7l1 13h9l1-13M9 7V4.5h6V7"/></svg>',
 };
 
 /* The writer is the user herself: a diary she wrote, a comment she left, or the
@@ -977,6 +1063,310 @@ async function startTranslate(p, lang){
   render();
 }
 
+/* ---------- MOMO Shop ----------
+   Momo's own shelf: the shop where the tsundere Momo sells to Kemi. Products
+   are the user's — no sample rows are seeded, so the shelf starts empty. Text
+   lives in localStorage (komidiary.shop.v1); the single product photo lives in
+   IndexedDB with the diaries' media, so a phone photo never fills the quota. */
+const SHOP_KEY = 'komidiary.shop.v1';
+let shop = { v: 1, products: [] };
+let shopEditId = null;          /* product id while editing, null for a new one */
+let shopDraftPhoto = null;      /* { blob, url } for a newly picked photo */
+let shopKeepPhotoId = null;     /* media id of the photo the product already has */
+let shopPhotoRemoved = false;   /* the kept photo was removed in the sheet */
+let shopTr = {};                /* productId -> { lang, status:'loading'|'done'|'error', text, same } */
+const shopTrCache = new Map();  /* productId|lang -> translated line */
+let shopMediaBusy = false;
+
+function loadShop(){
+  let d = null;
+  try { d = JSON.parse(localStorage.getItem(SHOP_KEY) || 'null'); } catch (e) { d = null; }
+  if (!d || !Array.isArray(d.products)) d = { v: 1, products: [] };
+  d.products = d.products.filter(p => p && typeof p.id === 'string').map(p => ({
+    id: p.id,
+    name: String(p.name || ''),
+    price: String(p.price || ''),
+    link: String(p.link || ''),
+    note: String(p.note || ''),
+    mediaId: p.mediaId || null,
+    ts: Number(p.ts) || Date.now(),
+  }));
+  shop = d;
+}
+
+function saveShopStore(){
+  try { localStorage.setItem(SHOP_KEY, JSON.stringify(shop)); }
+  catch (e) { toast(getLang() === 'ko' ? '저장 공간이 부족해요' : 'Storage is full'); }
+}
+
+function findProduct(id){ return shop.products.find(p => p.id === id) || null; }
+
+/* A product photo resolves like a diary's: the id in localStorage, the blob in
+   IndexedDB, this session's object URL in the shared media map. */
+async function resolveShopMedia(){
+  if (shopMediaBusy) return;
+  shopMediaBusy = true;
+  let changed = false;
+  for (const p of shop.products) {
+    if (!p.mediaId || mediaURLs.has(p.mediaId)) continue;
+    try {
+      const blob = await mediaGet(p.mediaId);
+      if (blob) { mediaURLs.set(p.mediaId, { url: URL.createObjectURL(blob), kind: 'image' }); changed = true; }
+    } catch (e) { /* a missing blob just leaves the Momo placeholder */ }
+  }
+  shopMediaBusy = false;
+  if (changed && currentView === 'shop') renderMain();
+}
+
+function shopHeroHTML(){
+  return '<section class="shop-hero">'
+    + '<div class="shop-hero-frame"><img class="shop-hero-img" src="./img/momo-shop-banner.jpg" alt="MOMO Shop"></div>'
+    + '<div class="shop-hero-body">'
+    +   '<div class="shop-hero-id">'
+    +     '<img class="shop-hero-ava" src="./img/momo-avatar.jpg" alt="" width="42" height="42">'
+    +     '<div class="shop-hero-meta"><b class="shop-hero-name">' + esc(t('shop')) + '</b>'
+    +       '<span class="shop-hero-role">' + esc(t('shopSub')) + '</span></div>'
+    +   '</div>'
+    +   '<p class="shop-hero-line">' + esc(t('shopLine')) + '</p>'
+    +   '<button type="button" class="pill primary shop-add" data-shop-add="1">' + esc(t('shopAdd')) + '</button>'
+    + '</div></section>';
+}
+
+function shopTranslateRow(p){
+  if (!p.note) return '';
+  const lang = getLang();
+  const st = (shopTr[p.id] && shopTr[p.id].lang === lang) ? shopTr[p.id] : null;
+  const isOpen = !!(st && st.status === 'done');
+  let label = t('translate');
+  if (st && st.status === 'loading') label = t('translating');
+  else if (isOpen) label = t('seeOriginal');
+  let body = '';
+  if (isOpen) {
+    body = '<div class="shop-tr-body">' + esc(st.text)
+      + '<span class="shop-tr-meta">' + esc(st.same ? t('translateSame') : t('translatedBy')) + '</span></div>';
+  } else if (st && st.status === 'error') {
+    body = '<div class="shop-tr-meta">' + esc(t('translateFail')) + '</div>';
+  }
+  return '<div class="shop-tr"><button type="button" class="translate-btn shop-tr-btn'
+    + (st && st.status === 'loading' ? ' is-loading' : '') + '" data-shop-translate="' + escAttr(p.id) + '">'
+    + ICO.globe + '<span>' + esc(label) + '</span></button>' + body + '</div>';
+}
+
+async function startShopTranslate(p, lang){
+  const cur = shopTr[p.id];
+  if (cur && cur.lang === lang) {
+    if (cur.status === 'done') { delete shopTr[p.id]; render(); return; }
+    if (cur.status === 'loading') return;
+  }
+  const key = p.id + '|' + lang;
+  if (shopTrCache.has(key)) {
+    shopTr[p.id] = Object.assign({ lang, status: 'done' }, shopTrCache.get(key));
+    render();
+    return;
+  }
+  shopTr[p.id] = { lang, status: 'loading' };
+  render();
+  try {
+    const out = await translateText(p.note, TR_TARGET[lang] || lang);
+    const entry = { text: out.text, src: out.src || null, same: sameLang(out.src, lang) };
+    shopTrCache.set(key, entry);
+    shopTr[p.id] = Object.assign({ lang, status: 'done' }, entry);
+  } catch (e) {
+    shopTr[p.id] = { lang, status: 'error' };
+  }
+  if (currentView === 'shop') render();
+}
+
+function shopProductHTML(p){
+  const hit = p.mediaId ? mediaURLs.get(p.mediaId) : null;
+  const photo = (hit && hit.url)
+    ? '<img class="shop-card-img" src="' + escAttr(hit.url) + '" alt="" loading="lazy" data-shop-view="' + escAttr(p.id) + '">'
+    : '<div class="shop-card-noimg"><img src="./img/momo-avatar.jpg" alt="" width="56" height="56"></div>';
+  const price = p.price ? '<div class="shop-card-price">' + esc(p.price) + '</div>' : '';
+  const say = p.note
+    ? '<div class="shop-say">'
+      + '<img class="shop-say-ava" src="./img/momo-avatar.jpg" alt="" width="32" height="32">'
+      + '<div class="shop-bubble"><p class="shop-bubble-text">' + esc(p.note) + '</p>' + shopTranslateRow(p) + '</div>'
+      + '</div>'
+    : '';
+  const open = p.link
+    ? '<a class="pill shop-open" href="' + escAttr(p.link) + '" target="_blank" rel="noopener noreferrer">' + esc(t('shopOpen')) + '</a>'
+    : '<span class="pill shop-open is-off">' + esc(t('shopNoLink')) + '</span>';
+  return '<article class="shop-card" data-shop-id="' + escAttr(p.id) + '">'
+    + photo
+    + '<div class="shop-card-body">'
+    +   '<h3 class="shop-card-name">' + esc(p.name) + '</h3>'
+    +   price + say
+    +   '<div class="shop-card-foot">' + open
+    +     '<span class="shop-tools">'
+    +       '<button type="button" class="act" data-shop-edit="' + escAttr(p.id) + '" aria-label="' + escAttr(t('edit')) + '" title="' + escAttr(t('edit')) + '">' + ICO.pencil + '</button>'
+    +       '<button type="button" class="act" data-shop-del="' + escAttr(p.id) + '" aria-label="' + escAttr(t('deleted')) + '" title="' + escAttr(t('deleted')) + '">' + ICO.trash + '</button>'
+    +     '</span>'
+    +   '</div>'
+    + '</div></article>';
+}
+
+function shopEmptyHTML(){
+  return '<div class="shop-empty">'
+    + '<img class="shop-empty-ava" src="./img/momo-avatar.jpg" alt="" width="76" height="76">'
+    + '<b>' + esc(t('shopEmpty')) + '</b>'
+    + '<p>' + esc(t('shopEmptySub')) + '</p>'
+    + '<button type="button" class="pill primary shop-add" data-shop-add="1">' + esc(t('shopAdd')) + '</button>'
+    + '</div>';
+}
+
+function renderShop(){
+  const items = shop.products.slice().sort((a, b) => b.ts - a.ts);
+  $('#main').innerHTML =
+    '<div class="feed-head-pad"></div>'
+    + shopHeroHTML()
+    + (items.length
+      ? '<div class="shop-shelf-head"><b>' + esc(t('shopShelf')) + '</b><span>' + items.length + '</span></div>'
+        + items.map(shopProductHTML).join('')
+      : shopEmptyHTML());
+}
+
+/* ---------- shop sheet ---------- */
+function syncSheetTitle(){
+  const title = $('#shopTitle');
+  if (!title) return;
+  title.textContent = t(shopEditId ? 'shopEdit' : 'shopNew');
+}
+
+function setShopPhotoPreview(url){
+  const thumb = $('#shopPhotoThumb'), img = $('#shopPhotoImg'), add = $('#shopPhotoBtn');
+  if (!thumb || !img || !add) return;
+  if (url) { img.src = url; thumb.hidden = false; add.hidden = true; }
+  else { img.removeAttribute('src'); thumb.hidden = true; add.hidden = false; }
+}
+
+function clearShopDraftPhoto(){
+  if (shopDraftPhoto && shopDraftPhoto.url) { try { URL.revokeObjectURL(shopDraftPhoto.url); } catch (e) {} }
+  shopDraftPhoto = null;
+  shopPhotoRemoved = false;
+  shopKeepPhotoId = null;
+  setShopPhotoPreview(null);
+  const inp = $('#shopPhotoInput'); if (inp) inp.value = '';
+}
+
+async function previewShopMedia(mediaId){
+  try {
+    const blob = await mediaGet(mediaId);
+    if (!blob || shopKeepPhotoId !== mediaId) return;
+    let url = (mediaURLs.get(mediaId) || {}).url;
+    if (!url) url = URL.createObjectURL(blob);
+    setShopPhotoPreview(url);
+  } catch (e) { /* keep the add tile */ }
+}
+
+function openShopSheet(p){
+  shopEditId = p ? p.id : null;
+  shopKeepPhotoId = p ? (p.mediaId || null) : null;
+  shopDraftPhoto = null;
+  shopPhotoRemoved = false;
+  setShopPhotoPreview(null);
+  $('#shopNameInput').value = p ? p.name : '';
+  $('#shopPriceInput').value = p ? p.price : '';
+  $('#shopLinkInput').value = p ? p.link : '';
+  $('#shopNoteInput').value = p ? p.note : '';
+  const inp = $('#shopPhotoInput'); if (inp) inp.value = '';
+  if (shopKeepPhotoId) {
+    const hit = mediaURLs.get(shopKeepPhotoId);
+    if (hit && hit.url) setShopPhotoPreview(hit.url); else previewShopMedia(shopKeepPhotoId);
+  }
+  syncSheetTitle();
+  openSheet($('#shopSheet'));
+  setTimeout(() => { if (!$('#shopSheet').hidden) $('#shopNameInput').focus(); }, 260);
+}
+
+async function onShopPhotoPick(file){
+  if (!file) return;
+  if (!/^image\//.test(file.type)) { toast(t('shopPhotoBad')); return; }
+  try {
+    const blob = await downscaleImageBlob(file);
+    if (shopDraftPhoto && shopDraftPhoto.url) { try { URL.revokeObjectURL(shopDraftPhoto.url); } catch (e) {} }
+    shopDraftPhoto = { blob, url: URL.createObjectURL(blob) };
+    shopPhotoRemoved = false;
+    setShopPhotoPreview(shopDraftPhoto.url);
+  } catch (e) { toast(t('shopPhotoBad')); }
+}
+
+function removeShopPhoto(){
+  if (shopDraftPhoto && shopDraftPhoto.url) { try { URL.revokeObjectURL(shopDraftPhoto.url); } catch (e) {} }
+  shopDraftPhoto = null;
+  if (shopKeepPhotoId) shopPhotoRemoved = true;
+  setShopPhotoPreview(null);
+  const inp = $('#shopPhotoInput'); if (inp) inp.value = '';
+}
+
+async function submitShop(){
+  const name = ($('#shopNameInput').value || '').trim();
+  const price = ($('#shopPriceInput').value || '').trim();
+  let link = ($('#shopLinkInput').value || '').trim();
+  const note = ($('#shopNoteInput').value || '').trim();
+  if (!name) { toast(t('shopNeedName')); $('#shopNameInput').focus(); return; }
+  if (link && !/^https?:\/\//i.test(link)) {
+    if (/^[\w-]+(\.[\w-]+)+/.test(link)) link = 'https://' + link;
+    else { toast(t('shopLinkBad')); $('#shopLinkInput').focus(); return; }
+  }
+  const btn = $('#shopSubmit');
+  if (btn) btn.disabled = true;
+  try {
+    const editing = shopEditId ? findProduct(shopEditId) : null;
+    let mediaId = editing ? (editing.mediaId || null) : null;
+    let dropMediaId = null;
+    if (shopDraftPhoto) {
+      const id = newMediaId();
+      await mediaPut(id, shopDraftPhoto.blob, 'image');
+      mediaURLs.set(id, { url: shopDraftPhoto.url, kind: 'image' });  /* the card keeps this URL */
+      shopDraftPhoto = null;
+      if (mediaId && mediaId !== id) dropMediaId = mediaId;
+      mediaId = id;
+    } else if (shopPhotoRemoved) {
+      if (mediaId) dropMediaId = mediaId;
+      mediaId = null;
+    }
+    if (editing) {
+      editing.name = name; editing.price = price; editing.link = link;
+      editing.note = note; editing.mediaId = mediaId;
+    } else {
+      shop.products.push({ id: 'p' + uid(), name, price, link, note, mediaId, ts: Date.now() });
+    }
+    saveShopStore();
+    if (dropMediaId) {
+      try { await mediaDel(dropMediaId); } catch (e) {}
+      const old = mediaURLs.get(dropMediaId);
+      if (old && old.url) { try { URL.revokeObjectURL(old.url); } catch (e) {} }
+      mediaURLs.delete(dropMediaId);
+    }
+    closeSheet($('#shopSheet'));
+    toast(t(editing ? 'shopUpdated' : 'shopSaved'));
+    if (currentView === 'shop') render(); else go('shop');
+  } catch (e) {
+    toast(t('shopPhotoBad'));
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+async function removeShopProduct(id){
+  const p = findProduct(id);
+  if (!p) return;
+  if (!confirm(t('shopConfirmDelete'))) return;
+  shop.products = shop.products.filter(x => x.id !== id);
+  saveShopStore();
+  delete shopTr[id];
+  Array.from(shopTrCache.keys()).forEach(k => { if (k.indexOf(id + '|') === 0) shopTrCache.delete(k); });
+  if (p.mediaId) {
+    try { await mediaDel(p.mediaId); } catch (e) {}
+    const hit = mediaURLs.get(p.mediaId);
+    if (hit && hit.url) { try { URL.revokeObjectURL(hit.url); } catch (e) {} }
+    mediaURLs.delete(p.mediaId);
+  }
+  render();
+  toast(t('shopDeleted'));
+}
+
 function postHTML(p){
   const tags = p.tags.map((tg, i) => tagChipHTML(tg, i)).join('');
   const followBtn = (!p.mine)
@@ -1051,6 +1441,8 @@ function emptyHomeHTML(){
 function renderMain(){
   const main = $('#main');
   const v = currentView;
+
+  if (v === 'shop') { renderShop(); return; }
 
   if (v === 'home') {
     const posts = visiblePosts();
@@ -1145,6 +1537,27 @@ function findPostElFrom(node){
 
 function onMainClick(e){
   const target = e.target;
+
+  /* MOMO Shop first: its controls live inside the same main element */
+  const shopAddBtn = target.closest('[data-shop-add]');
+  if (shopAddBtn) { openShopSheet(null); return; }
+
+  const shopEditBtn = target.closest('[data-shop-edit]');
+  if (shopEditBtn) { const p = findProduct(shopEditBtn.dataset.shopEdit); if (p) openShopSheet(p); return; }
+
+  const shopDelBtn = target.closest('[data-shop-del]');
+  if (shopDelBtn) { removeShopProduct(shopDelBtn.dataset.shopDel); return; }
+
+  const shopTrBtn = target.closest('[data-shop-translate]');
+  if (shopTrBtn) { const p = findProduct(shopTrBtn.dataset.shopTranslate); if (p) startShopTranslate(p, getLang()); return; }
+
+  const shopPhotoEl = target.closest('[data-shop-view]');
+  if (shopPhotoEl) {
+    const p = findProduct(shopPhotoEl.dataset.shopView);
+    const hit = p && p.mediaId ? mediaURLs.get(p.mediaId) : null;
+    if (hit && hit.url) openViewer(hit.url);
+    return;
+  }
 
   const emptyPostBtn = target.closest('[data-empty-post]');
   if (emptyPostBtn) { openCompose(); return; }
@@ -1255,7 +1668,10 @@ function bind(){
   $('#composeBtn').addEventListener('click', openCompose);
   $('#composeBtn2').addEventListener('click', openCompose);
   $('#composeCancel').addEventListener('click', () => closeSheet($('#composeSheet')));
-  $('#scrim').addEventListener('click', () => closeSheet($('#composeSheet')));
+  $('#scrim').addEventListener('click', () => {
+    if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
+    if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
+  });
   $('#composeSubmit').addEventListener('click', onComposeSubmit);
 
   $('#bodyInput').addEventListener('input', () => { $('#bodyCount').textContent = String($('#bodyInput').value.length); });
@@ -1284,6 +1700,7 @@ function bind(){
     localStorage.setItem(LANG_KEY, item.dataset.code);
     langMenu.hidden = true; langBtn.setAttribute('aria-expanded', 'false');
     trState = {};          /* translations are per language: start fresh */
+    shopTr = {};
     render();
   });
   document.addEventListener('click', (e) => {
@@ -1302,7 +1719,24 @@ function bind(){
 
   $('#viewer').addEventListener('click', closeViewer);
   $('#viewerClose').addEventListener('click', closeViewer);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeViewer(); if (!$('#composeSheet').hidden) closeSheet($('#composeSheet')); } });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeViewer();
+    if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
+    if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
+  });
+
+  /* MOMO Shop sheet */
+  if ($('#shopSheet')) {
+    $('#shopCancel').addEventListener('click', () => closeSheet($('#shopSheet')));
+    $('#shopSubmit').addEventListener('click', submitShop);
+    $('#shopPhotoBtn').addEventListener('click', () => $('#shopPhotoInput').click());
+    $('#shopPhotoInput').addEventListener('change', (e) => {
+      const f = e.target.files && e.target.files[0];
+      onShopPhotoPick(f);
+    });
+    $('#shopPhotoRm').addEventListener('click', removeShopPhoto);
+  }
 
   window.addEventListener('online', updateOnline);
   window.addEventListener('offline', updateOnline);
@@ -1311,6 +1745,7 @@ function bind(){
 function boot(){
   buildLangMenu();
   load();
+  loadShop();
   bind();
   updateOnline();
 
@@ -1319,6 +1754,7 @@ function boot(){
   else render();
 
   ensureMedia();
+  resolveShopMedia();
 
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).catch(() => {});

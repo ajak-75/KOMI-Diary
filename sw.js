@@ -1,5 +1,5 @@
 /* KOMI's K-Culture Diary — service worker (offline-first shell) */
-const CACHE = 'komidiary-v17';
+const CACHE = 'komidiary-v18';
 const SHELL = [
   './',
   './index.html',
@@ -11,6 +11,8 @@ const SHELL = [
   './icons/favicon-32.png',
   './icons/apple-touch-icon.png',
   './img/komi-avatar.jpg',
+  './img/momo-avatar.jpg',
+  './img/momo-shop-banner.jpg',
   './img/myeongdong.jpg',
   './img/bukchon.jpg',
   './img/nami.jpg',
