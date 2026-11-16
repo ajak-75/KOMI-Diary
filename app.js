@@ -39,7 +39,7 @@ const T = {
     todayBanner:'Today\u2019s K-Culture Diary', transPending:'Translations for global fans coming soon',
     translate:'Translate', seeOriginal:'See original', translatedBy:'Translated for global fans',
     newPost:'New diary', cancel:'Cancel', publish:'Post', posted:'Posted \ud83c\udf8a',
-    nickPlaceholder:"KOMI's Unnie", bodyPlaceholder:'What did Korea feel like today?',
+    nickPlaceholder:"KOMI's Unnie", bodyPlaceholder:'How is life where you are today?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'Photo', media:'Photo·Video', photoHint:`Up to ${MAX_MEDIA} photos or videos`, tooManyPhotos:`Up to ${MAX_MEDIA} photos or videos`,
     videoTooBig:'Videos up to 80MB', videoBad:'Could not add that video', photoBad:'Could not read that photo',
     translating:'Translating…', translateFail:'Could not translate \u2014 tap to try again', translateSame:'This post is already in this language',
@@ -68,7 +68,7 @@ const T = {
     todayBanner:'오늘의 K-컬쳐 다이어리', transPending:'글로벌 팬 번역이 곧 추가될 글이에요',
     translate:'번역 보기', seeOriginal:'원문 보기', translatedBy:'글로벌 팬을 위한 번역',
     newPost:'새 다이어리', cancel:'취소', publish:'게시', posted:'게시했어요 \ud83c\udf8a',
-    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'오늘 한국은 어땠나요?',
+    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'오늘 당신이 있는 곳은 어떤 하루인가요?', tagPlaceholder:'#우리동네 #오늘의일상',
     photo:'사진', media:'사진·영상', photoHint:`사진·영상 ${MAX_MEDIA}개까지`, tooManyPhotos:`사진·영상은 ${MAX_MEDIA}개까지`,
     videoTooBig:'영상은 80MB까지 올릴 수 있어요', videoBad:'영상을 불러오지 못했어요', photoBad:'사진을 불러오지 못했어요',
     translating:'번역 중…', translateFail:'번역을 불러오지 못했어요 · 다시 눌러 주세요', translateSame:'이미 이 언어로 쓰인 글이에요',
@@ -97,7 +97,7 @@ const T = {
     todayBanner:'今日のK-カルチャーダイアリー', transPending:'世界のファン向けの翻訳は準備中です',
     translate:'翻訳を見る', seeOriginal:'原文を見る', translatedBy:'グローバルファン向けの翻訳',
     newPost:'新しいダイアリー', cancel:'キャンセル', publish:'投稿', posted:'投稿しました \ud83c\udf8a',
-    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今日の韓国はどうでしたか？',
+    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今日、あなたの街はどんな一日ですか？', tagPlaceholder:'#私の街 #今日の日常',
     photo:'写真', media:'写真・動画', photoHint:`写真・動画は${MAX_MEDIA}件まで`, tooManyPhotos:`写真・動画は${MAX_MEDIA}件まで`,
     videoTooBig:'動画は80MBまで', videoBad:'動画を読み込めませんでした', photoBad:'写真を読み込めませんでした',
     translating:'翻訳中…', translateFail:'翻訳できませんでした · もう一度押してください', translateSame:'この投稿はすでにこの言語です',
@@ -126,7 +126,7 @@ const T = {
     todayBanner:'今日的K-文化日记', transPending:'面向全球粉丝的翻译即将上线',
     translate:'查看翻译', seeOriginal:'查看原文', translatedBy:'为全球粉丝提供的翻译',
     newPost:'新的日记', cancel:'取消', publish:'发布', posted:'已发布 \ud83c\udf8a',
-    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今天的韩国怎么样？',
+    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今天你所在的城市是什么样的呢？', tagPlaceholder:'#我的城市 #今日日常',
     photo:'照片', media:'照片·视频', photoHint:`最多${MAX_MEDIA}张照片或视频`, tooManyPhotos:`最多${MAX_MEDIA}张照片或视频`,
     videoTooBig:'视频最大80MB', videoBad:'无法读取该视频', photoBad:'无法读取该照片',
     translating:'正在翻译…', translateFail:'翻译失败 · 请再点一次', translateSame:'这篇已经是该语言了',
@@ -155,7 +155,7 @@ const T = {
     todayBanner:'Diario K-culture de hoy', transPending:'Pronto habr\u00e1 traducci\u00f3n para fans del mundo',
     translate:'Traducir', seeOriginal:'Ver original', translatedBy:'Traducido para fans del mundo',
     newPost:'Nuevo diario', cancel:'Cancelar', publish:'Publicar', posted:'Publicado \ud83c\udf8a',
-    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'\u00bfQu\u00e9 tal fue Corea hoy?',
+    nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'\u00bfC\u00f3mo es tu d\u00eda hoy desde donde est\u00e1s?', tagPlaceholder:'#MiCiudad #D\u00edaAD\u00eda',
     photo:'Foto', media:'Foto·V\u00eddeo', photoHint:`Hasta ${MAX_MEDIA} fotos o vídeos`, tooManyPhotos:`Hasta ${MAX_MEDIA} fotos o vídeos`,
     videoTooBig:'V\u00eddeos de hasta 80MB', videoBad:'No se pudo a\u00f1adir el v\u00eddeo', photoBad:'No se pudo leer la foto',
     translating:'Traduciendo…', translateFail:'No se pudo traducir \u2014 toca para reintentar', translateSame:'Esta publicaci\u00f3n ya est\u00e1 en este idioma',
@@ -604,7 +604,7 @@ function renderLangUI(){
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
-  $('#tagInput').placeholder = '#myeongdong #kfood';
+  $('#tagInput').placeholder = t('tagPlaceholder');
   document.documentElement.lang = code;
 }
 
