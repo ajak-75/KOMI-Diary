@@ -40,6 +40,7 @@ const T = {
     todayBanner:'Today\u2019s K-Culture Diary', transPending:'Translations for global fans coming soon',
     translate:'Translate', seeOriginal:'See original', translatedBy:'Translated for global fans',
     newPost:'New diary', cancel:'Cancel', publish:'Post', posted:'Posted \ud83c\udf8a',
+    editPost:'Edit diary', save:'Save', updated:'Updated \ud83c\udf8a', edited:'(edited)', edit:'Edit',
     nickPlaceholder:"KOMI's Unnie", bodyPlaceholder:'How is life where you are today?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'Photo', media:'Photo·Video', photoHint:`Up to ${MAX_MEDIA} photos or videos`, tooManyPhotos:`Up to ${MAX_MEDIA} photos or videos`,
     videoTooBig:'Videos up to 80MB', videoBad:'Could not add that video', photoBad:'Could not read that photo',
@@ -70,6 +71,7 @@ const T = {
     todayBanner:'오늘의 K-컬쳐 다이어리', transPending:'글로벌 팬 번역이 곧 추가될 글이에요',
     translate:'번역 보기', seeOriginal:'원문 보기', translatedBy:'글로벌 팬을 위한 번역',
     newPost:'새 다이어리', cancel:'취소', publish:'게시', posted:'게시했어요 \ud83c\udf8a',
+    editPost:'다이어리 수정', save:'저장', updated:'수정했어요 \ud83c\udf8a', edited:'(수정됨)', edit:'수정',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'오늘 당신이 있는 곳은 어떤 하루인가요?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'사진', media:'사진·영상', photoHint:`사진·영상 ${MAX_MEDIA}개까지`, tooManyPhotos:`사진·영상은 ${MAX_MEDIA}개까지`,
     videoTooBig:'영상은 80MB까지 올릴 수 있어요', videoBad:'영상을 불러오지 못했어요', photoBad:'사진을 불러오지 못했어요',
@@ -100,6 +102,7 @@ const T = {
     todayBanner:'今日のK-カルチャーダイアリー', transPending:'世界のファン向けの翻訳は準備中です',
     translate:'翻訳を見る', seeOriginal:'原文を見る', translatedBy:'グローバルファン向けの翻訳',
     newPost:'新しいダイアリー', cancel:'キャンセル', publish:'投稿', posted:'投稿しました \ud83c\udf8a',
+    editPost:'ダイアリーを編集', save:'保存', updated:'更新しました \ud83c\udf8a', edited:'(編集済み)', edit:'編集',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今日、あなたの街はどんな一日ですか？', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'写真', media:'写真・動画', photoHint:`写真・動画は${MAX_MEDIA}件まで`, tooManyPhotos:`写真・動画は${MAX_MEDIA}件まで`,
     videoTooBig:'動画は80MBまで', videoBad:'動画を読み込めませんでした', photoBad:'写真を読み込めませんでした',
@@ -130,6 +133,7 @@ const T = {
     todayBanner:'今日的K-文化日记', transPending:'面向全球粉丝的翻译即将上线',
     translate:'查看翻译', seeOriginal:'查看原文', translatedBy:'为全球粉丝提供的翻译',
     newPost:'新的日记', cancel:'取消', publish:'发布', posted:'已发布 \ud83c\udf8a',
+    editPost:'编辑日记', save:'保存', updated:'已更新 \ud83c\udf8a', edited:'(已编辑)', edit:'编辑',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今天你所在的城市是什么样的呢？', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'照片', media:'照片·视频', photoHint:`最多${MAX_MEDIA}张照片或视频`, tooManyPhotos:`最多${MAX_MEDIA}张照片或视频`,
     videoTooBig:'视频最大80MB', videoBad:'无法读取该视频', photoBad:'无法读取该照片',
@@ -160,6 +164,7 @@ const T = {
     todayBanner:'Diario K-culture de hoy', transPending:'Pronto habr\u00e1 traducci\u00f3n para fans del mundo',
     translate:'Traducir', seeOriginal:'Ver original', translatedBy:'Traducido para fans del mundo',
     newPost:'Nuevo diario', cancel:'Cancelar', publish:'Publicar', posted:'Publicado \ud83c\udf8a',
+    editPost:'Editar diario', save:'Guardar', updated:'Actualizado \ud83c\udf8a', edited:'(editado)', edit:'Editar',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'\u00bfC\u00f3mo es tu d\u00eda hoy desde donde est\u00e1s?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'Foto', media:'Foto·V\u00eddeo', photoHint:`Hasta ${MAX_MEDIA} fotos o vídeos`, tooManyPhotos:`Hasta ${MAX_MEDIA} fotos o vídeos`,
     videoTooBig:'V\u00eddeos de hasta 80MB', videoBad:'No se pudo a\u00f1adir el v\u00eddeo', photoBad:'No se pudo leer la foto',
@@ -424,24 +429,91 @@ async function downscaleImageBlob(file){
   return blob;
 }
 
-/* ---------- compose ---------- */
-let draftMedia = [];   /* { kind, blob, url } — object URLs for the preview strip */
+/* ---------- compose ----------
+   The same sheet writes a new diary and edits one already written: editPostId
+   holds the post being edited (null when composing), and in edit mode the
+   media already attached come back into the draft strip as editable items. */
+let draftMedia = [];   /* { kind, blob, url, id? } — id when the item is already stored */
+let editPostId = null; /* post id while editing, null while composing */
+
+function clearDraftMedia(){
+  draftMedia.forEach(m => { if (!m.id) { try { URL.revokeObjectURL(m.url); } catch (e) {} } });
+  draftMedia = [];
+  $('#mediaInput').value = '';
+  renderDraftMedia();
+}
 
 function openCompose(){
+  editPostId = null;
   $('#nickInput').value = state.me && state.me.nick ? state.me.nick : "KOMI's Unnie";
   $('#bodyInput').value = '';
   $('#tagInput').value = '';
   $('#bodyCount').textContent = '0';
-  draftMedia.forEach(m => { try { URL.revokeObjectURL(m.url); } catch (e) {} });
-  draftMedia = [];
-  $('#mediaInput').value = '';
-  renderDraftMedia();
+  clearDraftMedia();
+  syncComposeMode();
   openSheet($('#composeSheet'));
   setTimeout(() => $('#bodyInput').focus(), 260);
 }
 
+/* Title and submit label follow the mode, in the current language. */
+function syncComposeMode(){
+  const editing = !!editPostId;
+  const title = $('#composeTitle'), submit = $('#composeSubmit');
+  if (title) title.textContent = t(editing ? 'editPost' : 'newPost');
+  if (submit) submit.textContent = t(editing ? 'save' : 'publish');
+}
+
+function openEditPost(p){
+  if (!p) return;
+  editPostId = p.id;
+  $('#nickInput').value = p.nick || (state.me && state.me.nick) || "KOMI's Unnie";
+  $('#bodyInput').value = p.body || '';
+  $('#tagInput').value = (p.tags || []).map(x => '#' + x).join(' ');
+  $('#bodyCount').textContent = String(($('#bodyInput').value || '').length);
+  clearDraftMedia();
+  syncComposeMode();
+  openSheet($('#composeSheet'));
+  loadDraftFromPost(p);
+  setTimeout(() => { const b = $('#bodyInput'); if (b && !draftMedia.length) { b.focus(); b.setSelectionRange(b.value.length, b.value.length); } }, 260);
+}
+
+/* Put a post's existing attachments into the draft strip so they can be kept,
+   removed or added to — all inside the same 4-slot limit. */
+async function loadDraftFromPost(p){
+  const wanted = [];
+  (Array.isArray(p.media) ? p.media : []).slice(0, MAX_MEDIA).forEach(m => { if (m && m.id) wanted.push({ id: m.id, kind: m.kind || 'image', data: m.data || null }); });
+  if (!wanted.length && Array.isArray(p.photos)) {
+    p.photos.slice(0, MAX_MEDIA).forEach((src, i) => { if (typeof src === 'string') wanted.push({ id: null, kind: 'image', data: src }); });
+  }
+  for (const w of wanted) {
+    let blob = null, kind = w.kind;
+    try {
+      if (w.id) {
+        const rec = await mediaGet(w.id);
+        if (rec && rec.blob) { blob = rec.blob; kind = rec.kind || kind; }
+      }
+      if (!blob && w.data) blob = await (await fetch(w.data)).blob();
+    } catch (e) { blob = null; }
+    if (!blob) {
+      const hit = w.id ? mediaURLs.get(w.id) : null;
+      if (hit && hit.url) { draftMedia.push({ kind: hit.kind || kind, blob: null, url: hit.url, id: w.id }); continue; }
+      continue;
+    }
+    draftMedia.push({ kind, blob, url: URL.createObjectURL(blob), id: w.id || null });
+  }
+  if (editPostId !== p.id) return;   /* the sheet moved on to another post */
+  renderDraftMedia();
+}
+
+/* Keep only the characters among a raw value: up to 8 unique lower-case tags. */
+function parseTags(raw){
+  return String(raw || '').split(/[\s,]+/).map(s => s.replace(/^#+/, '').trim().toLowerCase())
+    .filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 8);
+}
+
 function renderDraftMedia(){
   const strip = $('#photoStrip');
+  if (!strip) return;
   strip.hidden = draftMedia.length === 0;
   strip.innerHTML = draftMedia.map((m, i) => (
     '<div class="photo-thumb' + (m.kind === 'video' ? ' is-video' : '') + '">'
@@ -477,6 +549,8 @@ async function addMediaFiles(files){
 async function storeDraftMedia(items){
   const refs = [];
   for (const m of items) {
+    if (m.id) { refs.push({ id: m.id, kind: m.kind }); continue; }   /* already stored, keep as is */
+    if (!m.blob) continue;
     try {
       const id = newMediaId();
       await mediaPut(id, m.blob, m.kind);
@@ -496,8 +570,7 @@ async function submitPost(){
   const nick = ($('#nickInput').value || '').trim() || "KOMI's Unnie";
   const body = ($('#bodyInput').value || '').trim();
   if (!body) { toast(t('needText')); return; }
-  const tags = ($('#tagInput').value || '').split(/[\s,]+/).map(s => s.replace(/^#+/, '').trim().toLowerCase())
-    .filter(Boolean).filter((v, i, a) => a.indexOf(v) === i).slice(0, 8);
+  const tags = parseTags($('#tagInput').value);
   const btn = $('#composeSubmit');
   if (btn) btn.disabled = true;
   let media = [];
@@ -516,11 +589,53 @@ async function submitPost(){
   state.me.nick = nick;
   save(state);
   draftMedia = [];
+  editPostId = null;
   closeSheet($('#composeSheet'));
   toast(t('posted'));
   if (state.filterTag && !p.tags.includes(state.filterTag)) state.filterTag = null;
   go('home', true);
 }
+
+/* Save the diary being edited: text, tags, nickname and media change; the post's
+   identity, likes, reposts, replies and writing time stay. */
+async function submitEdit(){
+  const p = findPost(editPostId);
+  if (!p) { editPostId = null; closeSheet($('#composeSheet')); return; }
+  const nick = ($('#nickInput').value || '').trim() || p.nick || "KOMI's Unnie";
+  const body = ($('#bodyInput').value || '').trim();
+  if (!body) { toast(t('needText')); return; }
+  const tags = parseTags($('#tagInput').value);
+  const btn = $('#composeSubmit');
+  if (btn) btn.disabled = true;
+  const kept = new Set(draftMedia.filter(m => m.id).map(m => m.id));
+  const dropped = (Array.isArray(p.media) ? p.media : []).filter(m => m && m.id && !kept.has(m.id));
+  let media = [];
+  try { media = await storeDraftMedia(draftMedia); } catch (e) { media = p.media || []; }
+  if (btn) btn.disabled = false;
+  const inlinePhotos = media.filter(m => m.data).map(m => m.data);
+  p.nick = nick;
+  p.body = body;
+  p.tags = tags;
+  p.media = media.filter(m => !m.data);
+  if (inlinePhotos.length) p.photos = inlinePhotos; else delete p.photos;
+  p.editedAt = Date.now();
+  /* the old text must not answer "Translate" any more */
+  p.translations = {};
+  delete trState[p.id];
+  Array.from(trCache.keys()).forEach(k => { if (k.indexOf(p.id + '|') === 0) trCache.delete(k); });
+  /* attachments taken off in the editor are gone for good */
+  dropped.forEach(m => { mediaDel(m.id); mediaURLs.delete(m.id); });
+  state.me.nick = nick;
+  save(state);
+  draftMedia = [];
+  editPostId = null;
+  closeSheet($('#composeSheet'));
+  toast(t('updated'));
+  if (state.filterTag && !p.tags.includes(state.filterTag)) state.filterTag = null;
+  render();
+}
+
+function onComposeSubmit(){ if (editPostId) submitEdit(); else submitPost(); }
 
 /* ---------- sheet ---------- */
 function openSheet(sheet){
@@ -531,7 +646,11 @@ function openSheet(sheet){
 function closeSheet(sheet){
   const scrim = $('#scrim');
   scrim.classList.remove('is-open'); sheet.classList.remove('is-open');
-  setTimeout(() => { scrim.hidden = true; sheet.hidden = true; }, 230);
+  setTimeout(() => {
+    scrim.hidden = true; sheet.hidden = true;
+    /* a cancelled edit must not leave its previews behind */
+    if (sheet === $('#composeSheet')) { editPostId = null; clearDraftMedia(); syncComposeMode(); }
+  }, 230);
 }
 
 /* ---------- toast ---------- */
@@ -608,6 +727,7 @@ function renderLangUI(){
   $('#langCode').textContent = LANGS.some(l => l.code === code) ? code.toUpperCase() : 'EN';
   $$('#langMenu .lang-item').forEach(b => b.setAttribute('aria-selected', String(b.dataset.code === code)));
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  syncComposeMode();
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
   $('#tagInput').placeholder = t('tagPlaceholder');
@@ -832,6 +952,7 @@ function postHTML(p){
     +       '<span class="byline-handle">' + esc(p.handle) + '</span>'
     +       '<span class="dot">\u00b7</span>'
     +       '<span class="byline-time" data-ts="' + p.ts + '">' + timeAgo(p.ts) + '</span>'
+    +       (p.editedAt ? '<span class="edited-mark">' + esc(t('edited')) + '</span>' : '')
     +       followBtn
     +     '</div>'
     +     '<p class="post-body">' + esc(p.body) + '</p>'
@@ -845,7 +966,10 @@ function postHTML(p){
     +   '<button type="button" class="act" data-act="comment">' + ICO.bubble + '<span class="cnt">' + (p.comments.length || '') + '</span></button>'
     +   '<button type="button" class="act' + (p.reposted ? ' is-reposted' : '') + '" data-act="repost" aria-pressed="' + (p.reposted ? 'true' : 'false') + '">' + ICO.repeat() + '<span class="cnt">' + (p.reposts || '') + '</span></button>'
     +   '<button type="button" class="act" data-act="share">' + ICO.send + '</button>'
-    +   (p.mine ? '<button type="button" class="act" data-act="delete" aria-label="Delete"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6.5 7l1 13h9l1-13M9 7V4.5h6V7"/></svg></button>' : '')
+    +   (p.mine ? '<span class="post-tools">'
+    +   '<button type="button" class="act" data-act="edit" aria-label="' + escAttr(t('edit')) + '" title="' + escAttr(t('edit')) + '"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4.2L19.1 9.1a2.35 2.35 0 0 0-3.3-3.3L4.9 16.7Z"/><path d="M14.4 7.2l2.4 2.4"/></svg></button>'
+    +   '<button type="button" class="act" data-act="delete" aria-label="Delete"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6.5 7l1 13h9l1-13M9 7V4.5h6V7"/></svg></button>'
+    +   '</span>' : '')
     + '</div>'
     + '<div class="comments" hidden>'
     +   commentsHTML(p)
@@ -1019,6 +1143,7 @@ function onMainClick(e){
     if (act === 'like') { p.liked = !p.liked; p.likes += p.liked ? 1 : -1; if (p.likes < 0) p.likes = 0; save(state); render(); }
     else if (act === 'repost') { p.reposted = !p.reposted; p.reposts += p.reposted ? 1 : -1; if (p.reposts < 0) p.reposts = 0; save(state); render(); toast(t(p.reposted ? 'reposted' : 'unreposted')); }
     else if (act === 'share') { sharePost(p); }
+    else if (act === 'edit') { openEditPost(p); }
     else if (act === 'comment') { const box = post.querySelector('.comments'); box.hidden = false; const inp = box.querySelector('.comment-input'); inp.focus(); box.scrollIntoView({ block: 'nearest' }); }
     else if (act === 'delete') {
       if (confirm(t('confirmDelete'))) {
@@ -1076,7 +1201,7 @@ function bind(){
   $('#composeBtn2').addEventListener('click', openCompose);
   $('#composeCancel').addEventListener('click', () => closeSheet($('#composeSheet')));
   $('#scrim').addEventListener('click', () => closeSheet($('#composeSheet')));
-  $('#composeSubmit').addEventListener('click', submitPost);
+  $('#composeSubmit').addEventListener('click', onComposeSubmit);
 
   $('#bodyInput').addEventListener('input', () => { $('#bodyCount').textContent = String($('#bodyInput').value.length); });
 

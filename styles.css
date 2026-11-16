@@ -123,6 +123,7 @@ svg { display: block; }
 .byline-handle { color: var(--ink-3); font-size: 13px; }
 .dot { color: var(--ink-3); font-size: 11px; }
 .byline-time { color: var(--ink-3); font-size: 13px; white-space: nowrap; }
+.edited-mark { color: var(--ink-3); font-size: 11.5px; font-weight: 500; opacity: .85; white-space: nowrap; }
 .follow-btn {
   margin-left: auto; border: 1px solid var(--line); border-radius: 999px;
   padding: 5px 13px; font-size: 12.5px; font-weight: 700; flex: none;
@@ -215,8 +216,11 @@ svg { display: block; }
 /* action row */
 .post-actions {
   margin-top: 10px; padding-top: 6px;
-  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  display: flex; align-items: center; gap: 4px;
 }
+/* the writer's own tools sit on the right, quieter than the count row */
+.post-tools { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+.post-tools .act { padding: 7px 7px; color: var(--ink-3); }
 .act {
   display: inline-flex; align-items: center; gap: 6px;
   color: var(--ink-2); font-size: 12.5px; font-weight: 550;
@@ -234,6 +238,7 @@ svg { display: block; }
 .act.is-reposted { color: #6E946B; font-weight: 700; }
 .act.is-reposted .ico { fill: #6E946B; stroke: #6E946B; }
 .act[data-act="share"]:hover { color: #EB7A2D; background: #FDF3EA; }
+.act[data-act="edit"]:hover { color: #4B7F9F; background: #EFF5F9; }
 .act[data-act="delete"]:hover { color: #E05A47; background: #FDF1EF; }
 .translate-btn .globe { color: #4B7F9F; }
 
