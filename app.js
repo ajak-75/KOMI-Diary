@@ -351,6 +351,7 @@ function load(){
   if (typeof d.searchQuery !== 'string') d.searchQuery = '';
   if (d.meTab !== 'mine' && d.meTab !== 'likes') d.meTab = 'mine';
   if (!d.me || typeof d.me !== 'object') d.me = { nick: "KOMI's Unnie", handle: '@me', following: false };
+  if (typeof d.me.handle !== 'string' || !d.me.handle) d.me.handle = '@me';
   if (typeof d.me.following !== 'boolean') d.me.following = false;
   state = d;
 }
@@ -616,9 +617,22 @@ const ICO = {
   globe: '<svg class="globe" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>',
 };
 
+/* The writer is the user herself: a diary she wrote, a comment she left, or the
+   comment form's own profile. Posts saved before this change carry avatar: null,
+   so her identity is also read from the @me handle. */
+const ME_AVATAR = './img/komi-avatar.jpg';
+
+function isMeWriter(p){
+  if (!p) return false;
+  if (p.mine || p.me) return true;
+  const handle = state && state.me ? state.me.handle : '@me';
+  return !!p.handle && p.handle === handle;
+}
+
 function avatarHTML(p, size){
   const cls = 'avatar-' + size;
-  if (p.avatar) return '<img class="avatar ' + cls + '" src="' + escAttr(p.avatar) + '" alt="" width="' + size + '" height="' + size + '">';
+  const src = p.avatar || (isMeWriter(p) ? ME_AVATAR : '');
+  if (src) return '<img class="avatar ' + cls + '" src="' + escAttr(src) + '" alt="" width="' + size + '" height="' + size + '">';
   const letter = (p.nick || '?').trim().charAt(0).toUpperCase();
   return '<span class="avatar-fallback ' + cls + '" aria-hidden="true">' + esc(letter) + '</span>';
 }
@@ -831,7 +845,7 @@ function postHTML(p){
     + '<div class="comments" hidden>'
     +   commentsHTML(p)
     +   '<form class="comment-form" data-cform="' + escAttr(p.id) + '">'
-    +     avatarHTML({ nick: state.me.nick }, 28)
+    +     avatarHTML({ nick: state.me.nick, handle: state.me.handle, mine: true }, 28)
     +     '<input class="comment-input" type="text" maxlength="280" placeholder="' + escAttr(t('commentPlaceholder')) + '" aria-label="' + escAttr(t('comment')) + '">'
     +     '<button class="send-btn" type="submit" aria-label="' + escAttr(t('send')) + '">' + ICO.send + '</button>'
     +   '</form>'
