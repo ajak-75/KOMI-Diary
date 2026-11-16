@@ -1,5 +1,5 @@
 /* KOMI's K-Culture Diary — service worker (offline-first shell) */
-const CACHE = 'komidiary-v11';
+const CACHE = 'komidiary-v12';
 const SHELL = [
   './',
   './index.html',
@@ -7,6 +7,9 @@ const SHELL = [
   './app.js',
   './manifest.webmanifest',
   './icon.svg',
+  './img/komi-diary-logo.png',
+  './icons/favicon-32.png',
+  './icons/apple-touch-icon.png',
   './img/komi-avatar.jpg',
   './img/myeongdong.jpg',
   './img/bukchon.jpg',
