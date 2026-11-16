@@ -281,9 +281,8 @@ svg { display: block; }
   min-width: 0;
 }
 .tab .tab-ico { width: 22px; height: 22px; }
-.tab .tab-label { font-size: 10px; font-weight: 600; letter-spacing: .01em; white-space: nowrap; max-width: 100%; overflow: hidden; }
-.tab-shop .tab-label { font-size: 9.5px; letter-spacing: 0; }
-html[lang="ja"] .tab-shop .tab-label { font-size: 8.5px; letter-spacing: -.02em; }
+.tab .tab-label { font-size: clamp(8.5px, 2.6vw, 10px); font-weight: 600; letter-spacing: .01em; white-space: nowrap; max-width: 100%; overflow: hidden; }
+.tab-shop .tab-label { letter-spacing: 0; }
 .tab.is-active { color: var(--ink); }
 .tab.is-active .tab-ico { stroke-width: 2.2; }
 .tab-create { color: var(--ink-3); }
