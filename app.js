@@ -40,7 +40,7 @@ const T = {
     todayBanner:'Today\u2019s K-Culture Diary', transPending:'Translations for global fans coming soon',
     translate:'Translate', seeOriginal:'See original', translatedBy:'Translated for global fans',
     newPost:'New diary', cancel:'Cancel', publish:'Post', posted:'Posted \ud83c\udf8a',
-    editPost:'Edit diary', save:'Save', updated:'Updated \ud83c\udf8a', edited:'(edited)', edit:'Edit',
+    editPost:'Edit diary', save:'Save', savedPost:'Updated \ud83c\udf8a', edited:'(edited)', edit:'Edit',
     nickPlaceholder:"KOMI's Unnie", bodyPlaceholder:'How is life where you are today?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'Photo', media:'Photo·Video', photoHint:`Up to ${MAX_MEDIA} photos or videos`, tooManyPhotos:`Up to ${MAX_MEDIA} photos or videos`,
     videoTooBig:'Videos up to 80MB', videoBad:'Could not add that video', photoBad:'Could not read that photo',
@@ -71,7 +71,7 @@ const T = {
     todayBanner:'오늘의 K-컬쳐 다이어리', transPending:'글로벌 팬 번역이 곧 추가될 글이에요',
     translate:'번역 보기', seeOriginal:'원문 보기', translatedBy:'글로벌 팬을 위한 번역',
     newPost:'새 다이어리', cancel:'취소', publish:'게시', posted:'게시했어요 \ud83c\udf8a',
-    editPost:'다이어리 수정', save:'저장', updated:'수정했어요 \ud83c\udf8a', edited:'(수정됨)', edit:'수정',
+    editPost:'다이어리 수정', save:'저장', savedPost:'수정했어요 \ud83c\udf8a', edited:'(수정됨)', edit:'수정',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'오늘 당신이 있는 곳은 어떤 하루인가요?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'사진', media:'사진·영상', photoHint:`사진·영상 ${MAX_MEDIA}개까지`, tooManyPhotos:`사진·영상은 ${MAX_MEDIA}개까지`,
     videoTooBig:'영상은 80MB까지 올릴 수 있어요', videoBad:'영상을 불러오지 못했어요', photoBad:'사진을 불러오지 못했어요',
@@ -102,7 +102,7 @@ const T = {
     todayBanner:'今日のK-カルチャーダイアリー', transPending:'世界のファン向けの翻訳は準備中です',
     translate:'翻訳を見る', seeOriginal:'原文を見る', translatedBy:'グローバルファン向けの翻訳',
     newPost:'新しいダイアリー', cancel:'キャンセル', publish:'投稿', posted:'投稿しました \ud83c\udf8a',
-    editPost:'ダイアリーを編集', save:'保存', updated:'更新しました \ud83c\udf8a', edited:'(編集済み)', edit:'編集',
+    editPost:'ダイアリーを編集', save:'保存', savedPost:'更新しました \ud83c\udf8a', edited:'(編集済み)', edit:'編集',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今日、あなたの街はどんな一日ですか？', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'写真', media:'写真・動画', photoHint:`写真・動画は${MAX_MEDIA}件まで`, tooManyPhotos:`写真・動画は${MAX_MEDIA}件まで`,
     videoTooBig:'動画は80MBまで', videoBad:'動画を読み込めませんでした', photoBad:'写真を読み込めませんでした',
@@ -133,7 +133,7 @@ const T = {
     todayBanner:'今日的K-文化日记', transPending:'面向全球粉丝的翻译即将上线',
     translate:'查看翻译', seeOriginal:'查看原文', translatedBy:'为全球粉丝提供的翻译',
     newPost:'新的日记', cancel:'取消', publish:'发布', posted:'已发布 \ud83c\udf8a',
-    editPost:'编辑日记', save:'保存', updated:'已更新 \ud83c\udf8a', edited:'(已编辑)', edit:'编辑',
+    editPost:'编辑日记', save:'保存', savedPost:'已更新 \ud83c\udf8a', edited:'(已编辑)', edit:'编辑',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今天你所在的城市是什么样的呢？', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'照片', media:'照片·视频', photoHint:`最多${MAX_MEDIA}张照片或视频`, tooManyPhotos:`最多${MAX_MEDIA}张照片或视频`,
     videoTooBig:'视频最大80MB', videoBad:'无法读取该视频', photoBad:'无法读取该照片',
@@ -164,7 +164,7 @@ const T = {
     todayBanner:'Diario K-culture de hoy', transPending:'Pronto habr\u00e1 traducci\u00f3n para fans del mundo',
     translate:'Traducir', seeOriginal:'Ver original', translatedBy:'Traducido para fans del mundo',
     newPost:'Nuevo diario', cancel:'Cancelar', publish:'Publicar', posted:'Publicado \ud83c\udf8a',
-    editPost:'Editar diario', save:'Guardar', updated:'Actualizado \ud83c\udf8a', edited:'(editado)', edit:'Editar',
+    editPost:'Editar diario', save:'Guardar', savedPost:'Actualizado \ud83c\udf8a', edited:'(editado)', edit:'Editar',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'\u00bfC\u00f3mo es tu d\u00eda hoy desde donde est\u00e1s?', tagPlaceholder:'#MyCity #DailyVibes',
     photo:'Foto', media:'Foto·V\u00eddeo', photoHint:`Hasta ${MAX_MEDIA} fotos o vídeos`, tooManyPhotos:`Hasta ${MAX_MEDIA} fotos o vídeos`,
     videoTooBig:'V\u00eddeos de hasta 80MB', videoBad:'No se pudo a\u00f1adir el v\u00eddeo', photoBad:'No se pudo leer la foto',
@@ -630,7 +630,7 @@ async function submitEdit(){
   draftMedia = [];
   editPostId = null;
   closeSheet($('#composeSheet'));
-  toast(t('updated'));
+  toast(t('savedPost'));
   if (state.filterTag && !p.tags.includes(state.filterTag)) state.filterTag = null;
   render();
 }
