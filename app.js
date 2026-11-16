@@ -13,7 +13,11 @@ const MAX_PHOTOS = 4;            /* kept for older callers; same slots as MAX_ME
 const MAX_MEDIA  = 4;
 const MAX_EDGE   = 1280;
 const JPEG_Q     = 0.82;
-const MAX_VIDEO_BYTES = 80 * 1024 * 1024;
+const MAX_VIDEO_BYTES = 15 * 1024 * 1024;
+const MAX_VIDEO_SECONDS = 15;          /* recommended: 10s, hard cap: 15s */
+const VIDEO_SECONDS_SLACK = 0.25;      /* metadata rounding must not block a 15.0s clip */
+const TOP_TAG_LIMIT = 8;
+const DEFAULT_TAGS = ['MyCity', 'DailyVibes', 'KCulture', 'KFood'];   /* only while no tag is written yet */
 const DB_NAME    = 'komidiary.media';
 const DB_STORE   = 'media';
 
@@ -42,8 +46,8 @@ const T = {
     newPost:'New diary', cancel:'Cancel', publish:'Post', posted:'Posted \ud83c\udf8a',
     editPost:'Edit diary', save:'Save', savedPost:'Updated \ud83c\udf8a', edited:'(edited)', edit:'Edit',
     nickPlaceholder:"KOMI's Unnie", bodyPlaceholder:'How is life where you are today?', tagPlaceholder:'#MyCity #DailyVibes',
-    photo:'Photo', media:'Photo·Video', photoHint:`Up to ${MAX_MEDIA} photos or videos`, tooManyPhotos:`Up to ${MAX_MEDIA} photos or videos`,
-    videoTooBig:'Videos up to 80MB', videoBad:'Could not add that video', photoBad:'Could not read that photo',
+    photo:'Photo', media:'Photo·Video', photoHint:`Up to ${MAX_MEDIA} photos or videos (video: 10s · 15MB)`, tooManyPhotos:`Up to ${MAX_MEDIA} photos or videos`,
+    videoTooBig:'Videos up to 15MB', videoTooLong:'Please use a video of 15 seconds or less', videoBad:'Could not add that video', photoBad:'Could not read that photo',
     translating:'Translating…', translateFail:'Could not translate \u2014 tap to try again', translateSame:'This post is already in this language',
     composeHint:'Your post is saved on this device.',
     comment:'Reply', commentPlaceholder:'Reply warmly to a fellow Kemi\u2026', send:'Send',
@@ -53,7 +57,7 @@ const T = {
     deleted:'Deleted', confirmDelete:'Delete this diary?',
     myPosts:'My diaries', myLikes:'Liked',
     myTitle:'My Diary', searchTitle:'Search', searchPlaceholder:'Search text or #tag',
-    trending:'Dancheong tags', results:'Results', clearFilter:'Show all',
+    trending:'Dancheong tags', popTags:'Popular tags', results:'Results', clearFilter:'Show all',
     searchingFor:'Showing', emptyFeed:'No diaries yet.', emptySearch:'Nothing found.',
     emptyMine:'No diaries yet \u2014 write the first one!', emptyLikes:'No liked diaries yet.',
     emptyHomeTitle:'The first page is yours',
@@ -73,8 +77,8 @@ const T = {
     newPost:'새 다이어리', cancel:'취소', publish:'게시', posted:'게시했어요 \ud83c\udf8a',
     editPost:'다이어리 수정', save:'저장', savedPost:'수정했어요 \ud83c\udf8a', edited:'(수정됨)', edit:'수정',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'오늘 당신이 있는 곳은 어떤 하루인가요?', tagPlaceholder:'#MyCity #DailyVibes',
-    photo:'사진', media:'사진·영상', photoHint:`사진·영상 ${MAX_MEDIA}개까지`, tooManyPhotos:`사진·영상은 ${MAX_MEDIA}개까지`,
-    videoTooBig:'영상은 80MB까지 올릴 수 있어요', videoBad:'영상을 불러오지 못했어요', photoBad:'사진을 불러오지 못했어요',
+    photo:'사진', media:'사진·영상', photoHint:`사진·영상 ${MAX_MEDIA}개까지 (영상 10초·15MB 이내)`, tooManyPhotos:`사진·영상은 ${MAX_MEDIA}개까지`,
+    videoTooBig:'영상은 15MB까지 올릴 수 있어요', videoTooLong:'영상은 15초 이내로 올려 주세요', videoBad:'영상을 불러오지 못했어요', photoBad:'사진을 불러오지 못했어요',
     translating:'번역 중…', translateFail:'번역을 불러오지 못했어요 · 다시 눌러 주세요', translateSame:'이미 이 언어로 쓰인 글이에요',
     composeHint:'게시물은 이 기기에 저장돼요.',
     comment:'댓글', commentPlaceholder:'케미들과 다정하게 이야기 나눠요\u2026', send:'보내기',
@@ -84,7 +88,7 @@ const T = {
     deleted:'삭제했어요', confirmDelete:'이 다이어리를 삭제할까요?',
     myPosts:'내 다이어리', myLikes:'좋아요',
     myTitle:'내 다이어리', searchTitle:'검색', searchPlaceholder:'본문이나 #태그 검색',
-    trending:'단청 태그', results:'검색 결과', clearFilter:'전체 보기',
+    trending:'단청 태그', popTags:'인기 태그', results:'검색 결과', clearFilter:'전체 보기',
     searchingFor:'표시 중', emptyFeed:'아직 다이어리가 없어요.', emptySearch:'검색 결과가 없어요.',
     emptyMine:'첫 다이어리를 써보세요!', emptyLikes:'아직 좋아요한 다이어리가 없어요.',
     emptyHomeTitle:'첫 장은 비워 두었어요',
@@ -104,8 +108,8 @@ const T = {
     newPost:'新しいダイアリー', cancel:'キャンセル', publish:'投稿', posted:'投稿しました \ud83c\udf8a',
     editPost:'ダイアリーを編集', save:'保存', savedPost:'更新しました \ud83c\udf8a', edited:'(編集済み)', edit:'編集',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今日、あなたの街はどんな一日ですか？', tagPlaceholder:'#MyCity #DailyVibes',
-    photo:'写真', media:'写真・動画', photoHint:`写真・動画は${MAX_MEDIA}件まで`, tooManyPhotos:`写真・動画は${MAX_MEDIA}件まで`,
-    videoTooBig:'動画は80MBまで', videoBad:'動画を読み込めませんでした', photoBad:'写真を読み込めませんでした',
+    photo:'写真', media:'写真・動画', photoHint:`写真・動画は${MAX_MEDIA}件まで（動画は10秒・15MB以内）`, tooManyPhotos:`写真・動画は${MAX_MEDIA}件まで`,
+    videoTooBig:'動画は15MBまでです', videoTooLong:'動画は15秒以内にしてください', videoBad:'動画を読み込めませんでした', photoBad:'写真を読み込めませんでした',
     translating:'翻訳中…', translateFail:'翻訳できませんでした · もう一度押してください', translateSame:'この投稿はすでにこの言語です',
     composeHint:'投稿はこの端末に保存されます。',
     comment:'返信', commentPlaceholder:'Kemiとやさしくおしゃべりしよう\u2026', send:'送信',
@@ -115,7 +119,7 @@ const T = {
     deleted:'削除しました', confirmDelete:'このダイアリーを削除しますか？',
     myPosts:'マイダイアリー', myLikes:'いいね',
     myTitle:'マイダイアリー', searchTitle:'検索', searchPlaceholder:'本文や #タグを検索',
-    trending:'単青（タンチョン）タグ', results:'検索結果', clearFilter:'すべて表示',
+    trending:'単青（タンチョン）タグ', popTags:'人気タグ', results:'検索結果', clearFilter:'すべて表示',
     searchingFor:'表示中', emptyFeed:'まだダイアリーがありません。', emptySearch:'見つかりません。',
     emptyMine:'最初のダイアリーを書いてみましょう！', emptyLikes:'いいねしたダイアリーはまだありません。',
     emptyHomeTitle:'最初のページはあなたの番です',
@@ -135,8 +139,8 @@ const T = {
     newPost:'新的日记', cancel:'取消', publish:'发布', posted:'已发布 \ud83c\udf8a',
     editPost:'编辑日记', save:'保存', savedPost:'已更新 \ud83c\udf8a', edited:'(已编辑)', edit:'编辑',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'今天你所在的城市是什么样的呢？', tagPlaceholder:'#MyCity #DailyVibes',
-    photo:'照片', media:'照片·视频', photoHint:`最多${MAX_MEDIA}张照片或视频`, tooManyPhotos:`最多${MAX_MEDIA}张照片或视频`,
-    videoTooBig:'视频最大80MB', videoBad:'无法读取该视频', photoBad:'无法读取该照片',
+    photo:'照片', media:'照片·视频', photoHint:`最多${MAX_MEDIA}张照片或视频（视频10秒·15MB以内）`, tooManyPhotos:`最多${MAX_MEDIA}张照片或视频`,
+    videoTooBig:'视频最大15MB', videoTooLong:'请上传15秒以内的视频', videoBad:'无法读取该视频', photoBad:'无法读取该照片',
     translating:'正在翻译…', translateFail:'翻译失败 · 请再点一次', translateSame:'这篇已经是该语言了',
     composeHint:'帖子保存在这台设备上。',
     comment:'评论', commentPlaceholder:'和Kemi温柔地聊一聊\u2026', send:'发送',
@@ -146,7 +150,7 @@ const T = {
     deleted:'已删除', confirmDelete:'要删除这篇日记吗？',
     myPosts:'我的日记', myLikes:'点赞',
     myTitle:'我的日记', searchTitle:'搜索', searchPlaceholder:'搜索正文或 #标签',
-    trending:'丹青标签', results:'搜索结果', clearFilter:'显示全部',
+    trending:'丹青标签', popTags:'热门标签', results:'搜索结果', clearFilter:'显示全部',
     searchingFor:'正在显示', emptyFeed:'还没有日记。', emptySearch:'没有找到内容。',
     emptyMine:'来写第一篇日记吧！', emptyLikes:'还没有点赞的日记。',
     emptyHomeTitle:'第一页留给你',
@@ -166,8 +170,8 @@ const T = {
     newPost:'Nuevo diario', cancel:'Cancelar', publish:'Publicar', posted:'Publicado \ud83c\udf8a',
     editPost:'Editar diario', save:'Guardar', savedPost:'Actualizado \ud83c\udf8a', edited:'(editado)', edit:'Editar',
     nickPlaceholder:'KOMI\u2019s Unnie', bodyPlaceholder:'\u00bfC\u00f3mo es tu d\u00eda hoy desde donde est\u00e1s?', tagPlaceholder:'#MyCity #DailyVibes',
-    photo:'Foto', media:'Foto·V\u00eddeo', photoHint:`Hasta ${MAX_MEDIA} fotos o vídeos`, tooManyPhotos:`Hasta ${MAX_MEDIA} fotos o vídeos`,
-    videoTooBig:'V\u00eddeos de hasta 80MB', videoBad:'No se pudo a\u00f1adir el v\u00eddeo', photoBad:'No se pudo leer la foto',
+    photo:'Foto', media:'Foto·V\u00eddeo', photoHint:`Hasta ${MAX_MEDIA} fotos o vídeos (vídeo: 10s · 15MB)`, tooManyPhotos:`Hasta ${MAX_MEDIA} fotos o vídeos`,
+    videoTooBig:'V\u00eddeos de hasta 15MB', videoTooLong:'Sube un vídeo de 15 segundos o menos', videoBad:'No se pudo a\u00f1adir el v\u00eddeo', photoBad:'No se pudo leer la foto',
     translating:'Traduciendo…', translateFail:'No se pudo traducir \u2014 toca para reintentar', translateSame:'Esta publicaci\u00f3n ya est\u00e1 en este idioma',
     composeHint:'Tu publicaci\u00f3n se guarda en este dispositivo.',
     comment:'Responder', commentPlaceholder:'Responde con cari\u00f1o a los Kemi\u2026', send:'Enviar',
@@ -177,7 +181,7 @@ const T = {
     deleted:'Eliminado', confirmDelete:'\u00bfEliminar este diario?',
     myPosts:'Mis diarios', myLikes:'Me gusta',
     myTitle:'Mi diario', searchTitle:'Buscar', searchPlaceholder:'Busca texto o #etiqueta',
-    trending:'Etiquetas dancheong', results:'Resultados', clearFilter:'Mostrar todo',
+    trending:'Etiquetas dancheong', popTags:'Etiquetas populares', results:'Resultados', clearFilter:'Mostrar todo',
     searchingFor:'Mostrando', emptyFeed:'A\u00fan no hay diarios.', emptySearch:'Sin resultados.',
     emptyMine:'\u00a1Escribe el primer diario!', emptyLikes:'A\u00fan no hay diarios con me gusta.',
     emptyHomeTitle:'La primera p\u00e1gina es tuya',
@@ -524,6 +528,39 @@ function renderDraftMedia(){
   )).join('');
 }
 
+/* Read a clip's length before it is attached: a <video> element reports it from
+   its metadata alone, without decoding the whole file. 0 means "not known" and
+   never blocks the file. */
+function videoSeconds(file){
+  return new Promise((resolve) => {
+    const v = document.createElement('video');
+    let url = '', settled = false, timer = 0;
+    const finish = (secs) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      v.removeAttribute('src');
+      try { v.load(); } catch (e) {}
+      if (url) { try { URL.revokeObjectURL(url); } catch (e) {} }
+      resolve(secs);
+    };
+    const read = () => {
+      const d = v.duration;
+      if (typeof d === 'number' && isFinite(d) && d > 0) finish(d);
+    };
+    v.preload = 'metadata';
+    v.muted = true;
+    v.playsInline = true;
+    v.addEventListener('loadedmetadata', read);
+    v.addEventListener('durationchange', read);
+    v.addEventListener('error', () => finish(0));
+    timer = setTimeout(() => finish(0), 5000);   /* a codec we cannot read must not hang the sheet */
+    url = URL.createObjectURL(file);
+    v.src = url;
+    try { v.load(); } catch (e) { finish(0); }
+  });
+}
+
 async function addMediaFiles(files){
   for (const f of Array.from(files || [])) {
     if (draftMedia.length >= MAX_MEDIA) { toast(t('tooManyPhotos')); break; }
@@ -537,6 +574,8 @@ async function addMediaFiles(files){
         if (!blob) throw new Error('encode');
         draftMedia.push({ kind: 'image', blob, url: URL.createObjectURL(blob) });
       } else {
+        const secs = await videoSeconds(f);
+        if (secs > MAX_VIDEO_SECONDS + VIDEO_SECONDS_SLACK) { toast(t('videoTooLong')); continue; }
         draftMedia.push({ kind: 'video', blob: f, url: URL.createObjectURL(f) });
       }
     } catch (e) {
@@ -762,9 +801,10 @@ function avatarHTML(p, size){
   return '<span class="avatar-fallback ' + cls + '" aria-hidden="true">' + esc(letter) + '</span>';
 }
 
-function tagChipHTML(tag, i){
+function tagChipHTML(tag, i, count, label){
   const c = DC[i % DC.length];
-  return '<button type="button" class="chip dc-chip" data-tag="' + escAttr(tag) + '" style="--dc: ' + c + '">#' + esc(tag) + '</button>';
+  const n = count ? '<b class="chip-n">' + count + '</b>' : '';
+  return '<button type="button" class="chip dc-chip" data-tag="' + escAttr(tag) + '" style="--dc: ' + c + '">#' + esc(label || tag) + n + '</button>';
 }
 
 /* A post's attachments: IndexedDB media refs, or legacy inline photo data-URLs. */
@@ -1029,7 +1069,8 @@ function renderMain(){
     main.innerHTML =
       '<div class="view-head"><h2 class="view-title">' + esc(t('searchTitle')) + '</h2></div>'
       + '<div class="search-wrap"><input id="searchInput" class="search-input" type="search" placeholder="' + escAttr(t('searchPlaceholder')) + '" value="' + escAttr(state.searchQuery || '') + '"></div>'
-      + '<div class="tag-cloud">' + tags.map((tg, i) => tagChipHTML(tg, i)).join('') + '</div>'
+      + (tags.length && tags[0].fallback ? '' : '<div class="tag-cloud-head">' + esc(t('popTags')) + '</div>')
+      + '<div class="tag-cloud">' + tags.map((tg, i) => tagChipHTML(tg.tag, i, tg.count, tg.label)).join('') + '</div>'
       + note
       + (visiblePosts().length ? visiblePosts().map(postHTML).join('') : emptyHTML(state.searchQuery || state.filterTag ? t('emptySearch') : t('emptyFeed')));
     const si = $('#searchInput');
@@ -1070,10 +1111,24 @@ function refreshResultsKeepFocus(){
   window.scrollTo(0, pos);
 }
 
+/* Popular tags: counted from the diaries actually written, most used first.
+   A tag's last use breaks a tie, so the cloud stays warm instead of alphabetical.
+   Only while no tag has been written at all does the recommended set stand in. */
 function topTags(){
-  const m = {};
-  state.diaries.forEach(p => p.tags.forEach(tg => { m[tg] = (m[tg] || 0) + 1; }));
-  return Object.keys(m).sort((a, b) => m[b] - m[a]).slice(0, 10);
+  const m = new Map();
+  state.diaries.forEach(p => {
+    (p.tags || []).forEach(tg => {
+      if (!tg) return;
+      const e = m.get(tg) || { tag: tg, count: 0, last: 0 };
+      e.count += 1;
+      if ((p.ts || 0) > e.last) e.last = p.ts || 0;
+      m.set(tg, e);
+    });
+  });
+  if (!m.size) return DEFAULT_TAGS.map(tg => ({ tag: tg.toLowerCase(), label: tg, count: 0, fallback: true }));
+  return Array.from(m.values())
+    .sort((a, b) => (b.count - a.count) || (b.last - a.last) || a.tag.localeCompare(b.tag))
+    .slice(0, TOP_TAG_LIMIT);
 }
 
 /* ---------- interactions ---------- */
