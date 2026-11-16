@@ -34,7 +34,7 @@ const LANGS = [
 
 const T = {
   en: {
-    tagline:'Global K-Culture & Daily Vibes with Kemi',
+    tagline:'K-Culture & Daily Vibes with Kemi',
     meRole:'Kemi \u00b7 K-culture diarist',
     home:'Home', search:'Search', post:'Post', mydiary:'My Diary',
     todayBanner:'Today\u2019s K-Culture Diary', transPending:'Translations for global fans coming soon',

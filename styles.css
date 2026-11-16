@@ -70,7 +70,7 @@ svg { display: block; }
 .brand-copy { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
 .brand-title { font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
 .dc-emblem { width: 17px; height: 17px; flex: none; }
-.brand-sub { font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+.brand-sub { font-size: 11px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .topbar-actions { display: flex; align-items: center; gap: 4px; }
 
 .icon-btn {
