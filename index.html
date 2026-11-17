@@ -98,6 +98,7 @@
     <button class="pill primary" type="button" id="composeSubmit" data-i18n="publish">Post</button>
   </header>
   <div class="sheet-body">
+    <div class="kemi-warn" id="composeWarn" role="alert" hidden></div>
     <div class="compose-row">
       <img class="avatar avatar-40" src="./img/komi-avatar.jpg" alt="" width="40" height="40">
       <div class="compose-fields">
@@ -202,6 +203,21 @@
     <button class="pill primary match-go" type="button" id="matchGo" data-i18n="matchGo">See our Kemi</button>
     <div class="match-result" id="matchResult" hidden></div>
     <p class="match-fine" data-i18n="matchFine">Just for fun · the real zodiac year follows Lunar New Year</p>
+  </div>
+</section>
+
+<!-- Kemi Promise sheet (community guidelines) — reached from My Diary and from every warning -->
+<section class="sheet sheet-promise" id="promiseSheet" role="dialog" aria-modal="true" aria-labelledby="promiseSheetTitle" hidden>
+  <div class="sheet-grip" aria-hidden="true"></div>
+  <header class="sheet-head">
+    <span class="sheet-pad" aria-hidden="true"></span>
+    <h2 class="sheet-title" id="promiseSheetTitle" data-i18n="promiseTitle">Kemi Promise</h2>
+    <button class="text-btn" type="button" id="promiseClose" data-i18n="close">Close</button>
+  </header>
+  <div class="sheet-body">
+    <p class="promise-lead" data-i18n="promiseSub">Five promises so we can share K-culture kindly, together.</p>
+    <ol class="promise-list" id="promiseList"></ol>
+    <p class="promise-foot" data-i18n="promiseFoot">A post that breaks them is held back after a warning.</p>
   </div>
 </section>
 

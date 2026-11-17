@@ -693,6 +693,58 @@ svg { display: block; }
 .mr-share.pill.primary:hover { background: #D64F3D; border-color: #D64F3D; }
 .mr-keyring { margin: 10px 0 0; text-align: center; font-size: 11.5px; color: var(--ink-2); line-height: 1.5; word-break: keep-all; }
 
+/* ---------- Kemi Promise (community guidelines) ---------- */
+.promise-row {
+  width: calc(100% - 32px); margin: 8px 16px 14px; display: flex; align-items: center; gap: 10px;
+  padding: 11px 13px; text-align: left; border: 1px solid var(--line); border-radius: 14px;
+  background: linear-gradient(135deg, #FFFDF7 0%, #FCFAFF 100%);
+  transition: border-color .15s ease, transform .12s ease;
+}
+.promise-row:hover { border-color: var(--ink-3); }
+.promise-row:active { transform: scale(.995); }
+.promise-row-ico {
+  flex: none; display: grid; place-items: center; width: 32px; height: 32px;
+  border-radius: 11px; background: #fff; font-size: 16px;
+  box-shadow: 0 1px 6px rgba(17,17,17,.07);
+}
+.promise-row-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.promise-row-copy b { font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; }
+.promise-row-copy span { font-size: 11.5px; color: var(--ink-2); line-height: 1.35; word-break: keep-all; }
+.promise-row-go { flex: none; color: var(--ink-3); font-size: 18px; font-weight: 700; line-height: 1; }
+
+.sheet-promise { z-index: 88; }
+.promise-lead { margin: 0 0 14px; color: var(--ink-2); font-size: 13px; line-height: 1.6; word-break: keep-all; }
+.promise-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.promise-item {
+  display: flex; gap: 11px; padding: 12px 13px;
+  border: 1px solid var(--line); border-radius: 14px; background: #FCFCFD;
+}
+.promise-n {
+  flex: none; display: grid; place-items: center; width: 26px; height: 26px;
+  border-radius: 50%; background: var(--dc, #4B7F9F); color: #fff;
+  font-size: 12.5px; font-weight: 800; line-height: 1;
+}
+.promise-copy b { display: block; font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; word-break: keep-all; }
+.promise-copy p { margin: 3px 0 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.5; word-break: keep-all; }
+.promise-foot { margin: 14px 0 0; text-align: center; font-size: 11.5px; color: var(--ink-3); line-height: 1.5; word-break: keep-all; }
+
+/* the warning that holds a post or a reply back */
+.kemi-warn {
+  margin: 0 0 12px; padding: 12px 13px;
+  border: 1px solid #F1C6BC; border-radius: 14px; background: #FFF7F4;
+}
+.kemi-warn-head { display: flex; align-items: center; gap: 7px; color: #AD4030; font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; }
+.kemi-warn-ico { font-size: 15px; line-height: 1; }
+.kemi-warn-why { margin: 7px 0 0; color: #8C3A2B; font-size: 12.5px; line-height: 1.5; word-break: keep-all; }
+.kemi-warn-fix { margin: 5px 0 0; color: var(--ink-2); font-size: 11.5px; line-height: 1.5; word-break: keep-all; }
+.kemi-warn-cta {
+  margin-top: 9px; display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 12px; border: 1px solid #E7BCB2; border-radius: 999px;
+  background: #fff; color: #8C3A2B; font-size: 12px; font-weight: 700;
+}
+.kemi-warn-cta:hover { border-color: #AD4030; }
+.kemi-warn-inline { margin: 10px 0 2px; }
+
 /* ---------- toast ---------- */
 .toast {
   position: fixed; left: 50%; bottom: calc(76px + env(safe-area-inset-bottom)); z-index: 95;

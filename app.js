@@ -112,6 +112,24 @@ const T = {
     rel_same:'Same sign \u00b7 like looking in a mirror', rel_fine:'Easy-going \u00b7 warming up slowly',
     rel_clash:'Opposite signs \u00b7 sparks fly',
     col_blue:'Blue (Cheong)', col_red:'Red (Jeok)', col_yellow:'Yellow (Hwang)', col_white:'White (Baek)', col_black:'Black (Heuk)',
+
+    /* 📜 Kemi Promise (community guidelines) — lives in My Diary, out of the feed */
+    close:'Close',
+    promiseBtn:'Kemi Promise',
+    promiseBtnSub:'Five promises for a kind Kemi',
+    promiseTitle:'📜 Kemi Promise',
+    promiseSub:'Five promises for sharing K-culture and our own everyday kindly, together.',
+    promiseFoot:'A post that breaks them is held back after a warning.',
+    p1t:'Respect each other', p1d:'No swearing, insults or hate speech.',
+    p2t:'No ads or spam', p2d:'No unsolicited ads, spam or sketchy links.',
+    p3t:'Respect photos & copyright', p3d:'Do not take someone else’s photos or work without permission.',
+    p4t:'Keep personal info private', p4d:'No phone numbers, home addresses or bank details.',
+    p5t:'Share with a warm heart', p5d:'Share K-culture and your own day with a kind heart.',
+    warnTitle:'Check the Kemi Promise',
+    warnWord:'This looks like swearing, insults, gambling, adult or spam wording.',
+    warnLink:'External or spam links cannot be posted here.',
+    warnPhone:'This looks like a phone number or other personal contact.',
+    warnEdit:'Edit the wording and you can post right away.',
   },
   ko: {
     tagline:'케미(Kemi)들과 함께하는 K-컬쳐 일상',
@@ -182,6 +200,24 @@ const T = {
     rel_same:'같은 띠 · 거울을 보는 사이', rel_fine:'무난한 사이 · 천천히 가까워져요',
     rel_clash:'상충(相沖) · 부딪히면서 끌려요',
     col_blue:'청(靑) · 파랑', col_red:'적(赤) · 빨강', col_yellow:'황(黃) · 노랑', col_white:'백(白) · 하양', col_black:'흑(黑) · 검정',
+
+    /* 📜 케미 약속 (커뮤니티 가이드라인) — 홈 피드가 아니라 내 다이어리 안에 */
+    close:'닫기',
+    promiseBtn:'케미 약속',
+    promiseBtnSub:'다정한 케미를 위한 다섯 가지 약속',
+    promiseTitle:'📜 케미 약속',
+    promiseSub:'K-컬처와 내 일상을 다 함께 다정하게 나누기 위한 다섯 가지 약속이에요.',
+    promiseFoot:'약속을 어긴 글은 경고 안내 뒤에 게시되지 않아요.',
+    p1t:'서로 존중하기', p1d:'욕설·비방·혐오 표현은 쓰지 않아요.',
+    p2t:'광고·스팸 금지', p2d:'무단 광고나 스팸, 수상한 링크는 올리지 않아요.',
+    p3t:'사진·저작권 존중', p3d:'다른 사람의 사진이나 작품을 허락 없이 가져오지 않아요.',
+    p4t:'개인정보 지키기', p4d:'전화번호·주소·계좌 같은 개인정보는 남기지 않아요.',
+    p5t:'다정하게 나누기', p5d:'K-컬처와 나의 하루를 다정한 마음으로 나눠요.',
+    warnTitle:'잠깐, 케미 약속을 확인해 주세요',
+    warnWord:'욕설·비방·도박·성인·스팸으로 보이는 표현이 들어 있어요.',
+    warnLink:'외부 링크나 스팸 주소는 여기에 올릴 수 없어요.',
+    warnPhone:'전화번호 같은 개인 연락처가 들어 있어요.',
+    warnEdit:'표현을 고치면 바로 게시할 수 있어요.',
   },
   ja: {
     tagline:'KemiとつながるK-カルチャーの毎日',
@@ -252,6 +288,24 @@ const T = {
     rel_same:'同じ干支 · 鏡を見ているような仲', rel_fine:'ふつうの相性 · ゆっくり近づく',
     rel_clash:'相沖 · ぶつかりながら惹かれ合う',
     col_blue:'青 · ブルー', col_red:'赤 · レッド', col_yellow:'黄 · イエロー', col_white:'白 · ホワイト', col_black:'黒 · ブラック',
+
+    /* 📜 ケミの約束（コミュニティガイドライン） */
+    close:'閉じる',
+    promiseBtn:'ケミの約束',
+    promiseBtnSub:'やさしいケミのための5つの約束',
+    promiseTitle:'📜 ケミの約束',
+    promiseSub:'K-カルチャーと自分の日常を、みんなでやさしく分かち合うための5つの約束です。',
+    promiseFoot:'約束に反する投稿は、警告のあと掲載されません。',
+    p1t:'お互いを尊重する', p1d:'罵り・中傷・ヘイト表現は使いません。',
+    p2t:'広告・スパム禁止', p2d:'無断の宣伝やスパム、怪しいリンクは載せません。',
+    p3t:'写真・著作権を守る', p3d:'他人の写真や作品を許可なく使うことはしません。',
+    p4t:'個人情報を守る', p4d:'電話番号・住所・口座などの個人情報は書きません。',
+    p5t:'やさしく分かち合う', p5d:'K-カルチャーと自分の一日をやさしく共有します。',
+    warnTitle:'少し待って、ケミの約束を確認してください',
+    warnWord:'罵り・中傷・ギャンブル・成人・スパムと見られる表現が入っています。',
+    warnLink:'外部リンクやスパムのURLはここには投稿できません。',
+    warnPhone:'電話番号などの個人の連絡先が入っています。',
+    warnEdit:'表現を直せばすぐに投稿できます。',
   },
   zh: {
     tagline:'和Kemi一起分享的K-文化日常',
@@ -322,6 +376,24 @@ const T = {
     rel_same:'同一生肖 · 像照镜子', rel_fine:'平顺 · 慢慢靠近',
     rel_clash:'相冲 · 越撞越吸引',
     col_blue:'青 · 蓝', col_red:'赤 · 红', col_yellow:'黄', col_white:'白', col_black:'黑',
+
+    /* 📜 Kemi 约定（社区指南） */
+    close:'关闭',
+    promiseBtn:'Kemi 约定',
+    promiseBtnSub:'为了温柔的Kemi，五个约定',
+    promiseTitle:'📜 Kemi 约定',
+    promiseSub:'为了和大家一起温柔地分享K-文化和自己的日常，我们做五个约定。',
+    promiseFoot:'违反约定的内容，在提醒之后不会被发布。',
+    p1t:'互相尊重', p1d:'不使用辱骂、诽谤、仇恨表达。',
+    p2t:'禁止广告与垃圾信息', p2d:'不发布擅自广告、垃圾信息或可疑链接。',
+    p3t:'尊重照片与版权', p3d:'不擅自使用他人的照片或作品。',
+    p4t:'保护个人信息', p4d:'不留下电话号码、住址、账号等个人信息。',
+    p5t:'温柔地分享', p5d:'温柔地分享K-文化和自己的一天。',
+    warnTitle:'等一下，请先看看Kemi约定',
+    warnWord:'这里似乎有辱骂、诽谤、赌博、成人或垃圾信息的表达。',
+    warnLink:'不能在这里发布外部链接或垃圾网址。',
+    warnPhone:'这里含有电话号码等个人联系方式。',
+    warnEdit:'修改表达后就能马上发布。',
   },
   es: {
     tagline:'Cultura K y tu d\u00eda a d\u00eda con Kemi',
@@ -392,6 +464,24 @@ const T = {
     rel_same:'Mismo signo · como mirarse al espejo', rel_fine:'Tranquila · se acerca despacio',
     rel_clash:'Signos opuestos · saltan chispas',
     col_blue:'Azul (Cheong)', col_red:'Rojo (Jeok)', col_yellow:'Amarillo (Hwang)', col_white:'Blanco (Baek)', col_black:'Negro (Heuk)',
+
+    /* 📜 Promesa Kemi (normas de la comunidad) */
+    close:'Cerrar',
+    promiseBtn:'Promesa Kemi',
+    promiseBtnSub:'Cinco promesas para una Kemi amable',
+    promiseTitle:'📜 Promesa Kemi',
+    promiseSub:'Cinco promesas para compartir la cultura K y nuestro día a día con cariño, entre todos.',
+    promiseFoot:'Una publicación que las rompa no se publica tras el aviso.',
+    p1t:'Respetarnos', p1d:'Sin insultos, descalificaciones ni discurso de odio.',
+    p2t:'Sin anuncios ni spam', p2d:'Nada de publicidad no pedida, spam ni enlaces sospechosos.',
+    p3t:'Respetar fotos y derechos', p3d:'No tomes fotos ni obras de otras personas sin permiso.',
+    p4t:'Proteger tus datos', p4d:'Sin teléfonos, direcciones ni datos bancarios.',
+    p5t:'Compartir con cariño', p5d:'Comparte la cultura K y tu día con cariño.',
+    warnTitle:'Un momento: revisa la Promesa Kemi',
+    warnWord:'Esto parece insulto, desprecio, apuestas, contenido adulto o spam.',
+    warnLink:'Aquí no se pueden publicar enlaces externos ni de spam.',
+    warnPhone:'Esto incluye un teléfono u otro contacto personal.',
+    warnEdit:'Corrige el texto y podrás publicar enseguida.',
   },
 };
 
@@ -778,6 +868,137 @@ async function downscaleImageBlob(file){
   return blob;
 }
 
+/* ---------- 📜 Kemi Promise & the first-pass filter ----------
+   The five promises are a sheet inside My Diary, never on the feed. Every diary,
+   edit and reply is checked here before it is saved: swearing, insults, hate,
+   gambling, adult and ad wording, outside/spam links, and contact details. The
+   MOMO Shop sheet keeps its own product-link field out of this check — there a
+   shop link is the point, not spam. BAN is the single place to tune the words. */
+const BAN = {
+  /* Korean — profanity · insults · hate · gambling · adult · ad/spam */
+  ko: [
+    '씨발','시발','씹새','씹년','개새끼','개자식','병신','지랄','좆같','좆밥','니애미','느금마','엠창','창녀','갈보','뒈져','한남충','한녀충','김치녀','틀딱','맘충','짱깨','쪽바리',
+    '도박','토토사이트','스포츠토토','사설토토','바카라','카지노','먹튀검증','꽁머니','배팅사이트','보증업체',
+    '야동','야설','포르노','성인영상','성인동영상','성인사이트','조건만남','원조교제','오피쓰','오피녀','출장마사지','자위행위','섹스',
+    '광고문의','홍보문의','텔레그램문의','카톡문의','고수익','수익보장','재택알바','부업알바','리딩방','주식리딩','코인리딩','다단계','불법대출','무직자대출','대출광고','폰테크','작업대출','소액결제현금화',
+  ],
+  ja: [
+    '死ね','殺す','クソ','ブス','キチガイ','シネ','エロ','アダルト','ポルノ','売春','援助交際','パパ活','出会い系','ギャンブル','カジノ','スパム',
+  ],
+  zh: [
+    '操你','傻逼','妈的','他妈的','贱人','去死','婊子','尼玛','色情','成人视频','裸聊','约炮','卖淫','赌博','赌场','博彩','六合彩','加微信','刷单','兼职日结',
+  ],
+};
+
+/* Latin-script words are matched whole, so "disputa" is not read as "puta". */
+const BAN_LATIN = [
+  'fuck','fucking','fucked','fucker','motherfucker','shit','bullshit','bitch','bastard','asshole','cunt',
+  'nigger','faggot','retard','retarded','whore','slut','dick pic','escort service',
+  'porn','porno','pornhub','onlyfans','nudes','viagra',
+  'casino','gambling','betting site','sports betting','bet365','1xbet',
+  'payday loan','cash advance',
+  'mierda','puta','puto','perra','cabron','cabrón','pendejo','coño','joder','chinga','verga','zorra','maricón','culiao','pornografía','desnudo','apuestas',
+];
+
+const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const BAN_LATIN_RE = new RegExp('(?:^|[^\\p{L}])(' + BAN_LATIN.map(escRe).join('|') + ')(?![\\p{L}])', 'iu');
+const BAN_CJK = BAN.ko.concat(BAN.ja, BAN.zh);
+/* words that only look like a ban word inside a longer, harmless one */
+const BENIGN_RE = /시발점/g;
+
+const LINK_RE = /(?:https?:\/\/|www\.|\bt\.me\/|bit\.ly|tinyurl|open\.kakao\.com|linktr\.ee|discord\.gg|forms\.gle|bit\.do|is\.gd|cutt\.ly|rb\.gy|naver\.me|han\.gl|band\.us)/i;
+const DOMAIN_RE = /\b(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:com|net|org|io|co|me|ly|gl|gg|tv|kr|jp|cn|cc|xyz|shop|store|site|link|app|biz|info|top|vip|bet|win|club|online)\b/i;
+const PHONE_RES = [
+  /\b01[016789][-.\s]?\d{3,4}[-.\s]?\d{4}\b/,          /* 010-1234-5678 */
+  /\b0[2-6]\d?[-.\s]?\d{3,4}[-.\s]?\d{4}\b/,          /* 02-123-4567 */
+  /\+\d{1,3}[-.\s]?\d{2,4}[-.\s]?\d{3,4}[-.\s]?\d{3,4}\b/, /* +82 10 ... */
+  /\b\d{3}[-.\s]\d{3,4}[-.\s]\d{4}\b/,                  /* 123-456-7890 */
+];
+const ACCOUNT_RE = /(?:계좌|口座|账号|帳號|cuenta|account\s*(?:number|no\.?))[^\d\n]{0,10}\d[\d\s-]{6,}/i;
+
+/* null when the text may go up, otherwise { kind: 'word' | 'link' | 'phone' } */
+function checkKemi(text){
+  const raw = String(text == null ? '' : text);
+  if (!raw.trim()) return null;
+  if (LINK_RE.test(raw) || DOMAIN_RE.test(raw)) return { kind: 'link' };
+  if (PHONE_RES.some(re => re.test(raw)) || ACCOUNT_RE.test(raw)) return { kind: 'phone' };
+  /* separators out, so "씨 발" cannot slip past the list */
+  const flat = raw.replace(BENIGN_RE, '').replace(/[\s\u00b7._\-*~!?/\\|:;,()'"\[\]]+/g, '').toLowerCase();
+  if (BAN_CJK.some(w => flat.indexOf(w) >= 0)) return { kind: 'word' };
+  if (BAN_LATIN_RE.test(raw)) return { kind: 'word' };
+  return null;
+}
+
+const PROMISE_KEYS = ['p1', 'p2', 'p3', 'p4', 'p5'];
+
+function renderPromiseSheet(){
+  const list = $('#promiseList');
+  if (!list) return;
+  list.innerHTML = PROMISE_KEYS.map((k, i) => (
+    '<li class="promise-item">'
+    + '<span class="promise-n" style="--dc:' + DC[i % DC.length] + '" aria-hidden="true">' + (i + 1) + '</span>'
+    + '<div class="promise-copy"><b>' + esc(t(k + 't')) + '</b><p>' + esc(t(k + 'd')) + '</p></div>'
+    + '</li>'
+  )).join('');
+}
+
+function openPromiseSheet(){
+  const scrim = $('#scrim'), sheet = $('#promiseSheet');
+  if (!sheet) return;
+  renderPromiseSheet();
+  scrim.hidden = false; sheet.hidden = false;
+  requestAnimationFrame(() => { scrim.classList.add('is-open'); sheet.classList.add('is-open'); });
+}
+
+/* closing keeps whatever sheet sat underneath (a compose sheet, say) open */
+function closePromiseSheet(){
+  const sheet = $('#promiseSheet');
+  if (!sheet || sheet.hidden) return;
+  sheet.classList.remove('is-open');
+  setTimeout(() => {
+    sheet.hidden = true;
+    const under = ['#composeSheet', '#shopSheet', '#matchSheet'].some(sel => $(sel) && !$(sel).hidden);
+    if (!under) { const scrim = $('#scrim'); scrim.classList.remove('is-open'); scrim.hidden = true; }
+  }, 230);
+}
+
+function warnHTML(kind){
+  const why = kind === 'link' ? t('warnLink') : kind === 'phone' ? t('warnPhone') : t('warnWord');
+  return '<div class="kemi-warn-head"><span class="kemi-warn-ico" aria-hidden="true">🛡️</span><b>' + esc(t('warnTitle')) + '</b></div>'
+    + '<p class="kemi-warn-why">' + esc(why) + '</p>'
+    + '<p class="kemi-warn-fix">' + esc(t('warnEdit')) + '</p>'
+    + '<button class="kemi-warn-cta" type="button" data-kemi-promise="1">📜 ' + esc(t('promiseBtn')) + '</button>';
+}
+
+function showComposeWarn(kind){
+  const el = $('#composeWarn');
+  if (!el) return;
+  el.innerHTML = warnHTML(kind);
+  el.hidden = false;
+  const body = el.closest('.sheet-body');
+  if (body) body.scrollTop = 0;
+}
+function hideComposeWarn(){
+  const el = $('#composeWarn');
+  if (el) { el.hidden = true; el.innerHTML = ''; }
+}
+
+function showCommentWarn(form, kind){
+  clearCommentWarn(form);
+  const box = document.createElement('div');
+  box.className = 'kemi-warn kemi-warn-inline';
+  box.setAttribute('role', 'alert');
+  box.innerHTML = warnHTML(kind);
+  form.insertAdjacentElement('afterend', box);
+  box.scrollIntoView({ block: 'nearest' });
+  toast(t('warnTitle'));
+}
+function clearCommentWarn(form){
+  const box = form && form.parentNode;
+  if (!box) return;
+  $$('.kemi-warn-inline', box).forEach(n => n.remove());
+}
+
 /* ---------- compose ----------
    The same sheet writes a new diary and edits one already written: editPostId
    holds the post being edited (null when composing), and in edit mode the
@@ -815,6 +1036,7 @@ function clearDraftMedia(){
 function openCompose(prefill){
   editPostId = null;
   draftSticker = null;
+  hideComposeWarn();
   const seedBody = prefill && prefill.body ? String(prefill.body).slice(0, 500) : '';
   const seedTags = prefill && prefill.tags ? String(prefill.tags) : '';
   $('#nickInput').value = state.me && state.me.nick ? state.me.nick : "KOMI's Unnie";
@@ -839,6 +1061,7 @@ function syncComposeMode(){
 function openEditPost(p){
   if (!p) return;
   editPostId = p.id;
+  hideComposeWarn();
   draftSticker = validSticker(p.sticker) || null;   /* the sticker comes back chosen */
   $('#nickInput').value = p.nick || (state.me && state.me.nick) || "KOMI's Unnie";
   $('#bodyInput').value = p.body || '';
@@ -980,6 +1203,9 @@ async function submitPost(){
   const nick = ($('#nickInput').value || '').trim() || "KOMI's Unnie";
   const body = ($('#bodyInput').value || '').trim();
   if (!body) { toast(t('needText')); return; }
+  const bad = checkKemi(nick + '\n' + body + '\n' + ($('#tagInput').value || ''));
+  if (bad) { showComposeWarn(bad.kind); return; }
+  hideComposeWarn();
   const tags = parseTags($('#tagInput').value);
   const btn = $('#composeSubmit');
   if (btn) btn.disabled = true;
@@ -1016,6 +1242,9 @@ async function submitEdit(){
   const nick = ($('#nickInput').value || '').trim() || p.nick || "KOMI's Unnie";
   const body = ($('#bodyInput').value || '').trim();
   if (!body) { toast(t('needText')); return; }
+  const bad = checkKemi(nick + '\n' + body + '\n' + ($('#tagInput').value || ''));
+  if (bad) { showComposeWarn(bad.kind); return; }
+  hideComposeWarn();
   const tags = parseTags($('#tagInput').value);
   const btn = $('#composeSubmit');
   if (btn) btn.disabled = true;
@@ -1325,6 +1554,7 @@ function renderLangUI(){
   syncSheetTitle();
   buildBdayOptions();
   syncMatchLabels();
+  renderPromiseSheet();
   if (matchState) renderMatch();
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
@@ -1971,6 +2201,12 @@ function renderMain(){
     main.innerHTML =
       '<div class="view-head"><h2 class="view-title">' + esc(t('myTitle')) + '</h2>'
       + '<span class="view-sub">' + esc(state.me.nick) + ' <span class="me-role">\u00b7 ' + esc(t('meRole')) + '</span></span></div>'
+      /* the community guidelines sit here, in the profile area, not on the feed */
+      + '<button type="button" class="promise-row" data-kemi-promise="1" aria-haspopup="dialog">'
+      +   '<span class="promise-row-ico" aria-hidden="true">📜</span>'
+      +   '<span class="promise-row-copy"><b>' + esc(t('promiseBtn')) + '</b><span>' + esc(t('promiseBtnSub')) + '</span></span>'
+      +   '<span class="promise-row-go" aria-hidden="true">\u203a</span>'
+      + '</button>'
       + '<div class="me-tabs">'
       + '<button type="button" class="me-tab' + (!isLikes ? ' is-active' : '') + '" data-metab="mine">' + esc(t('myPosts')) + '</button>'
       + '<button type="button" class="me-tab' + (isLikes ? ' is-active' : '') + '" data-metab="likes">' + esc(t('myLikes')) + '</button>'
@@ -2030,6 +2266,10 @@ function findPostElFrom(node){
 
 function onMainClick(e){
   const target = e.target;
+
+  /* 📜 Kemi Promise — the button in My Diary and the link inside every warning */
+  const promiseBtn = target.closest('[data-kemi-promise]');
+  if (promiseBtn) { openPromiseSheet(); return; }
 
   /* the K-star Kemi match invite on top of the feed */
   const matchOpen = target.closest('[data-match-open]');
@@ -2135,6 +2375,9 @@ function onMainSubmit(e){
   const inp = form.querySelector('.comment-input');
   const text = (inp.value || '').trim();
   if (!text) return;
+  const bad = checkKemi(text);
+  if (bad) { showCommentWarn(form, bad.kind); return; }
+  clearCommentWarn(form);
   addComment(pid, text);
 }
 
@@ -2166,6 +2409,7 @@ function bind(){
   $('#composeBtn2').addEventListener('click', () => openCompose());
   $('#composeCancel').addEventListener('click', () => closeSheet($('#composeSheet')));
   $('#scrim').addEventListener('click', () => {
+    if (!$('#promiseSheet').hidden) { closePromiseSheet(); return; }
     if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
     if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
     if (!$('#matchSheet').hidden) closeSheet($('#matchSheet'));
@@ -2217,6 +2461,12 @@ function bind(){
   const main = $('#main');
   main.addEventListener('click', onMainClick);
   main.addEventListener('submit', onMainSubmit);
+  main.addEventListener('input', (e) => {
+    /* typing again clears a reply warning */
+    if (!e.target.classList || !e.target.classList.contains('comment-input')) return;
+    const form = e.target.closest('[data-cform]');
+    if (form) clearCommentWarn(form);
+  });
   main.addEventListener('click', (e) => {
     const metaBtn = e.target.closest('[data-metab]');
     if (metaBtn) { state.meTab = metaBtn.dataset.metab; save(state); render(); return; }
@@ -2226,10 +2476,22 @@ function bind(){
   $('#viewerClose').addEventListener('click', closeViewer);
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
+    if (!$('#promiseSheet').hidden) { closePromiseSheet(); return; }
     closeViewer();
     if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
     if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
     if (!$('#matchSheet').hidden) closeSheet($('#matchSheet'));
+  });
+
+  /* 📜 Kemi Promise sheet, and the warning banner that sends people to it */
+  if ($('#promiseSheet')) $('#promiseClose').addEventListener('click', closePromiseSheet);
+  if ($('#composeWarn')) $('#composeWarn').addEventListener('click', (e) => {
+    if (e.target.closest('[data-kemi-promise]')) openPromiseSheet();
+  });
+  /* an edit to the wording clears the standing warning */
+  ['#nickInput', '#bodyInput', '#tagInput'].forEach(sel => {
+    const el = $(sel);
+    if (el) el.addEventListener('input', hideComposeWarn);
   });
 
   /* K-star Kemi match sheet */
