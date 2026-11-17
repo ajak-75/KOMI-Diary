@@ -169,6 +169,42 @@
   </div>
 </section>
 
+<!-- K-star Kemi match sheet -->
+<section class="sheet sheet-match" id="matchSheet" role="dialog" aria-modal="true" aria-labelledby="matchSheetTitle" hidden>
+  <div class="sheet-grip" aria-hidden="true"></div>
+  <header class="sheet-head">
+    <button class="text-btn" type="button" id="matchClose" data-i18n="cancel">Cancel</button>
+    <h2 class="sheet-title" id="matchSheetTitle" data-i18n="matchTitle">K-Star Kemi Match</h2>
+    <span class="sheet-pad" aria-hidden="true"></span>
+  </header>
+  <div class="sheet-body">
+    <p class="match-lead" data-i18n="matchLead">Just for fun: meet the Kemi between your zodiac sign and your favorite star’s.</p>
+    <label class="field" for="starNameInput">
+      <span class="field-label" data-i18n="starNameL">My favorite K-star</span>
+      <input class="field-input" id="starNameInput" type="text" maxlength="40" autocomplete="off" placeholder="예) BTS 정국">
+    </label>
+    <div class="field">
+      <span class="field-label" data-i18n="starBdayL">Star’s birthday</span>
+      <div class="bday-row">
+        <input class="bday-y" id="starYear" type="number" inputmode="numeric" min="1900" max="2026" placeholder="YYYY" aria-label="Year">
+        <select class="bday-m" id="starMonth" aria-label="Month"></select>
+        <select class="bday-d" id="starDay" aria-label="Day"></select>
+      </div>
+    </div>
+    <div class="field">
+      <span class="field-label" data-i18n="myBdayL">My birthday</span>
+      <div class="bday-row">
+        <input class="bday-y" id="myYear" type="number" inputmode="numeric" min="1900" max="2026" placeholder="YYYY" aria-label="Year">
+        <select class="bday-m" id="myMonth" aria-label="Month"></select>
+        <select class="bday-d" id="myDay" aria-label="Day"></select>
+      </div>
+    </div>
+    <button class="pill primary match-go" type="button" id="matchGo" data-i18n="matchGo">See our Kemi</button>
+    <div class="match-result" id="matchResult" hidden></div>
+    <p class="match-fine" data-i18n="matchFine">Just for fun · the real zodiac year follows Lunar New Year</p>
+  </div>
+</section>
+
 <!-- Image viewer -->
 <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Photo" hidden>
   <button class="viewer-close" type="button" id="viewerClose" aria-label="Close">

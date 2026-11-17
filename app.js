@@ -90,6 +90,28 @@ const T = {
     shopDeleted:'Product removed', shopConfirmDelete:'Take this product down?',
     shopNeedName:'Give the product a name first \u2728', shopLinkBad:'A link has to start with https://',
     shopPhotoBad:'Could not read that photo',
+
+    /* \ud83d\udc98 K-Star Kemi Match */
+    matchInviteTitle:'\ud83d\udc98 K-Star Kemi Match',
+    matchInviteSub:'Your sign \u00d7 your bias\u2019s sign, just for fun',
+    matchTitle:'K-Star Kemi Match',
+    matchLead:'Type your favorite star\u2019s name and birthday \u2014 KOMI reads your two zodiac signs and tells you the Kemi between you.',
+    starNameL:'My favorite K-star', starNamePh:'e.g. BTS Jungkook',
+    starBdayL:'Star\u2019s birthday', myBdayL:'My birthday',
+    matchGo:'See our Kemi \u2728',
+    matchNeedName:'Tell us your favorite star first \u2728',
+    matchNeedDate:'Please fill in both birthdays',
+    matchBadDate:'That date doesn\u2019t exist \u2014 check the month and day',
+    matchScoreL:'Kemi score', matchMyZodiac:'My sign', matchStarZodiac:'Bias\u2019s sign',
+    matchColorL:'Today\u2019s lucky Obangsaek',
+    matchShare:'Brag on my diary', matchFilled:'Filled in \u2014 edit it your way, then post \ud83c\udf8a',
+    matchKeyring:'Soon in MOMO Shop: an abalone keyring of your sign \u00d7 your bias\u2019s sign \ud83d\udd11',
+    matchFine:'Just for fun \u00b7 the real zodiac year follows Lunar New Year',
+    matchBody:'\ud83d\udc98 K-Star Kemi Match \ud83d\udc98\nMy bias {star} {szemoji} {sz} \u00d7 me {mzemoji} {mz}\nKemi score {pct}% \u00b7 {rel}\nToday\u2019s lucky Obangsaek: {color}\n{line}',
+    rel_h6:'Six Harmony \u00b7 a natural pair', rel_trine:'Three Harmony \u00b7 stronger together',
+    rel_same:'Same sign \u00b7 like looking in a mirror', rel_fine:'Easy-going \u00b7 warming up slowly',
+    rel_clash:'Opposite signs \u00b7 sparks fly',
+    col_blue:'Blue (Cheong)', col_red:'Red (Jeok)', col_yellow:'Yellow (Hwang)', col_white:'White (Baek)', col_black:'Black (Heuk)',
   },
   ko: {
     tagline:'케미(Kemi)들과 함께하는 K-컬쳐 일상',
@@ -138,6 +160,28 @@ const T = {
     shopDeleted:'상품을 내렸어요', shopConfirmDelete:'이 상품을 진열대에서 내릴까요?',
     shopNeedName:'상품명을 먼저 적어 주세요 ✨', shopLinkBad:'링크는 https:// 로 시작해야 해요',
     shopPhotoBad:'사진을 불러오지 못했어요',
+
+    /* 💘 K-스타 케미 궁합 */
+    matchInviteTitle:'💘 K-스타 케미 궁합',
+    matchInviteSub:'내 띠 × 최애 띠로 보는 재미 궁합',
+    matchTitle:'K-스타 케미 궁합',
+    matchLead:'최애 K-스타의 이름과 생일만 넣으면, 두 사람의 띠로 코미가 케미를 읽어 줘요.',
+    starNameL:'최애 K-스타', starNamePh:'예) BTS 정국',
+    starBdayL:'최애 스타 생년월일', myBdayL:'내 생년월일',
+    matchGo:'궁합 보기 ✨',
+    matchNeedName:'최애 스타 이름을 먼저 알려 주세요 ✨',
+    matchNeedDate:'두 사람의 생년월일을 모두 넣어 주세요',
+    matchBadDate:'없는 날짜예요 · 월과 일을 확인해 주세요',
+    matchScoreL:'케미 지수', matchMyZodiac:'내 띠', matchStarZodiac:'최애 띠',
+    matchColorL:'오늘의 행운 오방색',
+    matchShare:'다이어리에 자랑하기', matchFilled:'본문과 태그를 채웠어요 · 마음대로 고쳐서 올려 주세요 🎊',
+    matchKeyring:'곧 모모 샵에서 내 띠 × 최애 띠 자개 키링도 만날 수 있어요 🔑',
+    matchFine:'재미로 보는 궁합이에요 · 실제 띠는 음력 설 기준',
+    matchBody:'💘 K-스타 케미 궁합 💘\n최애 {star} {szemoji} {sz} × 나 {mzemoji} {mz}\n케미 지수 {pct}% · {rel}\n오늘의 행운 오방색 {color}\n{line}',
+    rel_h6:'육합(六合) · 찰떡궁합', rel_trine:'삼합(三合) · 함께면 힘이 나요',
+    rel_same:'같은 띠 · 거울을 보는 사이', rel_fine:'무난한 사이 · 천천히 가까워져요',
+    rel_clash:'상충(相沖) · 부딪히면서 끌려요',
+    col_blue:'청(靑) · 파랑', col_red:'적(赤) · 빨강', col_yellow:'황(黃) · 노랑', col_white:'백(白) · 하양', col_black:'흑(黑) · 검정',
   },
   ja: {
     tagline:'KemiとつながるK-カルチャーの毎日',
@@ -186,6 +230,28 @@ const T = {
     shopDeleted:'商品を削除しました', shopConfirmDelete:'この商品を棚から外しますか？',
     shopNeedName:'先に商品名を入力してください ✨', shopLinkBad:'リンクは https:// で始めてください',
     shopPhotoBad:'写真を読み込めませんでした',
+
+    /* 💘 Kスター相性占い */
+    matchInviteTitle:'💘 Kスター相性占い',
+    matchInviteSub:'自分の干支×推しの干支で見るお楽しみ相性',
+    matchTitle:'Kスター相性占い',
+    matchLead:'推しの名前と誕生日を入れるだけで、二人の干支からKOMIがケミ度を読みます。',
+    starNameL:'推しのKスター', starNamePh:'例）BTS ジョングク',
+    starBdayL:'推しの誕生日', myBdayL:'自分の誕生日',
+    matchGo:'相性を見る ✨',
+    matchNeedName:'先に推しの名前を教えてください ✨',
+    matchNeedDate:'二人の誕生日を両方入れてください',
+    matchBadDate:'存在しない日付です · 月と日を確認してください',
+    matchScoreL:'ケミ指数', matchMyZodiac:'自分の干支', matchStarZodiac:'推しの干支',
+    matchColorL:'今日のラッキー五行色',
+    matchShare:'ダイアリーに自慢する', matchFilled:'本文とタグを入れました · 自由に直して投稿してください 🎊',
+    matchKeyring:'もうすぐMOMOショップに、自分の干支×推しの干支の貝殻キーホルダーが登場 🔑',
+    matchFine:'お楽しみの相性占いです · 実際の干支は旧正月基準',
+    matchBody:'💘 Kスター相性占い 💘\n推し {star} {szemoji} {sz} × 私 {mzemoji} {mz}\nケミ指数 {pct}% · {rel}\n今日のラッキー五行色 {color}\n{line}',
+    rel_h6:'六合 · 自然な相性', rel_trine:'三合 · 一緒だと力が出る',
+    rel_same:'同じ干支 · 鏡を見ているような仲', rel_fine:'ふつうの相性 · ゆっくり近づく',
+    rel_clash:'相沖 · ぶつかりながら惹かれ合う',
+    col_blue:'青 · ブルー', col_red:'赤 · レッド', col_yellow:'黄 · イエロー', col_white:'白 · ホワイト', col_black:'黒 · ブラック',
   },
   zh: {
     tagline:'和Kemi一起分享的K-文化日常',
@@ -234,6 +300,28 @@ const T = {
     shopDeleted:'商品已删除', shopConfirmDelete:'要把这件商品下架吗？',
     shopNeedName:'请先填写商品名称 ✨', shopLinkBad:'链接必须以 https:// 开头',
     shopPhotoBad:'无法读取这张照片',
+
+    /* 💘 K-明星缘分测试 */
+    matchInviteTitle:'💘 K-明星缘分测试',
+    matchInviteSub:'我的生肖 × 本命生肖，好玩看一看',
+    matchTitle:'K-明星缘分测试',
+    matchLead:'填上本命的名字和生日，KOMI 就用两人的生肖算出你们的 Kemi 缘分。',
+    starNameL:'我的本命 K-明星', starNamePh:'例如：BTS 柾国',
+    starBdayL:'本命生日', myBdayL:'我的生日',
+    matchGo:'看看我们的缘分 ✨',
+    matchNeedName:'先告诉我本命的名字吧 ✨',
+    matchNeedDate:'请把两个生日都填上',
+    matchBadDate:'这一天不存在 · 请检查月份和日期',
+    matchScoreL:'Kemi 指数', matchMyZodiac:'我的生肖', matchStarZodiac:'本命生肖',
+    matchColorL:'今日幸运五方色',
+    matchShare:'去日记里炫耀', matchFilled:'正文和标签已填好 · 随便改一改再发布吧 🎊',
+    matchKeyring:'很快在 MOMO 小店也能见到「我的生肖 × 本命生肖」螺钿钥匙扣 🔑',
+    matchFine:'好玩而已 · 真正的生肖以农历新年为准',
+    matchBody:'💘 K-明星缘分测试 💘\n本命 {star} {szemoji} {sz} × 我 {mzemoji} {mz}\nKemi 指数 {pct}% · {rel}\n今日幸运五方色 {color}\n{line}',
+    rel_h6:'六合 · 天生一对', rel_trine:'三合 · 一起更有力',
+    rel_same:'同一生肖 · 像照镜子', rel_fine:'平顺 · 慢慢靠近',
+    rel_clash:'相冲 · 越撞越吸引',
+    col_blue:'青 · 蓝', col_red:'赤 · 红', col_yellow:'黄', col_white:'白', col_black:'黑',
   },
   es: {
     tagline:'Cultura K y tu d\u00eda a d\u00eda con Kemi',
@@ -282,6 +370,172 @@ const T = {
     shopDeleted:'Producto eliminado', shopConfirmDelete:'¿Quitar este producto del estante?',
     shopNeedName:'Primero ponle un nombre al producto ✨', shopLinkBad:'El enlace debe empezar por https://',
     shopPhotoBad:'No se pudo leer la foto',
+
+    /* 💘 Kemi Match con tu K-Star */
+    matchInviteTitle:'💘 Kemi Match con tu K-Star',
+    matchInviteSub:'Tu signo × el de tu bias, solo por diversión',
+    matchTitle:'Kemi Match con tu K-Star',
+    matchLead:'Escribe el nombre y el cumpleaños de tu bias: KOMI lee sus dos signos y te dice el Kemi que hay entre ustedes.',
+    starNameL:'Mi K-star favorito', starNamePh:'ej. BTS Jungkook',
+    starBdayL:'Cumpleaños del star', myBdayL:'Mi cumpleaños',
+    matchGo:'Ver nuestro Kemi ✨',
+    matchNeedName:'Primero dime el nombre de tu bias ✨',
+    matchNeedDate:'Completa los dos cumpleaños',
+    matchBadDate:'Esa fecha no existe · revisa el mes y el día',
+    matchScoreL:'Puntuación Kemi', matchMyZodiac:'Mi signo', matchStarZodiac:'Signo del bias',
+    matchColorL:'Obangsaek de la suerte hoy',
+    matchShare:'Presumir en mi diario', matchFilled:'Ya llené el texto y las etiquetas · edítalo a tu gusto y publica 🎊',
+    matchKeyring:'Pronto en la tienda MOMO: llavero de nácar con tu signo × el de tu bias 🔑',
+    matchFine:'Solo por diversión · el año zodiacal real sigue el Año Nuevo lunar',
+    matchBody:'💘 Kemi Match con tu K-Star 💘\nMi bias {star} {szemoji} {sz} × yo {mzemoji} {mz}\nPuntuación Kemi {pct}% · {rel}\nObangsaek de la suerte hoy: {color}\n{line}',
+    rel_h6:'Seis Armonías · pareja natural', rel_trine:'Tres Armonías · juntos más fuertes',
+    rel_same:'Mismo signo · como mirarse al espejo', rel_fine:'Tranquila · se acerca despacio',
+    rel_clash:'Signos opuestos · saltan chispas',
+    col_blue:'Azul (Cheong)', col_red:'Rojo (Jeok)', col_yellow:'Amarillo (Hwang)', col_white:'Blanco (Baek)', col_black:'Negro (Heuk)',
+  },
+};
+
+/* ---------- K-star Kemi match ----------
+   Fun-only compatibility between the visitor's zodiac sign and their bias's,
+   read through the Korean twelve zodiac animals (12지신). The score, the lucky
+   obangsaek colour and the line are all derived from the two birthdays, so the
+   same pair always gets the same reading. */
+const ZODIAC = [
+  { emoji:'🐭', en:'Rat',     ko:'쥐',     ja:'ねずみ',   zh:'鼠', es:'Rata' },
+  { emoji:'🐮', en:'Ox',      ko:'소',     ja:'うし',     zh:'牛', es:'Buey' },
+  { emoji:'🐯', en:'Tiger',   ko:'호랑이', ja:'とら',     zh:'虎', es:'Tigre' },
+  { emoji:'🐰', en:'Rabbit',  ko:'토끼',   ja:'うさぎ',   zh:'兔', es:'Conejo' },
+  { emoji:'🐲', en:'Dragon',  ko:'용',     ja:'たつ',     zh:'龙', es:'Dragón' },
+  { emoji:'🐍', en:'Snake',   ko:'뱀',     ja:'へび',     zh:'蛇', es:'Serpiente' },
+  { emoji:'🐴', en:'Horse',   ko:'말',     ja:'うま',     zh:'马', es:'Caballo' },
+  { emoji:'🐑', en:'Goat',    ko:'양',     ja:'ひつじ',   zh:'羊', es:'Cabra' },
+  { emoji:'🐵', en:'Monkey',  ko:'원숭이', ja:'さる',     zh:'猴', es:'Mono' },
+  { emoji:'🐔', en:'Rooster', ko:'닭',     ja:'とり',     zh:'鸡', es:'Gallo' },
+  { emoji:'🐶', en:'Dog',     ko:'개',     ja:'いぬ',     zh:'狗', es:'Perro' },
+  { emoji:'🐷', en:'Pig',     ko:'돼지',   ja:'いのしし', zh:'猪', es:'Cerdo' },
+];
+
+/* the five traditional colours (오방색), in the dancheong palette of the app */
+const OBANG = [
+  { key:'blue',   hex:'#4B7F9F', emoji:'🔵' },
+  { key:'red',    hex:'#E05A47', emoji:'🔴' },
+  { key:'yellow', hex:'#D9B44A', emoji:'🟡' },
+  { key:'white',  hex:'#EFEAE0', emoji:'⚪' },
+  { key:'black',  hex:'#2F3033', emoji:'⚫' },
+];
+
+/* KOMI's one-liner per relation, two variants so a pair is not always identical.
+   {star} is the name the visitor typed. */
+const KOMI_LINES = {
+  en: {
+    h6: [
+      'KOMI says: {star} and you were paired up at birth! Go press that heart for your bias today 💘',
+      'KOMI smells destiny here. Just thinking of {star} brightens your day — write that feeling down 🐾',
+    ],
+    trine: [
+      'KOMI says: {star} and you bring out each other\u2019s strengths. Together, every stage shines brighter ✨',
+      'They say three makes it perfect, but you two already sparkle. Leave a cheering line today 💛',
+    ],
+    same: [
+      '{star} and you share a sign, so you read each other like a mirror. Find one taste you both love today ✨',
+      'Same-sign pairs get each other without a word. Today, cheer {star}\u2019s stage twice as loud 🎀',
+    ],
+    fine: [
+      'KOMI says: you two warm up slowly \u2014 and slow bonds stay warm longer 🌱',
+      'You and {star} are still getting to know each other. Open the first hello with today\u2019s diary 🐶',
+    ],
+    clash: [
+      'KOMI says: you clash and click at the same time \u2014 no wonder {star} stays on your mind 😆',
+      '{star} and you sit on opposite sides, which is exactly why you notice each other. One spoonful of courage today 💗',
+    ],
+  },
+  ko: {
+    h6: [
+      '코미의 판정: {star}와 나는 태어날 때부터 짝으로 정해진 사이! 오늘은 최애에게 하트 한 번 눌러 줄까요? 💘',
+      '코미가 봐도 이건 운명이에요. {star} 생각만 해도 하루가 반짝이니, 그 마음을 다이어리에 남겨 두세요 🐾',
+    ],
+    trine: [
+      '코미의 판정: {star}와 나는 서로의 힘을 키워 주는 사이! 함께면 어떤 무대도 더 빛나요 ✨',
+      '셋이 모이면 최고라는데, 우리 둘만으로도 충분히 반짝여요. 오늘 응원 한 줄 남겨 볼까요? 💛',
+    ],
+    same: [
+      '{star}와 나는 같은 띠! 거울을 보는 것처럼 마음이 통하니, 오늘은 같은 취향 하나를 찾아보면 재밌어요 ✨',
+      '코미의 판정: 닮은 띠끼리는 말 안 해도 통하는 사이예요. 오늘 {star}의 무대도 함께 응원해요 🎀',
+    ],
+    fine: [
+      '코미의 판정: {star}와 나는 천천히 가까워지는 사이! 한 걸음씩 마음을 나누면 더 오래 갈 거예요 🌱',
+      '{star}와 나는 아직 서로 알아 가는 중이에요. 오늘의 다이어리로 첫 인사를 열어 볼까요? 🐶',
+    ],
+    clash: [
+      '코미의 판정: 부딪히면서 끌리는 사이! 티격태격해도 {star} 생각이 나는 건 어쩔 수 없나 봐요 😆',
+      '{star}와 나는 정반대라서 더 눈에 밟히는 사이예요. 오늘은 용기 내서 애정 한 스푼 남겨 볼까요? 💗',
+    ],
+  },
+  ja: {
+    h6: [
+      'KOMIの判定：{star}とあなたは生まれた時から運命のペア！今日は推しにハートを押してみて 💘',
+      'KOMIが見てもこれは運命。{star}を思い出すだけで一日がきらめくなら、その気持ちを書き残して 🐾',
+    ],
+    trine: [
+      'KOMIの判定：{star}とあなたは互いの力を引き出す仲！二人ならどんなステージも輝くよ ✨',
+      '三つ揃えば最強と言われるけれど、二人でも十分きらめける。今日は応援の一言を残してみて 💛',
+    ],
+    same: [
+      '{star}とあなたは同じ干支！鏡を見るように心が通じるので、今日は同じ趣味を探してみて ✨',
+      'KOMIの判定：似た干支同士は言葉がなくても通じ合う仲。今日は{star}のステージを一緒に応援しよう 🎀',
+    ],
+    fine: [
+      'KOMIの判定：{star}とあなたはゆっくり近づいていく仲。一歩ずつなら長く続くよ 🌱',
+      '{star}とあなたはまだお互いを知っていく途中。今日のダイアリーで最初のあいさつを始めてみて 🐶',
+    ],
+    clash: [
+      'KOMIの判定：ぶつかりながら惹かれ合う仲！ケンカしても{star}が気になるのは仕方ないね 😆',
+      '{star}とあなたは正反対だからこそ目で追ってしまう仲。今日は勇気を出して愛をひとさじ 💗',
+    ],
+  },
+  zh: {
+    h6: [
+      'KOMI 的判定：{star}和你天生就是一对！今天就为你的本命点个心动吧 💘',
+      'KOMI 看这也是缘分。只要想到 {star} 一天就发光，把这份心情写下来吧 🐾',
+    ],
+    trine: [
+      'KOMI 的判定：{star}和你是互相给力的组合！在一起任何舞台都更闪亮 ✨',
+      '常说三个更厉害，但你们两个人就够闪耀。今天留下一句应援吧 💛',
+    ],
+    same: [
+      '{star}和你是同一个生肖！像照镜子一样心有灵犀，今天找一个共同爱好吧 ✨',
+      'KOMI 的判定：同生肖之间不用说也懂。今天一起为 {star} 的舞台应援吧 🎀',
+    ],
+    fine: [
+      'KOMI 的判定：{star}和你是慢慢靠近的关系，慢一点的缘分更长久 🌱',
+      '你和 {star} 还在互相了解中。用今天的日记打开第一句话吧 🐶',
+    ],
+    clash: [
+      'KOMI 的判定：越撞越吸引的一对！就算拌嘴也忍不住想 {star} 吧 😆',
+      '{star}和你是正相反才更在意的关系。今天勇敢地送上一勺爱吧 💗',
+    ],
+  },
+  es: {
+    h6: [
+      'Veredicto de KOMI: ¡{star} y tú nacieron para estar juntos! Hoy toca dejarle un corazón a tu bias 💘',
+      'KOMI ve destino aquí. Si pensar en {star} te ilumina el día, escríbelo en tu diario 🐾',
+    ],
+    trine: [
+      'Veredicto de KOMI: {star} y tú se dan fuerza. Juntos, cualquier escenario brilla más ✨',
+      'Dicen que tres es mejor, ¡pero ustedes dos ya brillan! Deja hoy una línea de ánimo 💛',
+    ],
+    same: [
+      '¡{star} y tú tienen el mismo signo! Como mirarse al espejo: busca hoy un gusto en común ✨',
+      'Veredicto de KOMI: los signos iguales se entienden sin hablar. ¡Hoy animamos el escenario de {star} juntos 🎀',
+    ],
+    fine: [
+      'Veredicto de KOMI: se acercan poco a poco, y lo lento dura más 🌱',
+      '{star} y tú aún se están conociendo. Abre el primer hola con el diario de hoy 🐶',
+    ],
+    clash: [
+      'Veredicto de KOMI: chocan y se atraen a la vez, no puedes dejar de pensar en {star} 😆',
+      'Los opuestos llaman más la atención. Hoy, atrévete con una cucharada de cariño 💗',
+    ],
   },
 };
 
@@ -558,18 +812,20 @@ function clearDraftMedia(){
   renderDraftMedia();
 }
 
-function openCompose(){
+function openCompose(prefill){
   editPostId = null;
   draftSticker = null;
+  const seedBody = prefill && prefill.body ? String(prefill.body).slice(0, 500) : '';
+  const seedTags = prefill && prefill.tags ? String(prefill.tags) : '';
   $('#nickInput').value = state.me && state.me.nick ? state.me.nick : "KOMI's Unnie";
-  $('#bodyInput').value = '';
-  $('#tagInput').value = '';
-  $('#bodyCount').textContent = '0';
+  $('#bodyInput').value = seedBody;
+  $('#tagInput').value = seedTags;
+  $('#bodyCount').textContent = String(seedBody.length);
   clearDraftMedia();
   renderStickerTray();
   syncComposeMode();
   openSheet($('#composeSheet'));
-  setTimeout(() => $('#bodyInput').focus(), 260);
+  setTimeout(() => { const b = $('#bodyInput'); if (b) { b.focus(); b.setSelectionRange(b.value.length, b.value.length); } }, 260);
 }
 
 /* Title and submit label follow the mode, in the current language. */
@@ -795,6 +1051,172 @@ async function submitEdit(){
 
 function onComposeSubmit(){ if (editPostId) submitEdit(); else submitPost(); }
 
+/* ---------- K-star Kemi match ----------
+   The visitor's sign against their bias's sign. Everything on the card comes
+   from the two birthdays alone, so the same pair reads the same on any day
+   (the one exception is the lucky colour, which turns over each day). */
+let matchState = null;   /* { star, sy, sm, sd, my, mm, md } of the reading on screen */
+
+const zodiacIndex = (year) => ((Number(year) - 1900) % 12 + 12) % 12;
+function zodiacName(i){ const z = ZODIAC[i] || ZODIAC[0]; const L = getLang(); return z[L] || z.en; }
+function zodiacLabel(i){ const n = zodiacName(i); return getLang() === 'ko' ? n + '띠' : n; }
+
+/* 육합 (six harmonies), 삼합 (three harmonies), 같은 띠, 충 (opposite) */
+const H6_PAIRS  = [[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
+const T3_GROUPS = [[0,4,8],[2,6,10],[1,5,9],[3,7,11]];
+
+function zodiacRelation(a, b){
+  if (a === b) return 'same';
+  if ((a - b + 12) % 12 === 6) return 'clash';
+  if (H6_PAIRS.some(([x, y]) => (x === a && y === b) || (x === b && y === a))) return 'h6';
+  if (T3_GROUPS.some(g => g.indexOf(a) >= 0 && g.indexOf(b) >= 0)) return 'trine';
+  return 'fine';
+}
+
+function birthdayValid(y, m, d){
+  if (!y || !m || !d) return false;
+  if (y < 1900 || y > 2026) return false;
+  const dt = new Date(y, m - 1, d);
+  return dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d;
+}
+
+function matchSeed(s){
+  return Math.abs(s.sy * 7919 + s.sm * 337 + s.sd * 53 + s.my * 104729 + s.mm * 211 + s.md * 29);
+}
+
+function matchReading(s){
+  const me = zodiacIndex(s.my), star = zodiacIndex(s.sy);
+  const rel = zodiacRelation(me, star);
+  const seed = matchSeed(s);
+  const base = { h6: 96, same: 93, trine: 90, fine: 85, clash: 80 }[rel] || 85;
+  const day = new Date();
+  const dayNo = day.getFullYear() * 37 + (day.getMonth() + 1) * 11 + day.getDate();
+  return {
+    me, star, rel, seed,
+    score: Math.max(78, Math.min(99, base + (seed % 4))),
+    color: OBANG[Math.abs(seed + dayNo * 13) % OBANG.length],
+  };
+}
+
+function fillTokens(tpl, map){
+  return String(tpl == null ? '' : tpl).replace(/\{(\w+)\}/g, (m, k) => (Object.prototype.hasOwnProperty.call(map, k) ? String(map[k]) : m));
+}
+
+function komiLine(rel, seed, star){
+  const L = KOMI_LINES[getLang()] || KOMI_LINES.en;
+  const pool = L[rel] || L.fine || KOMI_LINES.en[rel];
+  return fillTokens(pool[seed % pool.length], { star });
+}
+
+/* Month names come from the browser's locale, so every language reads right.
+   Rebuilt only when the language changes, so a half-filled sheet is not reset. */
+let bdayBuiltFor = null;
+function buildBdayOptions(force){
+  const loc = t('dateLocale');
+  if (!force && bdayBuiltFor === loc) return;
+  let mf = null;
+  try { mf = new Intl.DateTimeFormat(loc, { month: 'short' }); } catch (e) { mf = null; }
+  const months = [];
+  for (let m = 1; m <= 12; m++) months.push(mf ? mf.format(new Date(2021, m - 1, 1)) : String(m));
+  $$('#matchSheet .bday-m').forEach(sel => {
+    const cur = sel.value || '1';
+    sel.innerHTML = months.map((lab, i) => '<option value="' + (i + 1) + '">' + esc(lab) + '</option>').join('');
+    sel.value = cur;
+  });
+  $$('#matchSheet .bday-d').forEach(sel => {
+    const cur = sel.value || '1';
+    if (sel.options.length) { sel.value = cur; return; }
+    sel.innerHTML = Array.from({ length: 31 }, (_, i) => '<option value="' + (i + 1) + '">' + (i + 1) + '</option>').join('');
+    sel.value = cur;
+  });
+  bdayBuiltFor = loc;
+}
+
+function syncMatchLabels(){
+  const inp = $('#starNameInput');
+  if (inp) inp.placeholder = t('starNamePh');
+}
+
+function matchInviteHTML(){
+  return '<div class="match-invite">'
+    + '<button class="match-invite-btn" type="button" data-match-open="1">'
+    + '<span class="mi-ico" aria-hidden="true">💘</span>'
+    + '<span class="mi-copy"><b>' + esc(t('matchInviteTitle')) + '</b><span>' + esc(t('matchInviteSub')) + '</span></span>'
+    + '<span class="mi-go" aria-hidden="true">›</span>'
+    + '</button></div>';
+}
+
+function matchResultHTML(s){
+  const r = matchReading(s);
+  const line = komiLine(r.rel, r.seed, s.star);
+  return (
+    '<div class="mr-star">💘 <b>' + esc(s.star) + '</b></div>'
+    + '<div class="mr-top">'
+    +   '<div class="mr-score"><b>' + r.score + '</b><i>%</i><em>' + esc(t('matchScoreL')) + '</em></div>'
+    +   '<div class="mr-rel"><b>' + esc(t('rel_' + r.rel)) + '</b></div>'
+    + '</div>'
+    + '<div class="mr-zodiacs">'
+    +   '<div class="mr-zod"><span>' + esc(t('matchMyZodiac')) + '</span><b>' + ZODIAC[r.me].emoji + ' ' + esc(zodiacLabel(r.me)) + '</b></div>'
+    +   '<div class="mr-x" aria-hidden="true">×</div>'
+    +   '<div class="mr-zod"><span>' + esc(t('matchStarZodiac')) + '</span><b>' + ZODIAC[r.star].emoji + ' ' + esc(zodiacLabel(r.star)) + '</b></div>'
+    + '</div>'
+    + '<div class="mr-color">'
+    +   '<span class="mr-swatch" style="background:' + r.color.hex + '"></span>'
+    +   '<span class="mr-color-copy"><span>' + esc(t('matchColorL')) + '</span><b>' + r.color.emoji + ' ' + esc(t('col_' + r.color.key)) + '</b></span>'
+    + '</div>'
+    + '<p class="mr-line"><img class="mr-komi" src="./img/komi-avatar.jpg" alt="" width="26" height="26"><span>' + esc(line) + '</span></p>'
+    + '<button class="pill primary mr-share" type="button" data-match-share="1">' + esc(t('matchShare')) + '</button>'
+    + '<p class="mr-keyring">' + esc(t('matchKeyring')) + '</p>'
+  );
+}
+
+function renderMatch(){
+  const box = $('#matchResult');
+  if (!box) return;
+  if (!matchState) { box.hidden = true; box.innerHTML = ''; return; }
+  box.innerHTML = matchResultHTML(matchState);
+  box.hidden = false;
+}
+
+function openMatchSheet(){
+  buildBdayOptions();
+  syncMatchLabels();
+  renderMatch();
+  openSheet($('#matchSheet'));
+}
+
+function onMatchGo(){
+  const star = ($('#starNameInput').value || '').trim();
+  const sy = parseInt($('#starYear').value, 10), sm = parseInt($('#starMonth').value, 10), sd = parseInt($('#starDay').value, 10);
+  const my = parseInt($('#myYear').value, 10), mm = parseInt($('#myMonth').value, 10), md = parseInt($('#myDay').value, 10);
+  if (!star) { toast(t('matchNeedName')); $('#starNameInput').focus(); return; }
+  if (!sy || !my) { toast(t('matchNeedDate')); if (!sy) $('#starYear').focus(); else $('#myYear').focus(); return; }
+  if (!birthdayValid(sy, sm, sd) || !birthdayValid(my, mm, md)) { toast(t('matchBadDate')); return; }
+  matchState = { star, sy, sm, sd, my, mm, md };
+  renderMatch();
+  const box = $('#matchResult');
+  if (box) setTimeout(() => { try { box.scrollIntoView({ block: 'nearest' }); } catch (e) {} }, 40);
+}
+
+/* The result travels to the compose sheet as a finished diary the visitor can
+   rewrite before posting; the two tags ride along in the tag field. */
+function bragOnDiary(){
+  if (!matchState) return;
+  const s = matchState;
+  const r = matchReading(s);
+  const line = komiLine(r.rel, r.seed, s.star);
+  const body = fillTokens(t('matchBody'), {
+    star: s.star,
+    szemoji: ZODIAC[r.star].emoji, sz: zodiacLabel(r.star),
+    mzemoji: ZODIAC[r.me].emoji, mz: zodiacLabel(r.me),
+    pct: r.score, rel: t('rel_' + r.rel),
+    color: r.color.emoji + ' ' + t('col_' + r.color.key),
+    line,
+  });
+  closeSheet($('#matchSheet'));
+  setTimeout(() => { openCompose({ body, tags: '#KemiMatch #KOMIDiary' }); toast(t('matchFilled')); }, 300);
+}
+
 /* ---------- sheet ---------- */
 function openSheet(sheet){
   const scrim = $('#scrim');
@@ -888,6 +1310,9 @@ function renderLangUI(){
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   syncComposeMode();
   syncSheetTitle();
+  buildBdayOptions();
+  syncMatchLabels();
+  if (matchState) renderMatch();
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
   $('#tagInput').placeholder = t('tagPlaceholder');
@@ -1502,6 +1927,7 @@ function renderMain(){
     const posts = visiblePosts();
     main.innerHTML =
       '<div class="feed-head-pad"></div>'
+      + matchInviteHTML()
       + todayBannerHTML()
       + (posts.length ? posts.map(postHTML).join('') : emptyHomeHTML());
     return;
@@ -1591,6 +2017,10 @@ function findPostElFrom(node){
 
 function onMainClick(e){
   const target = e.target;
+
+  /* the K-star Kemi match invite on top of the feed */
+  const matchOpen = target.closest('[data-match-open]');
+  if (matchOpen) { openMatchSheet(); return; }
 
   /* MOMO Shop first: its controls live inside the same main element */
   const shopAddBtn = target.closest('[data-shop-add]');
@@ -1719,12 +2149,13 @@ function buildLangMenu(){
 }
 
 function bind(){
-  $('#composeBtn').addEventListener('click', openCompose);
-  $('#composeBtn2').addEventListener('click', openCompose);
+  $('#composeBtn').addEventListener('click', () => openCompose());
+  $('#composeBtn2').addEventListener('click', () => openCompose());
   $('#composeCancel').addEventListener('click', () => closeSheet($('#composeSheet')));
   $('#scrim').addEventListener('click', () => {
     if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
     if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
+    if (!$('#matchSheet').hidden) closeSheet($('#matchSheet'));
   });
   $('#composeSubmit').addEventListener('click', onComposeSubmit);
 
@@ -1785,7 +2216,21 @@ function bind(){
     closeViewer();
     if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
     if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
+    if (!$('#matchSheet').hidden) closeSheet($('#matchSheet'));
   });
+
+  /* K-star Kemi match sheet */
+  if ($('#matchSheet')) {
+    $('#matchClose').addEventListener('click', () => closeSheet($('#matchSheet')));
+    $('#matchGo').addEventListener('click', onMatchGo);
+    $('#matchResult').addEventListener('click', (e) => {
+      if (e.target.closest('[data-match-share]')) bragOnDiary();
+    });
+    ['#starNameInput', '#starYear', '#myYear'].forEach(sel => {
+      const el = $(sel);
+      if (el) el.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); onMatchGo(); } });
+    });
+  }
 
   /* MOMO Shop sheet */
   if ($('#shopSheet')) {
