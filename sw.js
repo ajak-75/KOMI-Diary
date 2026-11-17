@@ -1,5 +1,5 @@
 /* KOMI's K-Culture Diary — service worker (offline-first shell) */
-const CACHE = 'komidiary-v20';
+const CACHE = 'komidiary-v21';
 const SHELL = [
   './',
   './index.html',
@@ -17,6 +17,11 @@ const SHELL = [
   './img/bukchon.jpg',
   './img/nami.jpg',
   './img/dancheong-flower.svg',
+  './img/dancheong-1.png',
+  './img/dancheong-2.png',
+  './img/dancheong-3.png',
+  './img/dancheong-4.png',
+  './img/dancheong-5.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
 ];

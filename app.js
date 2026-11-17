@@ -23,6 +23,12 @@ const DB_STORE   = 'media';
 
 const DC = ['#4B7F9F', '#E05A47', '#EB7A2D', '#6E946B', '#D9B44A']; // dancheong
 
+/* Free round dancheong stickers for the diaries — one per post. The artwork is
+   cut out of the sticker sheet the user sent, with its white paper removed. */
+const STICKERS = [1, 2, 3, 4, 5];
+const stickerSrc = (n) => './img/dancheong-' + n + '.png';
+const validSticker = (n) => (STICKERS.indexOf(Number(n)) >= 0 ? Number(n) : 0);
+
 const STAMP_SVG = '<svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">'
   + [0,72,144,216,288].map((a,i)=>`<path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="${DC[i]}" transform="rotate(${a} 24 24)"/>`).join('')
   + '<circle cx="24" cy="24" r="4.6" fill="#D9B44A"/><circle cx="24" cy="24" r="2.1" fill="#fff"/></svg>';
@@ -50,6 +56,7 @@ const T = {
     videoTooBig:'Videos up to 15MB', videoTooLong:'Please use a video of 15 seconds or less', videoBad:'Could not add that video', photoBad:'Could not read that photo',
     translating:'Translating…', translateFail:'Could not translate \u2014 tap to try again', translateSame:'This post is already in this language',
     composeHint:'Your post is saved on this device.',
+    stickerTitle:'\ud83c\udf38 Dancheong Sticker (Free)', stickerHint:'One per diary \u00b7 tap again to remove',
     comment:'Reply', commentPlaceholder:'Reply warmly to a fellow Kemi\u2026', send:'Send',
     like:'Like', repost:'Repost', share:'Share', copyLink:'Copy link', copied:'Link copied \ud83d\udd17',
     sharedTo:'Shared \ud83d\ude4c', shareFail:'Could not share \ud83d\ude22',
@@ -97,6 +104,7 @@ const T = {
     videoTooBig:'영상은 15MB까지 올릴 수 있어요', videoTooLong:'영상은 15초 이내로 올려 주세요', videoBad:'영상을 불러오지 못했어요', photoBad:'사진을 불러오지 못했어요',
     translating:'번역 중…', translateFail:'번역을 불러오지 못했어요 · 다시 눌러 주세요', translateSame:'이미 이 언어로 쓰인 글이에요',
     composeHint:'게시물은 이 기기에 저장돼요.',
+    stickerTitle:'\ud83c\udf38 단청 스티커 (무료)', stickerHint:'다이어리 1개에 1개 \u00b7 다시 누르면 해제',
     comment:'댓글', commentPlaceholder:'케미들과 다정하게 이야기 나눠요\u2026', send:'보내기',
     like:'좋아요', repost:'리포스트', share:'공유', copyLink:'링크 복사', copied:'링크를 복사했어요 \ud83d\udd17',
     sharedTo:'공유했어요 \ud83d\ude4c', shareFail:'공유할 수 없어요 \ud83d\ude22',
@@ -144,6 +152,7 @@ const T = {
     videoTooBig:'動画は15MBまでです', videoTooLong:'動画は15秒以内にしてください', videoBad:'動画を読み込めませんでした', photoBad:'写真を読み込めませんでした',
     translating:'翻訳中…', translateFail:'翻訳できませんでした · もう一度押してください', translateSame:'この投稿はすでにこの言語です',
     composeHint:'投稿はこの端末に保存されます。',
+    stickerTitle:'\ud83c\udf38 丹青（タンチョン）ステッカー（無料）', stickerHint:'1ダイアリーに1枚 \u00b7 もう一度押すと外れます',
     comment:'返信', commentPlaceholder:'Kemiとやさしくおしゃべりしよう\u2026', send:'送信',
     like:'いいね', repost:'リポスト', share:'シェア', copyLink:'リンクをコピー', copied:'リンクをコピーしました \ud83d\udd17',
     sharedTo:'シェアしました \ud83d\ude4c', shareFail:'シェアできません \ud83d\ude22',
@@ -191,6 +200,7 @@ const T = {
     videoTooBig:'视频最大15MB', videoTooLong:'请上传15秒以内的视频', videoBad:'无法读取该视频', photoBad:'无法读取该照片',
     translating:'正在翻译…', translateFail:'翻译失败 · 请再点一次', translateSame:'这篇已经是该语言了',
     composeHint:'帖子保存在这台设备上。',
+    stickerTitle:'\ud83c\udf38 丹青贴纸（免费）', stickerHint:'每篇日记一张 \u00b7 再点一次取消',
     comment:'评论', commentPlaceholder:'和Kemi温柔地聊一聊\u2026', send:'发送',
     like:'点赞', repost:'转发', share:'分享', copyLink:'复制链接', copied:'链接已复制 \ud83d\udd17',
     sharedTo:'已分享 \ud83d\ude4c', shareFail:'无法分享 \ud83d\ude22',
@@ -238,6 +248,7 @@ const T = {
     videoTooBig:'V\u00eddeos de hasta 15MB', videoTooLong:'Sube un vídeo de 15 segundos o menos', videoBad:'No se pudo a\u00f1adir el v\u00eddeo', photoBad:'No se pudo leer la foto',
     translating:'Traduciendo…', translateFail:'No se pudo traducir \u2014 toca para reintentar', translateSame:'Esta publicaci\u00f3n ya est\u00e1 en este idioma',
     composeHint:'Tu publicaci\u00f3n se guarda en este dispositivo.',
+    stickerTitle:'\ud83c\udf38 Sticker Dancheong (Gratis)', stickerHint:'Uno por diario \u00b7 toca de nuevo para quitarlo',
     comment:'Responder', commentPlaceholder:'Responde con cari\u00f1o a los Kemi\u2026', send:'Enviar',
     like:'Me gusta', repost:'Repostear', share:'Compartir', copyLink:'Copiar enlace', copied:'Enlace copiado \ud83d\udd17',
     sharedTo:'Compartido \ud83d\ude4c', shareFail:'No se pudo compartir \ud83d\ude22',
@@ -519,6 +530,26 @@ async function downscaleImageBlob(file){
    media already attached come back into the draft strip as editable items. */
 let draftMedia = [];   /* { kind, blob, url, id? } — id when the item is already stored */
 let editPostId = null; /* post id while editing, null while composing */
+let draftSticker = null; /* 1..5 while a dancheong sticker is chosen in the sheet */
+
+/* The free sticker tray: five round dancheong stickers, tap to choose one,
+   tap the chosen one again to take it off. */
+function renderStickerTray(){
+  const row = $('#stickerRow');
+  if (!row) return;
+  row.innerHTML = STICKERS.map(n => (
+    '<button type="button" class="sticker-opt' + (draftSticker === n ? ' is-on' : '') + '"'
+    + ' data-sticker="' + n + '" aria-pressed="' + (draftSticker === n ? 'true' : 'false') + '"'
+    + ' aria-label="Dancheong sticker ' + n + '">'
+    + '<img src="' + stickerSrc(n) + '" alt="" width="44" height="44" loading="lazy"></button>'
+  )).join('');
+}
+
+function toggleDraftSticker(n){
+  const v = validSticker(n);
+  draftSticker = (v && draftSticker !== v) ? v : null;
+  renderStickerTray();
+}
 
 function clearDraftMedia(){
   draftMedia.forEach(m => { if (!m.id) { try { URL.revokeObjectURL(m.url); } catch (e) {} } });
@@ -529,11 +560,13 @@ function clearDraftMedia(){
 
 function openCompose(){
   editPostId = null;
+  draftSticker = null;
   $('#nickInput').value = state.me && state.me.nick ? state.me.nick : "KOMI's Unnie";
   $('#bodyInput').value = '';
   $('#tagInput').value = '';
   $('#bodyCount').textContent = '0';
   clearDraftMedia();
+  renderStickerTray();
   syncComposeMode();
   openSheet($('#composeSheet'));
   setTimeout(() => $('#bodyInput').focus(), 260);
@@ -550,11 +583,13 @@ function syncComposeMode(){
 function openEditPost(p){
   if (!p) return;
   editPostId = p.id;
+  draftSticker = validSticker(p.sticker) || null;   /* the sticker comes back chosen */
   $('#nickInput').value = p.nick || (state.me && state.me.nick) || "KOMI's Unnie";
   $('#bodyInput').value = p.body || '';
   $('#tagInput').value = (p.tags || []).map(x => '#' + x).join(' ');
   $('#bodyCount').textContent = String(($('#bodyInput').value || '').length);
   clearDraftMedia();
+  renderStickerTray();
   syncComposeMode();
   openSheet($('#composeSheet'));
   loadDraftFromPost(p);
@@ -704,6 +739,8 @@ async function submitPost(){
     ts: Date.now(), likes: 0, liked: false, reposts: 0, reposted: false, comments: [],
   };
   if (inlinePhotos.length) p.photos = inlinePhotos;
+  const st = validSticker(draftSticker);
+  if (st) p.sticker = st;
   state.diaries.unshift(p);
   state.me.nick = nick;
   save(state);
@@ -737,6 +774,8 @@ async function submitEdit(){
   p.tags = tags;
   p.media = media.filter(m => !m.data);
   if (inlinePhotos.length) p.photos = inlinePhotos; else delete p.photos;
+  const st = validSticker(draftSticker);
+  if (st) p.sticker = st; else delete p.sticker;
   p.editedAt = Date.now();
   /* the old text must not answer "Translate" any more */
   p.translations = {};
@@ -768,7 +807,7 @@ function closeSheet(sheet){
   setTimeout(() => {
     scrim.hidden = true; sheet.hidden = true;
     /* a cancelled edit must not leave its previews behind */
-    if (sheet === $('#composeSheet')) { editPostId = null; clearDraftMedia(); syncComposeMode(); }
+    if (sheet === $('#composeSheet')) { editPostId = null; draftSticker = null; clearDraftMedia(); renderStickerTray(); syncComposeMode(); }
     if (sheet === $('#shopSheet')) { shopEditId = null; clearShopDraftPhoto(); syncSheetTitle(); }
   }, 230);
 }
@@ -1375,6 +1414,12 @@ async function removeShopProduct(id){
   toast(t('shopDeleted'));
 }
 
+function postStickerHTML(p){
+  const n = validSticker(p && p.sticker);
+  if (!n) return '';
+  return '<img class="post-sticker" src="' + stickerSrc(n) + '" alt="" width="44" height="44" loading="lazy">';
+}
+
 function postHTML(p){
   const tags = p.tags.map((tg, i) => tagChipHTML(tg, i)).join('');
   const followBtn = (!p.mine)
@@ -1396,6 +1441,7 @@ function postHTML(p){
     +     '<p class="post-body">' + esc(p.body) + '</p>'
     +     (tags ? '<div class="post-tags">' + tags + '</div>' : '')
     +   '</div>'
+    +   postStickerHTML(p)
     + '</div>'
     + mediaHTML(p)
     + translateRowHTML(p)
@@ -1699,6 +1745,13 @@ function bind(){
       renderDraftMedia();
     }
   });
+
+  /* dancheong sticker tray: one sticker per diary, tap again to take it off */
+  if ($('#stickerRow')) $('#stickerRow').addEventListener('click', (e) => {
+    const opt = e.target.closest('[data-sticker]');
+    if (opt) toggleDraftSticker(opt.dataset.sticker);
+  });
+  renderStickerTray();
 
   const langBtn = $('#langBtn'), langMenu = $('#langMenu');
   langBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.hidden = !langMenu.hidden; langBtn.setAttribute('aria-expanded', String(!langMenu.hidden)); });
