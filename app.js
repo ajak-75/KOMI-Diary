@@ -1163,8 +1163,8 @@ function matchResultHTML(s){
   return (
     '<div class="mr-star">💘 <b>' + esc(s.star) + '</b></div>'
     + '<div class="mr-top">'
-    +   '<div class="mr-score"><b>' + r.score + '</b><i>%</i><em>' + esc(t('matchScoreL')) + '</em></div>'
-    +   '<div class="mr-rel"><b>' + esc(t('rel_' + r.rel)) + '</b></div>'
+    +   '<div class="mr-score"><b>' + r.score + '</b><i>%</i></div>'
+    +   '<div class="mr-rel"><span>' + esc(t('matchScoreL')) + '</span><b>' + esc(t('rel_' + r.rel)) + '</b></div>'
     + '</div>'
     + '<div class="mr-zodiacs">'
     +   '<div class="mr-zod"><span>' + esc(t('matchMyZodiac')) + '</span><b>' + ZODIAC[r.me].emoji + ' ' + esc(zodiacLabel(r.me)) + '</b></div>'

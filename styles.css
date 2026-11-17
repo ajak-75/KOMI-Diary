@@ -654,8 +654,8 @@ svg { display: block; }
 .mr-score { display: flex; align-items: baseline; flex: none; }
 .mr-score b { font-size: 38px; font-weight: 800; line-height: .95; letter-spacing: -.035em; color: #E05A47; }
 .mr-score i { font-style: normal; font-size: 16px; font-weight: 800; color: #E05A47; margin-left: 1px; }
-.mr-score em { font-style: normal; display: block; align-self: flex-end; margin: 0 0 4px 6px; font-size: 10.5px; font-weight: 700; letter-spacing: .02em; color: var(--ink-3); }
 .mr-rel { flex: 1; min-width: 0; }
+.mr-rel span { display: block; margin-bottom: 3px; font-size: 10.5px; font-weight: 700; letter-spacing: .02em; color: var(--ink-3); }
 .mr-rel b { display: block; font-size: 13.5px; font-weight: 800; line-height: 1.4; letter-spacing: -.01em; word-break: keep-all; }
 .mr-zodiacs {
   display: flex; align-items: center; gap: 8px; margin-top: 12px;
