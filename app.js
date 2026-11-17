@@ -930,6 +930,7 @@ function checkKemi(text){
 }
 
 const PROMISE_KEYS = ['p1', 'p2', 'p3', 'p4', 'p5'];
+let composeWarnKind = null;   /* the warning on screen, so a language switch can redraw it */
 
 function renderPromiseSheet(){
   const list = $('#promiseList');
@@ -962,8 +963,7 @@ function closePromiseSheet(){
   }, 230);
 }
 
-function warnHTML(kind){
-  const why = kind === 'link' ? t('warnLink') : kind === 'phone' ? t('warnPhone') : t('warnWord');
+function warnHTML(kind){  const why = kind === 'link' ? t('warnLink') : kind === 'phone' ? t('warnPhone') : t('warnWord');
   return '<div class="kemi-warn-head"><span class="kemi-warn-ico" aria-hidden="true">🛡️</span><b>' + esc(t('warnTitle')) + '</b></div>'
     + '<p class="kemi-warn-why">' + esc(why) + '</p>'
     + '<p class="kemi-warn-fix">' + esc(t('warnEdit')) + '</p>'
@@ -973,12 +973,14 @@ function warnHTML(kind){
 function showComposeWarn(kind){
   const el = $('#composeWarn');
   if (!el) return;
+  composeWarnKind = kind;
   el.innerHTML = warnHTML(kind);
   el.hidden = false;
   const body = el.closest('.sheet-body');
   if (body) body.scrollTop = 0;
 }
 function hideComposeWarn(){
+  composeWarnKind = null;
   const el = $('#composeWarn');
   if (el) { el.hidden = true; el.innerHTML = ''; }
 }
@@ -1555,6 +1557,7 @@ function renderLangUI(){
   buildBdayOptions();
   syncMatchLabels();
   renderPromiseSheet();
+  if (composeWarnKind && $('#composeWarn') && !$('#composeWarn').hidden) showComposeWarn(composeWarnKind);
   if (matchState) renderMatch();
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
