@@ -101,7 +101,7 @@ const T = {
     matchGo:'See our Kemi \u2728',
     matchNeedName:'Tell us your favorite star first \u2728',
     matchNeedDate:'Please fill in both birthdays',
-    matchBadDate:'That date doesn\u2019t exist \u2014 check the month and day',
+    matchBadDate:'Check the date \u2014 the year needs four digits (e.g. 1997)',
     matchScoreL:'Kemi score', matchMyZodiac:'My sign', matchStarZodiac:'Bias\u2019s sign',
     matchColorL:'Today\u2019s lucky Obangsaek',
     matchShare:'Brag on my diary', matchFilled:'Filled in \u2014 edit it your way, then post \ud83c\udf8a',
@@ -171,7 +171,7 @@ const T = {
     matchGo:'궁합 보기 ✨',
     matchNeedName:'최애 스타 이름을 먼저 알려 주세요 ✨',
     matchNeedDate:'두 사람의 생년월일을 모두 넣어 주세요',
-    matchBadDate:'없는 날짜예요 · 월과 일을 확인해 주세요',
+    matchBadDate:'날짜를 다시 확인해 주세요 · 연도는 4자리(예: 1997)로 넣어 주세요',
     matchScoreL:'케미 지수', matchMyZodiac:'내 띠', matchStarZodiac:'최애 띠',
     matchColorL:'오늘의 행운 오방색',
     matchShare:'다이어리에 자랑하기', matchFilled:'본문과 태그를 채웠어요 · 마음대로 고쳐서 올려 주세요 🎊',
@@ -241,7 +241,7 @@ const T = {
     matchGo:'相性を見る ✨',
     matchNeedName:'先に推しの名前を教えてください ✨',
     matchNeedDate:'二人の誕生日を両方入れてください',
-    matchBadDate:'存在しない日付です · 月と日を確認してください',
+    matchBadDate:'日付を確認してください · 年は4桁（例：1997）で入れてください',
     matchScoreL:'ケミ指数', matchMyZodiac:'自分の干支', matchStarZodiac:'推しの干支',
     matchColorL:'今日のラッキー五行色',
     matchShare:'ダイアリーに自慢する', matchFilled:'本文とタグを入れました · 自由に直して投稿してください 🎊',
@@ -311,7 +311,7 @@ const T = {
     matchGo:'看看我们的缘分 ✨',
     matchNeedName:'先告诉我本命的名字吧 ✨',
     matchNeedDate:'请把两个生日都填上',
-    matchBadDate:'这一天不存在 · 请检查月份和日期',
+    matchBadDate:'请检查日期 · 年份请填四位（例如 1997）',
     matchScoreL:'Kemi 指数', matchMyZodiac:'我的生肖', matchStarZodiac:'本命生肖',
     matchColorL:'今日幸运五方色',
     matchShare:'去日记里炫耀', matchFilled:'正文和标签已填好 · 随便改一改再发布吧 🎊',
@@ -381,7 +381,7 @@ const T = {
     matchGo:'Ver nuestro Kemi ✨',
     matchNeedName:'Primero dime el nombre de tu bias ✨',
     matchNeedDate:'Completa los dos cumpleaños',
-    matchBadDate:'Esa fecha no existe · revisa el mes y el día',
+    matchBadDate:'Revisa la fecha: el año va con cuatro cifras (ej. 1997)',
     matchScoreL:'Puntuación Kemi', matchMyZodiac:'Mi signo', matchStarZodiac:'Signo del bias',
     matchColorL:'Obangsaek de la suerte hoy',
     matchShare:'Presumir en mi diario', matchFilled:'Ya llené el texto y las etiquetas · edítalo a tu gusto y publica 🎊',
@@ -451,24 +451,24 @@ const KOMI_LINES = {
   },
   ko: {
     h6: [
-      '코미의 판정: {star}와 나는 태어날 때부터 짝으로 정해진 사이! 오늘은 최애에게 하트 한 번 눌러 줄까요? 💘',
+      '코미의 판정: {star_wa} 나는 태어날 때부터 짝으로 정해진 사이! 오늘은 최애에게 하트 한 번 눌러 줄까요? 💘',
       '코미가 봐도 이건 운명이에요. {star} 생각만 해도 하루가 반짝이니, 그 마음을 다이어리에 남겨 두세요 🐾',
     ],
     trine: [
-      '코미의 판정: {star}와 나는 서로의 힘을 키워 주는 사이! 함께면 어떤 무대도 더 빛나요 ✨',
+      '코미의 판정: {star_wa} 나는 서로의 힘을 키워 주는 사이! 함께면 어떤 무대도 더 빛나요 ✨',
       '셋이 모이면 최고라는데, 우리 둘만으로도 충분히 반짝여요. 오늘 응원 한 줄 남겨 볼까요? 💛',
     ],
     same: [
-      '{star}와 나는 같은 띠! 거울을 보는 것처럼 마음이 통하니, 오늘은 같은 취향 하나를 찾아보면 재밌어요 ✨',
+      '{star_wa} 나는 같은 띠! 거울을 보는 것처럼 마음이 통하니, 오늘은 같은 취향 하나를 찾아보면 재밌어요 ✨',
       '코미의 판정: 닮은 띠끼리는 말 안 해도 통하는 사이예요. 오늘 {star}의 무대도 함께 응원해요 🎀',
     ],
     fine: [
-      '코미의 판정: {star}와 나는 천천히 가까워지는 사이! 한 걸음씩 마음을 나누면 더 오래 갈 거예요 🌱',
-      '{star}와 나는 아직 서로 알아 가는 중이에요. 오늘의 다이어리로 첫 인사를 열어 볼까요? 🐶',
+      '코미의 판정: {star_wa} 나는 천천히 가까워지는 사이! 한 걸음씩 마음을 나누면 더 오래 갈 거예요 🌱',
+      '{star_wa} 나는 아직 서로 알아 가는 중이에요. 오늘의 다이어리로 첫 인사를 열어 볼까요? 🐶',
     ],
     clash: [
       '코미의 판정: 부딪히면서 끌리는 사이! 티격태격해도 {star} 생각이 나는 건 어쩔 수 없나 봐요 😆',
-      '{star}와 나는 정반대라서 더 눈에 밟히는 사이예요. 오늘은 용기 내서 애정 한 스푼 남겨 볼까요? 💗',
+      '{star_wa} 나는 정반대라서 더 눈에 밟히는 사이예요. 오늘은 용기 내서 애정 한 스푼 남겨 볼까요? 💗',
     ],
   },
   ja: {
@@ -825,7 +825,7 @@ function openCompose(prefill){
   renderStickerTray();
   syncComposeMode();
   openSheet($('#composeSheet'));
-  setTimeout(() => { const b = $('#bodyInput'); if (b) { b.focus(); b.setSelectionRange(b.value.length, b.value.length); } }, 260);
+  setTimeout(() => { const b = $('#bodyInput'); if (b) { b.focus(); b.setSelectionRange(b.value.length, b.value.length); b.scrollTop = 0; } }, 260);
 }
 
 /* Title and submit label follow the mode, in the current language. */
@@ -1075,7 +1075,7 @@ function zodiacRelation(a, b){
 
 function birthdayValid(y, m, d){
   if (!y || !m || !d) return false;
-  if (y < 1900 || y > 2026) return false;
+  if (y < 1900 || y > new Date().getFullYear()) return false;
   const dt = new Date(y, m - 1, d);
   return dt.getFullYear() === y && dt.getMonth() === m - 1 && dt.getDate() === d;
 }
@@ -1098,6 +1098,17 @@ function matchReading(s){
   };
 }
 
+/* A name typed by the visitor takes the right Korean particle: 정국과 / 제니와 */
+function koParticle(word, withBatchim, without){
+  const str = String(word || '').trim();
+  if (!str) return without;
+  const ch = str.charAt(str.length - 1);
+  const code = ch.charCodeAt(0);
+  if (code >= 0xAC00 && code <= 0xD7A3) return ((code - 0xAC00) % 28) ? withBatchim : without;
+  if (/[aeiouyw]/i.test(ch)) return without;
+  return withBatchim;
+}
+
 function fillTokens(tpl, map){
   return String(tpl == null ? '' : tpl).replace(/\{(\w+)\}/g, (m, k) => (Object.prototype.hasOwnProperty.call(map, k) ? String(map[k]) : m));
 }
@@ -1105,7 +1116,7 @@ function fillTokens(tpl, map){
 function komiLine(rel, seed, star){
   const L = KOMI_LINES[getLang()] || KOMI_LINES.en;
   const pool = L[rel] || L.fine || KOMI_LINES.en[rel];
-  return fillTokens(pool[seed % pool.length], { star });
+  return fillTokens(pool[seed % pool.length], { star, star_wa: star + koParticle(star, '과', '와') });
 }
 
 /* Month names come from the browser's locale, so every language reads right.
