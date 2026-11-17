@@ -1200,7 +1200,7 @@ function shopProductHTML(p){
     +   '<div class="shop-card-foot">' + open
     +     '<span class="shop-tools">'
     +       '<button type="button" class="act" data-shop-edit="' + escAttr(p.id) + '" aria-label="' + escAttr(t('edit')) + '" title="' + escAttr(t('edit')) + '">' + ICO.pencil + '</button>'
-    +       '<button type="button" class="act" data-shop-del="' + escAttr(p.id) + '" aria-label="' + escAttr(t('deleted')) + '" title="' + escAttr(t('deleted')) + '">' + ICO.trash + '</button>'
+    +       '<button type="button" class="act" data-shop-del="' + escAttr(p.id) + '" aria-label="' + escAttr(t('deleteComment')) + '" title="' + escAttr(t('deleteComment')) + '">' + ICO.trash + '</button>'
     +     '</span>'
     +   '</div>'
     + '</div></article>';
@@ -1328,6 +1328,9 @@ async function submitShop(){
     if (editing) {
       editing.name = name; editing.price = price; editing.link = link;
       editing.note = note; editing.mediaId = mediaId;
+      /* an edited line must not keep the translation of the old one */
+      delete shopTr[editing.id];
+      Array.from(shopTrCache.keys()).forEach(k => { if (k.indexOf(editing.id + '|') === 0) shopTrCache.delete(k); });
     } else {
       shop.products.push({ id: 'p' + uid(), name, price, link, note, mediaId, ts: Date.now() });
     }
