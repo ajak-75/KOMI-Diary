@@ -1110,8 +1110,11 @@ async function resolveShopMedia(){
   for (const p of shop.products) {
     if (!p.mediaId || mediaURLs.has(p.mediaId)) continue;
     try {
-      const blob = await mediaGet(p.mediaId);
-      if (blob) { mediaURLs.set(p.mediaId, { url: URL.createObjectURL(blob), kind: 'image' }); changed = true; }
+      const rec = await mediaGet(p.mediaId);
+      if (rec && rec.blob) {
+        mediaURLs.set(p.mediaId, { url: URL.createObjectURL(rec.blob), kind: rec.kind || 'image' });
+        changed = true;
+      }
     } catch (e) { /* a missing blob just leaves the Momo placeholder */ }
   }
   shopMediaBusy = false;
@@ -1250,10 +1253,13 @@ function clearShopDraftPhoto(){
 
 async function previewShopMedia(mediaId){
   try {
-    const blob = await mediaGet(mediaId);
-    if (!blob || shopKeepPhotoId !== mediaId) return;
+    const rec = await mediaGet(mediaId);
+    if (!rec || !rec.blob || shopKeepPhotoId !== mediaId) return;
     let url = (mediaURLs.get(mediaId) || {}).url;
-    if (!url) url = URL.createObjectURL(blob);
+    if (!url) {
+      url = URL.createObjectURL(rec.blob);
+      mediaURLs.set(mediaId, { url, kind: rec.kind || 'image' });
+    }
     setShopPhotoPreview(url);
   } catch (e) { /* keep the add tile */ }
 }

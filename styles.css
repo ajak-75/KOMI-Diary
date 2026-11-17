@@ -477,7 +477,7 @@ svg { display: block; }
   margin: 0 16px 14px; background: #fff;
   border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
 }
-.shop-card-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #FDF2F8; cursor: zoom-in; }
+.shop-card-img { width: 100%; aspect-ratio: 1 / 1; max-height: 420px; object-fit: cover; background: #FDF2F8; cursor: zoom-in; }
 .shop-card-noimg {
   aspect-ratio: 16 / 7; display: grid; place-items: center;
   background: linear-gradient(135deg, #FDF2F8, #F3F4F6);
