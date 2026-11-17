@@ -1088,7 +1088,7 @@ function matchReading(s){
   const me = zodiacIndex(s.my), star = zodiacIndex(s.sy);
   const rel = zodiacRelation(me, star);
   const seed = matchSeed(s);
-  const base = { h6: 96, same: 93, trine: 90, fine: 85, clash: 80 }[rel] || 85;
+  const base = { h6: 96, same: 93, trine: 90, fine: 84, clash: 78 }[rel] || 84;
   const day = new Date();
   const dayNo = day.getFullYear() * 37 + (day.getMonth() + 1) * 11 + day.getDate();
   return {
