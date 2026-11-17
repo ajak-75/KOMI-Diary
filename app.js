@@ -101,7 +101,7 @@ const T = {
     matchGo:'See our Kemi \u2728',
     matchNeedName:'Tell us your favorite star first \u2728',
     matchNeedDate:'Please fill in both birthdays',
-    matchBadDate:'Check the date \u2014 the year needs four digits (e.g. 1997)',
+    matchBadDate:'That date doesn\u2019t exist \u2014 check the month and day', matchYear:'Put the year in four digits (e.g. 1997)',
     matchScoreL:'Kemi score', matchMyZodiac:'My sign', matchStarZodiac:'Bias\u2019s sign',
     matchColorL:'Today\u2019s lucky Obangsaek',
     matchShare:'Brag on my diary', matchFilled:'Filled in \u2014 edit it your way, then post \ud83c\udf8a',
@@ -171,7 +171,7 @@ const T = {
     matchGo:'궁합 보기 ✨',
     matchNeedName:'최애 스타 이름을 먼저 알려 주세요 ✨',
     matchNeedDate:'두 사람의 생년월일을 모두 넣어 주세요',
-    matchBadDate:'날짜를 다시 확인해 주세요 · 연도는 4자리(예: 1997)로 넣어 주세요',
+    matchBadDate:'없는 날짜예요 · 월과 일을 확인해 주세요', matchYear:'연도는 4자리로 넣어 주세요 (예: 1997)',
     matchScoreL:'케미 지수', matchMyZodiac:'내 띠', matchStarZodiac:'최애 띠',
     matchColorL:'오늘의 행운 오방색',
     matchShare:'다이어리에 자랑하기', matchFilled:'본문과 태그를 채웠어요 · 마음대로 고쳐서 올려 주세요 🎊',
@@ -241,7 +241,7 @@ const T = {
     matchGo:'相性を見る ✨',
     matchNeedName:'先に推しの名前を教えてください ✨',
     matchNeedDate:'二人の誕生日を両方入れてください',
-    matchBadDate:'日付を確認してください · 年は4桁（例：1997）で入れてください',
+    matchBadDate:'存在しない日付です · 月と日を確認してください', matchYear:'年は4桁で入れてください（例：1997）',
     matchScoreL:'ケミ指数', matchMyZodiac:'自分の干支', matchStarZodiac:'推しの干支',
     matchColorL:'今日のラッキー五行色',
     matchShare:'ダイアリーに自慢する', matchFilled:'本文とタグを入れました · 自由に直して投稿してください 🎊',
@@ -311,7 +311,7 @@ const T = {
     matchGo:'看看我们的缘分 ✨',
     matchNeedName:'先告诉我本命的名字吧 ✨',
     matchNeedDate:'请把两个生日都填上',
-    matchBadDate:'请检查日期 · 年份请填四位（例如 1997）',
+    matchBadDate:'这一天不存在 · 请检查月份和日期', matchYear:'年份请填四位（例如 1997）',
     matchScoreL:'Kemi 指数', matchMyZodiac:'我的生肖', matchStarZodiac:'本命生肖',
     matchColorL:'今日幸运五方色',
     matchShare:'去日记里炫耀', matchFilled:'正文和标签已填好 · 随便改一改再发布吧 🎊',
@@ -381,7 +381,7 @@ const T = {
     matchGo:'Ver nuestro Kemi ✨',
     matchNeedName:'Primero dime el nombre de tu bias ✨',
     matchNeedDate:'Completa los dos cumpleaños',
-    matchBadDate:'Revisa la fecha: el año va con cuatro cifras (ej. 1997)',
+    matchBadDate:'Esa fecha no existe · revisa el mes y el día', matchYear:'El año va con cuatro cifras (ej. 1997)',
     matchScoreL:'Puntuación Kemi', matchMyZodiac:'Mi signo', matchStarZodiac:'Signo del bias',
     matchColorL:'Obangsaek de la suerte hoy',
     matchShare:'Presumir en mi diario', matchFilled:'Ya llené el texto y las etiquetas · edítalo a tu gusto y publica 🎊',
@@ -1202,6 +1202,8 @@ function onMatchGo(){
   const my = parseInt($('#myYear').value, 10), mm = parseInt($('#myMonth').value, 10), md = parseInt($('#myDay').value, 10);
   if (!star) { toast(t('matchNeedName')); $('#starNameInput').focus(); return; }
   if (!sy || !my) { toast(t('matchNeedDate')); if (!sy) $('#starYear').focus(); else $('#myYear').focus(); return; }
+  const thisYear = new Date().getFullYear();
+  if (sy < 1900 || sy > thisYear || my < 1900 || my > thisYear) { toast(t('matchYear')); return; }
   if (!birthdayValid(sy, sm, sd) || !birthdayValid(my, mm, md)) { toast(t('matchBadDate')); return; }
   matchState = { star, sy, sm, sd, my, mm, md };
   renderMatch();
