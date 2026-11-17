@@ -431,6 +431,55 @@ svg { display: block; }
 .filter-note button { color: var(--ink); font-weight: 700; font-size: 12.5px; text-decoration: underline; }
 
 /* ---------- me view ---------- */
+/* her own profile card on top of My Diary */
+.me-card {
+  display: flex; flex-direction: column; gap: 12px;
+  margin: 6px 16px 14px; padding: 14px;
+  background: linear-gradient(160deg, #FFFFFF 0%, #FFFCF6 62%, #FDF7FB 100%);
+  border: 1px solid var(--line); border-radius: 20px;
+}
+.me-card-top { display: flex; align-items: flex-start; gap: 13px; }
+.me-card-ava {
+  width: 72px; height: 72px; flex: none; border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--line); background: #fff;
+}
+.me-card-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; padding-top: 2px; }
+.me-card-name { font-size: 17px; font-weight: 800; letter-spacing: -.01em; line-height: 1.28; word-break: break-word; }
+.me-card-role { font-size: 11.5px; color: var(--ink-3); line-height: 1.4; word-break: keep-all; }
+.me-card-bio { margin: 3px 0 0; font-size: 13px; color: var(--ink-2); line-height: 1.55; word-break: keep-all; }
+.me-card-edit {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 14px; font-size: 13px; font-weight: 700; color: var(--ink);
+}
+.me-card-edit .ico { width: 16px; height: 16px; }
+.me-card-edit:hover { border-color: var(--ink-3); background: #FAFAFA; }
+.me-card-edit:active { transform: scale(.995); }
+
+/* ---------- profile sheet ---------- */
+.profile-photo-row { display: flex; align-items: center; gap: 14px; }
+.profile-photo-btn {
+  position: relative; flex: none; width: 88px; height: 88px; padding: 0;
+  border-radius: 50%; overflow: hidden; border: 1px solid var(--line); background: #FAFAFA;
+}
+.profile-photo-img { width: 100%; height: 100%; object-fit: cover; }
+.profile-photo-cam {
+  position: absolute; right: 2px; bottom: 2px; width: 27px; height: 27px;
+  border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); color: #fff; border: 2.5px solid #fff;
+}
+.profile-photo-tools { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.profile-photo-tools .tool-btn { padding: 7px 13px; font-size: 12.5px; }
+.profile-photo-reset {
+  font-size: 12px; font-weight: 600; color: var(--ink-3);
+  padding: 5px 0; text-decoration: underline; text-underline-offset: 2px;
+}
+.profile-photo-reset:hover { color: var(--ink); background: none; }
+.field-note {
+  display: block; margin-top: 5px; text-align: right;
+  font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums;
+}
+.profile-area { min-height: 64px; resize: none; }
+
 .me-tabs { display: flex; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); }
 .me-tab { flex: 1; padding: 12px 0; text-align: center; font-size: 13.5px; font-weight: 650; color: var(--ink-3); border-bottom: 2px solid transparent; }
 .me-tab.is-active { color: var(--ink); border-bottom-color: var(--ink); }

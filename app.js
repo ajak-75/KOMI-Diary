@@ -130,6 +130,20 @@ const T = {
     warnLink:'External or spam links cannot be posted here.',
     warnPhone:'This looks like a phone number or other personal contact.',
     warnEdit:'Edit the wording and you can post right away.',
+
+    /* 👤 My profile (photo · nickname · one-line intro) */
+    profileEdit:'Edit profile',
+    profilePhoto:'Profile photo',
+    profilePhotoPick:'Choose photo',
+    profilePhotoReset:'Back to the default photo',
+    profileNickL:'Nickname',
+    profileNickPh:'Up to 20 characters',
+    profileBioL:'One-line intro',
+    profileBioPh:'A line about you, up to 80 characters',
+    profileHint:'Your photo, nickname and line show on your diaries and replies. Saved on this device.',
+    profileNeedNick:'Please write a nickname ✨',
+    profileSaved:'Profile saved 🎊',
+    profilePhotoBad:'Could not read that photo',
   },
   ko: {
     tagline:'케미(Kemi)들과 함께하는 K-컬쳐 일상',
@@ -218,6 +232,20 @@ const T = {
     warnLink:'외부 링크나 스팸 주소는 여기에 올릴 수 없어요.',
     warnPhone:'전화번호 같은 개인 연락처가 들어 있어요.',
     warnEdit:'표현을 고치면 바로 게시할 수 있어요.',
+
+    /* 👤 내 프로필 (사진·닉네임·한 줄 소개) */
+    profileEdit:'프로필 편집',
+    profilePhoto:'프로필 사진',
+    profilePhotoPick:'사진 선택',
+    profilePhotoReset:'기본 사진으로 되돌리기',
+    profileNickL:'닉네임',
+    profileNickPh:'20자까지 쓸 수 있어요',
+    profileBioL:'한 줄 자기소개',
+    profileBioPh:'나를 소개하는 한 줄, 80자까지',
+    profileHint:'사진·닉네임·자기소개는 내 다이어리와 댓글에 함께 보여요. 이 기기에 저장돼요.',
+    profileNeedNick:'닉네임을 먼저 적어 주세요 ✨',
+    profileSaved:'프로필을 저장했어요 🎊',
+    profilePhotoBad:'사진을 불러오지 못했어요',
   },
   ja: {
     tagline:'KemiとつながるK-カルチャーの毎日',
@@ -306,6 +334,20 @@ const T = {
     warnLink:'外部リンクやスパムのURLはここには投稿できません。',
     warnPhone:'電話番号などの個人の連絡先が入っています。',
     warnEdit:'表現を直せばすぐに投稿できます。',
+
+    /* 👤 マイプロフィール（写真・ニックネーム・ひとこと紹介） */
+    profileEdit:'プロフィール編集',
+    profilePhoto:'プロフィール写真',
+    profilePhotoPick:'写真を選ぶ',
+    profilePhotoReset:'デフォルトの写真に戻す',
+    profileNickL:'ニックネーム',
+    profileNickPh:'20文字まで',
+    profileBioL:'ひとこと紹介',
+    profileBioPh:'あなたを紹介するひとこと（80文字まで）',
+    profileHint:'写真・ニックネーム・紹介は、マイダイアリーと返信に表示されます。この端末に保存されます。',
+    profileNeedNick:'先にニックネームを入れてください ✨',
+    profileSaved:'プロフィールを保存しました 🎊',
+    profilePhotoBad:'写真を読み込めませんでした',
   },
   zh: {
     tagline:'和Kemi一起分享的K-文化日常',
@@ -394,6 +436,20 @@ const T = {
     warnLink:'不能在这里发布外部链接或垃圾网址。',
     warnPhone:'这里含有电话号码等个人联系方式。',
     warnEdit:'修改表达后就能马上发布。',
+
+    /* 👤 我的个人资料（照片·昵称·一句话介绍） */
+    profileEdit:'编辑个人资料',
+    profilePhoto:'头像照片',
+    profilePhotoPick:'选择照片',
+    profilePhotoReset:'恢复默认照片',
+    profileNickL:'昵称',
+    profileNickPh:'最多20个字',
+    profileBioL:'一句话介绍',
+    profileBioPh:'介绍自己的一句话，最多80个字',
+    profileHint:'照片、昵称和介绍会显示在你的日记和评论中。只保存在这台设备上。',
+    profileNeedNick:'请先填写昵称 ✨',
+    profileSaved:'个人资料已保存 🎊',
+    profilePhotoBad:'无法读取这张照片',
   },
   es: {
     tagline:'Cultura K y tu d\u00eda a d\u00eda con Kemi',
@@ -482,6 +538,20 @@ const T = {
     warnLink:'Aquí no se pueden publicar enlaces externos ni de spam.',
     warnPhone:'Esto incluye un teléfono u otro contacto personal.',
     warnEdit:'Corrige el texto y podrás publicar enseguida.',
+
+    /* 👤 Mi perfil (foto · apodo · presentación en una línea) */
+    profileEdit:'Editar perfil',
+    profilePhoto:'Foto de perfil',
+    profilePhotoPick:'Elegir foto',
+    profilePhotoReset:'Volver a la foto por defecto',
+    profileNickL:'Apodo',
+    profileNickPh:'Hasta 20 caracteres',
+    profileBioL:'Presentación en una línea',
+    profileBioPh:'Una línea sobre ti, hasta 80 caracteres',
+    profileHint:'La foto, el apodo y la línea aparecen en tus diarios y respuestas. Se guardan en este dispositivo.',
+    profileNeedNick:'Primero escribe un apodo ✨',
+    profileSaved:'Perfil guardado 🎊',
+    profilePhotoBad:'No se pudo leer la foto',
   },
 };
 
@@ -780,7 +850,7 @@ function load(){
   if (!d || !Array.isArray(d.diaries)) {
     d = {
       v: 1,
-      me: { nick: "KOMI's Unnie", handle: '@me', following: false },
+      me: { nick: "KOMI's Unnie", handle: '@me', following: false, bio: '', avatar: null },
       diaries: [],
       filterTag: null, searchQuery: '', meTab: 'mine',
     };
@@ -802,6 +872,10 @@ function load(){
   if (!d.me || typeof d.me !== 'object') d.me = { nick: "KOMI's Unnie", handle: '@me', following: false };
   if (typeof d.me.handle !== 'string' || !d.me.handle) d.me.handle = '@me';
   if (typeof d.me.following !== 'boolean') d.me.following = false;
+  /* the profile card: a one-line intro and a stored photo (a small JPEG data URL) */
+  if (typeof d.me.nick !== 'string' || !d.me.nick) d.me.nick = "KOMI's Unnie";
+  if (typeof d.me.bio !== 'string') d.me.bio = '';
+  if (d.me.avatar !== null && typeof d.me.avatar !== 'string') d.me.avatar = null;
   state = d;
 }
 
@@ -958,7 +1032,7 @@ function closePromiseSheet(){
   sheet.classList.remove('is-open');
   setTimeout(() => {
     sheet.hidden = true;
-    const under = ['#composeSheet', '#shopSheet', '#matchSheet'].some(sel => $(sel) && !$(sel).hidden);
+    const under = ['#composeSheet', '#shopSheet', '#matchSheet', '#profileSheet'].some(sel => $(sel) && !$(sel).hidden);
     if (!under) { const scrim = $('#scrim'); scrim.classList.remove('is-open'); scrim.hidden = true; }
   }, 230);
 }
@@ -999,6 +1073,132 @@ function clearCommentWarn(form){
   const box = form && form.parentNode;
   if (!box) return;
   $$('.kemi-warn-inline', box).forEach(n => n.remove());
+}
+
+/* ---------- 👤 my profile ----------
+   The visitor's own face on this thread: a photo, a nickname and a one-line
+   intro. They live in komidiary.v1 (me.avatar / me.nick / me.bio) and the photo
+   is cropped square and re-encoded to a 256px JPEG first, so the stored copy
+   stays a few dozen KB in localStorage. A diary or a reply she wrote reads the
+   photo from here, so one save reaches all of them. */
+const PROFILE_PX = 256;                                  /* the stored photo's side */
+const NICK_MAX = 20;
+const BIO_MAX = 80;
+let profileDraftAvatar = null;   /* data URL on screen; null = the default KOMI photo */
+let profileWarnKind = null;
+
+/* Centre-cropped square, scaled to 256×256 and encoded as JPEG. */
+async function squareAvatarDataURL(file){
+  const src = await readAsDataURL(file);
+  const img = await loadImage(src);
+  const w = img.naturalWidth || img.width;
+  const h = img.naturalHeight || img.height;
+  const side = Math.max(1, Math.min(w, h));
+  const sx = Math.max(0, (w - side) / 2);
+  const sy = Math.max(0, (h - side) / 2);
+  const canvas = document.createElement('canvas');
+  canvas.width = PROFILE_PX; canvas.height = PROFILE_PX;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, PROFILE_PX, PROFILE_PX);
+  ctx.drawImage(img, sx, sy, side, side, 0, 0, PROFILE_PX, PROFILE_PX);
+  let blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', 0.86));
+  if (blob && blob.size > 60 * 1024) blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', 0.62));
+  if (!blob) return null;
+  return await readAsDataURL(blob);
+}
+
+function setProfilePhotoPreview(url){
+  const img = $('#profilePhotoImg');
+  if (img) img.src = url || ME_AVATAR;
+}
+
+function syncProfileLabels(){
+  const n = $('#profileNickInput'), b = $('#profileBioInput'), btn = $('#profilePhotoBtn');
+  if (n) n.placeholder = t('profileNickPh');
+  if (b) b.placeholder = t('profileBioPh');
+  if (btn) btn.setAttribute('aria-label', t('profilePhoto'));
+}
+
+function syncProfileCounters(){
+  const n = $('#profileNickInput'), b = $('#profileBioInput');
+  const nc = $('#profileNickCount'), bc = $('#profileBioCount');
+  if (n && nc) nc.textContent = String(n.value.length);
+  if (b && bc) bc.textContent = String(b.value.length);
+}
+
+function showProfileWarn(kind){
+  const el = $('#profileWarn');
+  if (!el) return;
+  profileWarnKind = kind;
+  el.innerHTML = warnHTML(kind);
+  el.hidden = false;
+  const body = el.closest('.sheet-body');
+  if (body) body.scrollTop = 0;
+}
+
+function hideProfileWarn(){
+  profileWarnKind = null;
+  const el = $('#profileWarn');
+  if (el) { el.hidden = true; el.innerHTML = ''; }
+}
+
+function openProfileSheet(){
+  profileDraftAvatar = (state.me && typeof state.me.avatar === 'string' && state.me.avatar) ? state.me.avatar : null;
+  hideProfileWarn();
+  syncProfileLabels();
+  const n = $('#profileNickInput'), b = $('#profileBioInput'), pi = $('#profilePhotoInput');
+  if (n) n.value = state.me.nick || '';
+  if (b) b.value = state.me.bio || '';
+  if (pi) pi.value = '';
+  setProfilePhotoPreview(profileDraftAvatar);
+  syncProfileCounters();
+  openSheet($('#profileSheet'));
+}
+
+async function onProfilePhotoPick(file){
+  if (!file) return;
+  if (!/^image\//.test(file.type || '')) { toast(t('profilePhotoBad')); return; }
+  try {
+    const dataUrl = await squareAvatarDataURL(file);
+    if (!dataUrl) throw new Error('encode');
+    profileDraftAvatar = dataUrl;
+    setProfilePhotoPreview(dataUrl);
+  } catch (e) {
+    toast(t('profilePhotoBad'));
+  }
+}
+
+/* Saving the profile rewrites her nickname on the diaries and replies she
+already wrote, and the photo is read live from the profile, so the feed and
+her own view change together. */
+function saveProfile(){
+  const nickEl = $('#profileNickInput'), bioEl = $('#profileBioInput');
+  if (!nickEl || !bioEl) return;
+  const nick = (nickEl.value || '').trim().slice(0, NICK_MAX);
+  const bio = (bioEl.value || '').trim().slice(0, BIO_MAX);
+  if (!nick) { toast(t('profileNeedNick')); nickEl.focus(); return; }
+  const bad = checkKemi(nick + '\n' + bio);
+  if (bad) { showProfileWarn(bad.kind); return; }
+  hideProfileWarn();
+  const oldNick = (state.me && state.me.nick) ? state.me.nick : '';
+  state.me.nick = nick;
+  state.me.bio = bio;
+  state.me.avatar = profileDraftAvatar || null;
+  const handle = state.me.handle;
+  state.diaries.forEach(p => {
+    if (p.mine) p.nick = nick;
+    (p.comments || []).forEach(c => {
+      if (!c) return;
+      if ((c.handle && c.handle === handle) || (oldNick && c.nick === oldNick)) c.nick = nick;
+    });
+  });
+  save(state);
+  closeSheet($('#profileSheet'));
+  render();
+  toast(t('profileSaved'));
 }
 
 /* ---------- compose ----------
@@ -1475,6 +1675,8 @@ function closeSheet(sheet){
     /* a cancelled edit must not leave its previews behind */
     if (sheet === $('#composeSheet')) { editPostId = null; draftSticker = null; clearDraftMedia(); renderStickerTray(); syncComposeMode(); }
     if (sheet === $('#shopSheet')) { shopEditId = null; clearShopDraftPhoto(); syncSheetTitle(); }
+    /* a profile edit that is left unsaved changes nothing */
+    if (sheet === $('#profileSheet')) { profileDraftAvatar = null; hideProfileWarn(); }
   }, 230);
 }
 
@@ -1556,9 +1758,14 @@ function renderLangUI(){
   syncSheetTitle();
   buildBdayOptions();
   syncMatchLabels();
+  syncProfileLabels();
   renderPromiseSheet();
   if (composeWarnKind && $('#composeWarn') && !$('#composeWarn').hidden) showComposeWarn(composeWarnKind);
+  if (profileWarnKind && $('#profileWarn') && !$('#profileWarn').hidden) showProfileWarn(profileWarnKind);
   if (matchState) renderMatch();
+  /* the compose row and the profile carry the same face */
+  const composeAva = $('#composeAvatar');
+  if (composeAva) composeAva.src = profileAvatarSrc();
   $('#nickInput').placeholder = t('nickPlaceholder');
   $('#bodyInput').placeholder = t('bodyPlaceholder');
   $('#tagInput').placeholder = t('tagPlaceholder');
@@ -1589,9 +1796,15 @@ function isMeWriter(p){
   return !!p.handle && p.handle === handle;
 }
 
+function profileAvatarSrc(){
+  return (state && state.me && typeof state.me.avatar === 'string' && state.me.avatar) ? state.me.avatar : ME_AVATAR;
+}
+
 function avatarHTML(p, size){
   const cls = 'avatar-' + size;
-  const src = p.avatar || (isMeWriter(p) ? ME_AVATAR : '');
+  /* her own photo comes from the profile, so a new profile photo reaches every
+     diary and reply she wrote without touching each of them */
+  const src = isMeWriter(p) ? profileAvatarSrc() : (p.avatar || '');
   if (src) return '<img class="avatar ' + cls + '" src="' + escAttr(src) + '" alt="" width="' + size + '" height="' + size + '">';
   const letter = (p.nick || '?').trim().charAt(0).toUpperCase();
   return '<span class="avatar-fallback ' + cls + '" aria-hidden="true">' + esc(letter) + '</span>';
@@ -2201,9 +2414,22 @@ function renderMain(){
     const mine = state.diaries.filter(p => p.mine).length;
     const liked = state.diaries.filter(p => p.liked).length;
     const isLikes = state.meTab === 'likes';
+    const bio = (state.me.bio || '').trim();
     main.innerHTML =
-      '<div class="view-head"><h2 class="view-title">' + esc(t('myTitle')) + '</h2>'
-      + '<span class="view-sub">' + esc(state.me.nick) + ' <span class="me-role">\u00b7 ' + esc(t('meRole')) + '</span></span></div>'
+      '<div class="view-head"><h2 class="view-title">' + esc(t('myTitle')) + '</h2></div>'
+      /* her own profile card: photo, nickname, one-line intro and the edit door */
+      + '<section class="me-card">'
+      +   '<div class="me-card-top">'
+      +     '<img class="me-card-ava" src="' + escAttr(profileAvatarSrc()) + '" alt="" width="72" height="72">'
+      +     '<div class="me-card-body">'
+      +       '<b class="me-card-name">' + esc(state.me.nick) + '</b>'
+      +       '<span class="me-card-role">' + esc(t('meRole')) + '</span>'
+      +       (bio ? '<p class="me-card-bio">' + esc(bio) + '</p>' : '')
+      +     '</div>'
+      +   '</div>'
+      +   '<button class="pill me-card-edit" type="button" data-profile-edit="1">'
+      +     ICO.pencil + '<span>' + esc(t('profileEdit')) + '</span></button>'
+      + '</section>'
       /* the community guidelines sit here, in the profile area, not on the feed */
       + '<button type="button" class="promise-row" data-kemi-promise="1" aria-haspopup="dialog">'
       +   '<span class="promise-row-ico" aria-hidden="true">📜</span>'
@@ -2269,6 +2495,10 @@ function findPostElFrom(node){
 
 function onMainClick(e){
   const target = e.target;
+
+  /* 👤 her own profile card in My Diary */
+  const profileBtn = target.closest('[data-profile-edit]');
+  if (profileBtn) { openProfileSheet(); return; }
 
   /* 📜 Kemi Promise — the button in My Diary and the link inside every warning */
   const promiseBtn = target.closest('[data-kemi-promise]');
@@ -2416,6 +2646,7 @@ function bind(){
     if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
     if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
     if (!$('#matchSheet').hidden) closeSheet($('#matchSheet'));
+    if (!$('#profileSheet').hidden) closeSheet($('#profileSheet'));
   });
   $('#composeSubmit').addEventListener('click', onComposeSubmit);
 
@@ -2484,6 +2715,7 @@ function bind(){
     if (!$('#composeSheet').hidden) closeSheet($('#composeSheet'));
     if (!$('#shopSheet').hidden) closeSheet($('#shopSheet'));
     if (!$('#matchSheet').hidden) closeSheet($('#matchSheet'));
+    if (!$('#profileSheet').hidden) closeSheet($('#profileSheet'));
   });
 
   /* 📜 Kemi Promise sheet, and the warning banner that sends people to it */
@@ -2507,6 +2739,29 @@ function bind(){
     ['#starNameInput', '#starYear', '#myYear'].forEach(sel => {
       const el = $(sel);
       if (el) el.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); onMatchGo(); } });
+    });
+  }
+
+  /* 👤 My profile sheet */
+  if ($('#profileSheet')) {
+    $('#profileCancel').addEventListener('click', () => closeSheet($('#profileSheet')));
+    $('#profileSave').addEventListener('click', saveProfile);
+    $('#profilePhotoBtn').addEventListener('click', () => { const i = $('#profilePhotoInput'); if (i) i.click(); });
+    $('#profilePhotoPick').addEventListener('click', () => { const i = $('#profilePhotoInput'); if (i) i.click(); });
+    $('#profilePhotoInput').addEventListener('change', (e) => {
+      const f = e.target.files && e.target.files[0];
+      onProfilePhotoPick(f);
+      e.target.value = '';
+    });
+    /* back to KOMI's photo: the preview turns at once, Save makes it real */
+    $('#profilePhotoReset').addEventListener('click', () => { profileDraftAvatar = null; setProfilePhotoPreview(null); });
+    ['#profileNickInput', '#profileBioInput'].forEach(sel => {
+      const el = $(sel);
+      if (!el) return;
+      el.addEventListener('input', () => { syncProfileCounters(); hideProfileWarn(); });
+    });
+    $('#profileWarn').addEventListener('click', (e) => {
+      if (e.target.closest('[data-kemi-promise]')) openPromiseSheet();
     });
   }
 

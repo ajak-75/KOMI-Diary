@@ -100,7 +100,7 @@
   <div class="sheet-body">
     <div class="kemi-warn" id="composeWarn" role="alert" hidden></div>
     <div class="compose-row">
-      <img class="avatar avatar-40" src="./img/komi-avatar.jpg" alt="" width="40" height="40">
+      <img class="avatar avatar-40" id="composeAvatar" src="./img/komi-avatar.jpg" alt="" width="40" height="40">
       <div class="compose-fields">
         <input id="nickInput" class="nick-input" type="text" maxlength="28" autocomplete="nickname" placeholder="KOMI's Unnie" aria-label="Nickname">
         <textarea id="bodyInput" class="body-input" rows="5" maxlength="500" placeholder="How is life where you are today?" aria-label="Post text"></textarea>
@@ -167,6 +167,43 @@
       <textarea class="field-input field-area" id="shopNoteInput" rows="3" maxlength="200"></textarea>
     </label>
     <p class="hint" data-i18n="shopHint">Products are saved on this device.</p>
+  </div>
+</section>
+
+<!-- 👤 My profile sheet (photo · nickname · one-line intro) -->
+<section class="sheet sheet-profile" id="profileSheet" role="dialog" aria-modal="true" aria-labelledby="profileTitle" hidden>
+  <div class="sheet-grip" aria-hidden="true"></div>
+  <header class="sheet-head">
+    <button class="text-btn" type="button" id="profileCancel" data-i18n="cancel">Cancel</button>
+    <h2 class="sheet-title" id="profileTitle" data-i18n="profileEdit">Edit profile</h2>
+    <button class="pill primary" type="button" id="profileSave" data-i18n="save">Save</button>
+  </header>
+  <div class="sheet-body">
+    <div class="kemi-warn" id="profileWarn" role="alert" hidden></div>
+    <div class="profile-photo-row">
+      <button class="profile-photo-btn" type="button" id="profilePhotoBtn" aria-label="Profile photo">
+        <img class="profile-photo-img" id="profilePhotoImg" src="./img/komi-avatar.jpg" alt="" width="88" height="88">
+        <span class="profile-photo-cam" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.4-2h7.2l1.4 2h3v10.5H4z"/><circle cx="12" cy="13" r="3.1"/></svg>
+        </span>
+      </button>
+      <div class="profile-photo-tools">
+        <button class="tool-btn" type="button" id="profilePhotoPick" data-i18n="profilePhotoPick">Choose photo</button>
+        <button class="text-btn profile-photo-reset" type="button" id="profilePhotoReset" data-i18n="profilePhotoReset">Back to the default photo</button>
+      </div>
+      <input id="profilePhotoInput" type="file" accept="image/*" hidden>
+    </div>
+    <label class="field" for="profileNickInput">
+      <span class="field-label" data-i18n="profileNickL">Nickname</span>
+      <input class="field-input" id="profileNickInput" type="text" maxlength="20" autocomplete="nickname" autocapitalize="off" placeholder="Up to 20 characters">
+      <span class="field-note"><span id="profileNickCount">0</span>/20</span>
+    </label>
+    <label class="field" for="profileBioInput">
+      <span class="field-label" data-i18n="profileBioL">One-line intro</span>
+      <textarea class="field-input field-area profile-area" id="profileBioInput" rows="2" maxlength="80" placeholder="A line about you, up to 80 characters"></textarea>
+      <span class="field-note"><span id="profileBioCount">0</span>/80</span>
+    </label>
+    <p class="hint" data-i18n="profileHint">Your photo, nickname and line show on your diaries and replies. Saved on this device.</p>
   </div>
 </section>
 
