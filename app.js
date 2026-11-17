@@ -78,7 +78,7 @@ const T = {
     shopNotePh:'Kemi, delivery takes forever \u2014 order it and forget it! It\u2019ll feel like a gift later!',
     shopHint:'Products are saved on this device. One photo.',
     shopPhoto:'Product photo', shopOpen:'Shop', shopNoLink:'No link',
-    shopEmpty:'Nothing on the shelf yet', shopEmptySub:'Only what Momo picks herself goes up here. Add the first product \u2014 a K-beauty find, a snack, anything.',
+    shopEmpty:'Nothing on the shelf yet', shopEmptySub:'Only what Momo picks herself goes up here. Add the first product \u2014 a serum, a snack, anything.',
     shopSaved:'Product added \ud83d\uded2', shopUpdated:'Product updated \ud83d\uded2',
     shopDeleted:'Product removed', shopConfirmDelete:'Take this product down?',
     shopNeedName:'Give the product a name first \u2728', shopLinkBad:'A link has to start with https://',
