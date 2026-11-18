@@ -1883,8 +1883,9 @@ function renderLangUI(){
   const picked = pickedLang();
   /* the badge shows the language on screen, whatever chose it */
   $('#langCode').textContent = code.split('-')[0].toUpperCase().slice(0, 3);
+  const onAuto = !picked && !urlLang();
   $$('#langMenu .lang-item').forEach(b => {
-    const on = b.dataset.code === 'auto' ? (!picked && !urlLang()) : (b.dataset.code === code);
+    const on = b.dataset.code === 'auto' ? onAuto : (!onAuto && b.dataset.code === code);
     b.setAttribute('aria-selected', String(on));
   });
   const autoLabel = $('#langMenu [data-code="auto"] .lang-label');
