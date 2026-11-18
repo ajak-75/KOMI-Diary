@@ -33,14 +33,39 @@ const STAMP_SVG = '<svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="
   + [0,72,144,216,288].map((a,i)=>`<path d="M24 3.5c4.6 3.5 6.7 8.6 5.5 13.9-.6 2.6-2.9 4.6-5.5 4.6s-4.9-2-5.5-4.6C17.3 12.1 19.4 7 24 3.5Z" fill="${DC[i]}" transform="rotate(${a} 24 24)"/>`).join('')
   + '<circle cx="24" cy="24" r="4.6" fill="#D9B44A"/><circle cx="24" cy="24" r="2.1" fill="#fff"/></svg>';
 
-/* ---------- i18n ---------- */
+/* ---------- i18n ----------
+   The app greets a visitor in the language her phone reports. Five languages
+   are written out here in full; eleven more arrive with i18n-world.js; any
+   other code is machine-translated once on the first visit and kept on the
+   device, so the next visit opens in her language with no request at all. */
 const LANGS = [
   { code:'en',  label:'English' },
   { code:'ko',  label:'한국어' },
   { code:'ja',  label:'日本語' },
   { code:'zh',  label:'中文' },
   { code:'es',  label:'Español' },
+  { code:'pt',  label:'Português' },
+  { code:'fr',  label:'Français' },
+  { code:'de',  label:'Deutsch' },
+  { code:'it',  label:'Italiano' },
+  { code:'ru',  label:'Русский' },
+  { code:'vi',  label:'Tiếng Việt' },
+  { code:'th',  label:'ไทย' },
+  { code:'id',  label:'Bahasa Indonesia' },
+  { code:'hi',  label:'हिन्दी' },
+  { code:'ar',  label:'العربية' },
+  { code:'tr',  label:'Türkçe' },
 ];
+
+/* languages written right to left */
+const RTL = ['ar', 'he', 'fa', 'ur', 'yi', 'dv', 'ps', 'sd', 'ug', 'ckb', 'ku'];
+
+/* each language's own locale, for dates, month names and "3m ago" */
+const LOCALES = {
+  en:'en-US', ko:'ko-KR', ja:'ja-JP', zh:'zh-CN', 'zh-TW':'zh-TW', es:'es-ES',
+  pt:'pt-BR', fr:'fr-FR', de:'de-DE', it:'it-IT', ru:'ru-RU', vi:'vi-VN',
+  th:'th-TH', id:'id-ID', hi:'hi-IN', ar:'ar-EG', tr:'tr-TR',
+};
 
 const T = {
   en: {
@@ -144,6 +169,9 @@ const T = {
     profileNeedNick:'Please write a nickname ✨',
     profileSaved:'Profile saved 🎊',
     profilePhotoBad:'Could not read that photo',
+
+    /* the language menu's "follow the phone" item, and the two storage warnings */
+    langAuto:'Device language', storageFullMedia:'Storage is full \u2014 delete a photo', storageFullShort:'Storage is full',
   },
   ko: {
     tagline:'케미(Kemi)들과 함께하는 K-컬쳐 일상',
@@ -246,6 +274,7 @@ const T = {
     profileNeedNick:'닉네임을 먼저 적어 주세요 ✨',
     profileSaved:'프로필을 저장했어요 🎊',
     profilePhotoBad:'사진을 불러오지 못했어요',
+    langAuto:'기기 언어', storageFullMedia:'저장 공간이 부족해요 — 사진을 지워주세요', storageFullShort:'저장 공간이 부족해요',
   },
   ja: {
     tagline:'KemiとつながるK-カルチャーの毎日',
@@ -348,6 +377,7 @@ const T = {
     profileNeedNick:'先にニックネームを入れてください ✨',
     profileSaved:'プロフィールを保存しました 🎊',
     profilePhotoBad:'写真を読み込めませんでした',
+    langAuto:'端末の言語', storageFullMedia:'保存容量がいっぱいです — 写真を削除してください', storageFullShort:'保存容量がいっぱいです',
   },
   zh: {
     tagline:'和Kemi一起分享的K-文化日常',
@@ -450,6 +480,7 @@ const T = {
     profileNeedNick:'请先填写昵称 ✨',
     profileSaved:'个人资料已保存 🎊',
     profilePhotoBad:'无法读取这张照片',
+    langAuto:'设备语言', storageFullMedia:'存储空间不足 — 请删除一些照片', storageFullShort:'存储空间不足',
   },
   es: {
     tagline:'Cultura K y tu d\u00eda a d\u00eda con Kemi',
@@ -552,8 +583,17 @@ const T = {
     profileNeedNick:'Primero escribe un apodo ✨',
     profileSaved:'Perfil guardado 🎊',
     profilePhotoBad:'No se pudo leer la foto',
+    langAuto:'Idioma del dispositivo', storageFullMedia:'Espacio lleno — borra alguna foto', storageFullShort:'Espacio lleno',
   },
 };
+
+/* Eleven more languages arrive with i18n-world.js. Each is laid over the
+   English table, so a key added here later still reads as English rather than
+   as a raw key name; any other code a phone reports is translated at runtime
+   (see "a language the app does not carry" below). */
+const WORLD = (typeof window !== 'undefined' && window.KOMI_WORLD_I18N) || {};
+Object.keys(WORLD).forEach(code => { T[code] = Object.assign({}, T.en, WORLD[code]); });
+const BUNDLED_LANGS = Object.keys(T);   /* languages the app carries itself */
 
 /* ---------- K-star Kemi match ----------
    Fun-only compatibility between the visitor's zodiac sign and their bias's,
@@ -714,23 +754,93 @@ const escAttr = (s) => esc(s).replace(/\n/g,' ');
 
 const uid = () => 'd' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 
-function getLang(){ return localStorage.getItem(LANG_KEY) || 'en'; }
-function t(key){ const L = T[getLang()] || T.en; return (key in L) ? L[key] : (T.en[key] != null ? T.en[key] : key); }
+/* ---------- which language the visitor reads ----------
+   Order of precedence: ?lang= (handy for checking a language), then the
+   language she picked for herself, then the language her own phone is in. The
+   phone's language is never written down, so a visitor who never touched the
+   switcher keeps following her device when she changes it. */
+function baseLang(x){
+  const c = String(x || '').trim().toLowerCase().replace(/_/g, '-');
+  const p = c.split('-')[0];
+  if (!/^[a-z]{2,3}$/.test(p)) return '';
+  /* a phone set to Traditional Chinese gets its own translation, not the
+     Simplified table */
+  if (p === 'zh' && /hant|tw|hk|mo/i.test(c)) return 'zh-TW';
+  return p;
+}
 
+function deviceLang(){
+  const list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language];
+  for (let i = 0; i < list.length; i++) { const c = baseLang(list[i]); if (c) return c; }
+  return 'en';
+}
+
+function pickedLang(){ return baseLang(localStorage.getItem(LANG_KEY) || ''); }
+
+function urlLang(){
+  const m = /[?&]lang=([A-Za-z_-]+)/.exec(location.search);
+  return m ? baseLang(m[1]) : '';
+}
+
+function getLang(){ return urlLang() || pickedLang() || deviceLang(); }
+
+function isRTL(code){ return RTL.indexOf(String(code || '').split('-')[0]) >= 0; }
+
+function dateLocale(code){
+  const c = code || getLang();
+  return LOCALES[c] || LOCALES[String(c).split('-')[0]] || c;
+}
+
+function t(key){
+  const L = T[getLang()];
+  if (L && key in L) return L[key];
+  return (T.en[key] != null) ? T.en[key] : key;
+}
+
+/* "3분 전", "5m" — the five languages written by hand keep their own short
+   wording; every other language asks Intl, which knows its words and word
+   order ("vor 5 Min.", "منذ ٥ دقائق"). */
+const TIME_HAND = { ko:1, ja:1, zh:1, es:1 };
 function timeAgo(ts){
   const d = Date.now() - ts;
   const L = getLang();
-  if (d < MIN) return L === 'ko' ? '\ubc29\uae08' : L === 'zh' ? '\u521a\u521a' : L === 'ja' ? '\u305f\u3063\u305f\u4eca' : L === 'es' ? 'ahora' : 'now';
+  if (!TIME_HAND[L]) {
+    if (L === 'en') {
+      if (d < MIN) return 'now';
+      const m0 = Math.floor(d / MIN);
+      if (m0 < 60) return m0 + 'm';
+      const h0 = Math.floor(m0 / 60);
+      if (h0 < 24) return h0 + 'h';
+      return Math.floor(h0 / 24) + 'd';
+    }
+    try {
+      const rtf = new Intl.RelativeTimeFormat(dateLocale(L), { numeric: 'auto', style: 'short' });
+      if (d < MIN) return rtf.format(0, 'second');
+      const mi = Math.floor(d / MIN);
+      if (mi < 60) return rtf.format(-mi, 'minute');
+      const ho = Math.floor(mi / 60);
+      if (ho < 24) return rtf.format(-ho, 'hour');
+      return rtf.format(-Math.floor(ho / 24), 'day');
+    } catch (e) { /* an old browser: the plain English form reads everywhere */
+      if (d < MIN) return 'now';
+      const m2 = Math.floor(d / MIN);
+      if (m2 < 60) return m2 + 'm';
+      const h2 = Math.floor(m2 / 60);
+      if (h2 < 24) return h2 + 'h';
+      return Math.floor(h2 / 24) + 'd';
+    }
+  }
+  if (d < MIN) return L === 'ko' ? '\ubc29\uae08' : L === 'zh' ? '\u521a\u521a' : L === 'ja' ? '\u305f\u3063\u305f\u4eca' : 'ahora';
   const m = Math.floor(d / MIN);
-  if (m < 60) return L === 'ko' ? m + '\ubd84 \uc804' : L === 'zh' ? m + '\u5206\u949f\u524d' : L === 'ja' ? m + '\u5206\u524d' : L === 'es' ? 'hace ' + m + ' min' : m + 'm';
+  if (m < 60) return L === 'ko' ? m + '\ubd84 \uc804' : L === 'zh' ? m + '\u5206\u949f\u524d' : L === 'ja' ? m + '\u5206\u524d' : 'hace ' + m + ' min';
   const h = Math.floor(m / 60);
-  if (h < 24) return L === 'ko' ? h + '\uc2dc\uac04 \uc804' : L === 'zh' ? h + '\u5c0f\u65f6\u524d' : L === 'ja' ? h + '\u6642\u9593\u524d' : L === 'es' ? 'hace ' + h + ' h' : h + 'h';
+  if (h < 24) return L === 'ko' ? h + '\uc2dc\uac04 \uc804' : L === 'zh' ? h + '\u5c0f\u65f6\u524d' : L === 'ja' ? h + '\u6642\u9593\u524d' : 'hace ' + h + ' h';
   const day = Math.floor(h / 24);
-  return L === 'ko' ? day + '\uc77c \uc804' : L === 'zh' ? day + '\u5929\u524d' : L === 'ja' ? day + '\u65e5\u524d' : L === 'es' ? 'hace ' + day + ' d' : day + 'd';
+  return L === 'ko' ? day + '\uc77c \uc804' : L === 'zh' ? day + '\u5929\u524d' : L === 'ja' ? day + '\u65e5\u524d' : 'hace ' + day + ' d';
 }
 
 function fullDate(ts){
-  try { return new Date(ts).toLocaleDateString(t('dateLocale'), { year:'numeric', month:'long', day:'numeric', weekday:'long' }); }
+  try { return new Date(ts).toLocaleDateString(dateLocale(), { year:'numeric', month:'long', day:'numeric', weekday:'long' }); }
   catch(e) { return new Date(ts).toDateString(); }
 }
 
@@ -883,11 +993,7 @@ function save(d){
   try { localStorage.setItem(STORE_KEY, JSON.stringify(d)); }
   catch(e) {
     if (e && (e.name === 'QuotaExceededError' || e.code === 22)) {
-      toast(getLang() === 'ko' ? '\uc800\uc7a5 \uacf5\uac04\uc774 \ubd80\uc871\ud574\uc694 \u2014 \uc0ac\uc9c4\uc744 \uc9c0\uc6cc\uc8fc\uc138\uc694'
-        : getLang() === 'ja' ? '\u4fdd\u5b58\u5bb9\u91cf\u4e0d\u8db3 \u2014 \u5199\u771f\u3092\u524a\u9664\u3057\u3066\u304f\u3060\u3055\u3044'
-        : getLang() === 'zh' ? '\u5b58\u50a8\u7a7a\u95f4\u4e0d\u8db3 \u2014 \u8bf7\u5220\u9664\u4e00\u4e9b\u7167\u7247'
-        : getLang() === 'es' ? 'Espacio lleno \u2014 borra alguna foto'
-        : 'Storage full \u2014 please remove some photos');
+      toast(t('storageFullMedia'));
     }
   }
 }
@@ -1489,7 +1595,14 @@ function onComposeSubmit(){ if (editPostId) submitEdit(); else submitPost(); }
 let matchState = null;   /* { star, sy, sm, sd, my, mm, md } of the reading on screen */
 
 const zodiacIndex = (year) => ((Number(year) - 1900) % 12 + 12) % 12;
-function zodiacName(i){ const z = ZODIAC[i] || ZODIAC[0]; const L = getLang(); return z[L] || z.en; }
+function zodiacName(i){
+  const z = ZODIAC[i] || ZODIAC[0];
+  const L = getLang();
+  /* a language written into this file has its own animal names; one that came
+     in translated carries them as z0…z11 */
+  const own = T[L] && T[L]['z' + i];
+  return z[L] || own || z.en;
+}
 function zodiacLabel(i){ const n = zodiacName(i); return getLang() === 'ko' ? n + '띠' : n; }
 
 /* 육합 (six harmonies), 삼합 (three harmonies), 같은 띠, 충 (opposite) */
@@ -1545,8 +1658,11 @@ function fillTokens(tpl, map){
 }
 
 function komiLine(rel, seed, star){
-  const L = KOMI_LINES[getLang()] || KOMI_LINES.en;
-  const pool = L[rel] || L.fine || KOMI_LINES.en[rel];
+  const L = getLang();
+  const hand = KOMI_LINES[L];
+  const pool = (hand && hand[rel])
+    || (T[L] && T[L]['kl_' + rel + '_0'] != null && T[L]['kl_' + rel + '_1'] != null ? [T[L]['kl_' + rel + '_0'], T[L]['kl_' + rel + '_1']] : null)
+    || KOMI_LINES.en[rel] || KOMI_LINES.en.fine;
   return fillTokens(pool[seed % pool.length], { star, star_wa: star + koParticle(star, '과', '와') });
 }
 
@@ -1554,7 +1670,7 @@ function komiLine(rel, seed, star){
    Rebuilt only when the language changes, so a half-filled sheet is not reset. */
 let bdayBuiltFor = null;
 function buildBdayOptions(force){
-  const loc = t('dateLocale');
+  const loc = dateLocale();
   if (!force && bdayBuiltFor === loc) return;
   let mf = null;
   try { mf = new Intl.DateTimeFormat(loc, { month: 'short' }); } catch (e) { mf = null; }
@@ -1749,10 +1865,22 @@ function markTabs(){
   });
 }
 
+function langName(code){
+  const hit = LANGS.filter(l => l.code === code)[0];
+  return hit ? hit.label : String(code || 'en').toUpperCase();
+}
+
 function renderLangUI(){
   const code = getLang();
-  $('#langCode').textContent = LANGS.some(l => l.code === code) ? code.toUpperCase() : 'EN';
-  $$('#langMenu .lang-item').forEach(b => b.setAttribute('aria-selected', String(b.dataset.code === code)));
+  const picked = pickedLang();
+  /* the badge shows the language on screen, whatever chose it */
+  $('#langCode').textContent = code.split('-')[0].toUpperCase().slice(0, 3);
+  $$('#langMenu .lang-item').forEach(b => {
+    const on = b.dataset.code === 'auto' ? (!picked && !urlLang()) : (b.dataset.code === code);
+    b.setAttribute('aria-selected', String(on));
+  });
+  const autoLabel = $('#langMenu [data-code="auto"] .lang-label');
+  if (autoLabel) autoLabel.textContent = t('langAuto') + ' · ' + langName(deviceLang());
   $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   syncComposeMode();
   syncSheetTitle();
@@ -1772,6 +1900,7 @@ function renderLangUI(){
   [['#shopNameInput', 'shopNamePh'], ['#shopPriceInput', 'shopPricePh'], ['#shopLinkInput', 'shopLinkPh'], ['#shopNoteInput', 'shopNotePh']]
     .forEach(pair => { const el = $(pair[0]); if (el) el.placeholder = t(pair[1]); });
   document.documentElement.lang = code;
+  document.documentElement.dir = isRTL(code) ? 'rtl' : 'ltr';
 }
 
 const ICO = {
@@ -1936,6 +2065,129 @@ async function translateText(text, target){
   throw lastErr || new Error('translate failed');
 }
 
+/* ---------- a language the app does not carry ----------
+   The first visit in, say, Dutch sends the whole interface through Google's
+   public translate endpoint in a handful of batches, then keeps the result on
+   the device (komi_ui_i18n_nl). Every visit after that opens in Dutch with no
+   request at all, and an offline revisit still reads right. If the endpoint
+   refuses, the visitor simply keeps reading English. */
+const UI_CACHE = 'komi_ui_i18n_';
+const UI_CACHE_VER = 1;
+const UI_KEEP = { shopLinkPh:1, shopPricePh:1, tagPlaceholder:1, dateLocale:1 };  /* the same words in every language */
+const PH_RE = /\{[a-zA-Z][a-zA-Z0-9_]*\}/g;
+const PUA_RE = /[\uE000-\uE0FF]/g;
+let uiDictLoading = {};
+
+/* English a translator reads wrongly on its own ("bias" came back as
+   prejudice in French, "tsundere" as a literal): a plainer sentence goes out,
+   and the English on screen stays as it was. */
+const UI_MT_SRC = {
+  matchInviteSub: 'Your zodiac sign \u00d7 your favorite star\u2019s zodiac sign, just for fun',
+  matchStarZodiac: 'My favorite star\u2019s sign',
+  matchKeyring: 'Soon in MOMO Shop: an abalone keyring of your sign \u00d7 your favorite star\u2019s sign \ud83d\udd11',
+  matchBody: '\ud83d\udc98 K-Star Kemi Match \ud83d\udc98\nMy favorite star {star} {szemoji} {sz} \u00d7 me {mzemoji} {mz}\nKemi score {pct}% \u00b7 {rel}\nToday\u2019s lucky Obangsaek: {color}\n{line}',
+  matchLead: 'Type your favorite star\u2019s name and birthday \u2014 KOMI reads your two zodiac signs and tells you the Kemi between you.',
+  shopSub: 'The cheeky shop where Momo sells only to Kemi',
+  shopNoteL: 'Momo\u2019s cheeky line',
+};
+
+function uiSource(key){ return UI_MT_SRC[key] || T.en[key] || ''; }
+
+function uiCacheRead(code){
+  try {
+    const raw = localStorage.getItem(UI_CACHE + code);
+    if (!raw) return null;
+    const box = JSON.parse(raw);
+    if (!box || box.v !== UI_CACHE_VER || !box.d || typeof box.d !== 'object') return null;
+    return box.d;
+  } catch (e) { return null; }
+}
+
+function uiCacheWrite(code, dict){
+  try { localStorage.setItem(UI_CACHE + code, JSON.stringify({ v: UI_CACHE_VER, d: dict })); }
+  catch (e) { /* a full device simply asks again next time */ }
+}
+
+/* a {token} has to survive the translator untouched, so it travels as a
+   private-use character, which every language passes through as it is */
+function phProtect(line){
+  const box = [];
+  const text = String(line).replace(PH_RE, (m) => { box.push(m); return String.fromCharCode(0xE000 + box.length - 1); });
+  return { text, box };
+}
+function phRestore(line, box){
+  return String(line).replace(PUA_RE, (c) => { const i = c.charCodeAt(0) - 0xE000; return box[i] != null ? box[i] : ''; });
+}
+
+async function uiTranslateBatch(texts, target){
+  const res = await fetch('https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=en&tl=' + encodeURIComponent(target), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+    body: texts.map(x => 'q=' + encodeURIComponent(x)).join('&'),
+  });
+  if (!res.ok) throw new Error('ui-mt ' + res.status);
+  const j = await res.json();
+  if (!Array.isArray(j) || j.length !== texts.length) throw new Error('ui-mt shape');
+  return j.map(x => (typeof x === 'string') ? x : (Array.isArray(x) ? String(x[0] || '') : ''));
+}
+
+async function uiTranslateDict(code){
+  const jobs = [];
+  Object.keys(T.en).forEach(key => {
+    if (UI_KEEP[key]) return;
+    uiSource(key).split('\n').forEach((line, i) => {
+      if (line.trim()) jobs.push(Object.assign({ key, line: i }, phProtect(line)));
+    });
+  });
+  /* one batch per ~1,200 characters: each request stays quick, and a failure
+     costs only that batch */
+  const batches = [];
+  let cur = [], size = 0;
+  jobs.forEach(job => {
+    if (cur.length && size + job.text.length > 1200) { batches.push(cur); cur = []; size = 0; }
+    cur.push(job); size += job.text.length + 8;
+  });
+  if (cur.length) batches.push(cur);
+
+  const got = {};
+  for (let b = 0; b < batches.length; b++) {
+    const batch = batches[b];
+    let out = null;
+    try { out = await uiTranslateBatch(batch.map(j => j.text), code); } catch (e) { out = null; }
+    if (!out) continue;                    /* that batch keeps its English */
+    batch.forEach((job, i) => {
+      if (!got[job.key]) got[job.key] = {};
+      got[job.key][job.line] = phRestore(out[i] || '', job.box);
+    });
+  }
+
+  const dict = {};
+  Object.keys(got).forEach(key => {
+    const lines = uiSource(key).split('\n');
+    const filled = lines.map((line, i) => got[key][i] || '');
+    if (lines.every((line, i) => !line.trim() || filled[i].trim())) dict[key] = filled.join('\n');
+  });
+  return dict;
+}
+
+/* Words for the language on screen, if they are not here yet. Resolves with
+   the table when something was fetched, null when nothing had to be done. */
+function ensureLangDict(){
+  const code = getLang();
+  if (BUNDLED_LANGS.indexOf(code) >= 0 || T[code]) return Promise.resolve(null);
+  if (uiDictLoading[code]) return uiDictLoading[code];
+  const cached = uiCacheRead(code);
+  if (cached) { T[code] = Object.assign({}, T.en, cached); return Promise.resolve(T[code]); }
+  uiDictLoading[code] = uiTranslateDict(code).then(dict => {
+    delete uiDictLoading[code];
+    if (!dict || !Object.keys(dict).length) return null;   /* the visitor keeps reading English */
+    T[code] = Object.assign({}, T.en, dict);
+    uiCacheWrite(code, dict);
+    return T[code];
+  }).catch(() => { delete uiDictLoading[code]; return null; });
+  return uiDictLoading[code];
+}
+
 function translateRowHTML(p){
   const lang = getLang();
   const st = (trState[p.id] && trState[p.id].lang === lang) ? trState[p.id] : null;
@@ -2019,7 +2271,7 @@ function loadShop(){
 
 function saveShopStore(){
   try { localStorage.setItem(SHOP_KEY, JSON.stringify(shop)); }
-  catch (e) { toast(getLang() === 'ko' ? '저장 공간이 부족해요' : 'Storage is full'); }
+  catch (e) { toast(t('storageFullShort')); }
 }
 
 function findProduct(id){ return shop.products.find(p => p.id === id) || null; }
@@ -2631,9 +2883,12 @@ function updateOnline(){
 
 /* ---------- boot ---------- */
 function buildLangMenu(){
-  $('#langMenu').innerHTML = LANGS.map(l => (
+  const auto = '<button type="button" class="lang-item" role="option" data-code="auto" aria-selected="false">'
+    + '<span class="lang-label">' + esc(t('langAuto')) + ' · ' + esc(langName(deviceLang())) + '</span>'
+    + '<span class="tick">\u2713</span></button>';
+  $('#langMenu').innerHTML = auto + LANGS.map(l => (
     '<button type="button" class="lang-item" role="option" data-code="' + l.code + '" aria-selected="false">'
-    + '<span>' + esc(l.label) + '</span><span class="tick">\u2713</span></button>'
+    + '<span class="lang-label" lang="' + l.code + '">' + esc(l.label) + '</span><span class="tick">\u2713</span></button>'
   )).join('');
 }
 
@@ -2680,11 +2935,17 @@ function bind(){
   langMenu.addEventListener('click', (e) => {
     const item = e.target.closest('.lang-item');
     if (!item) return;
-    localStorage.setItem(LANG_KEY, item.dataset.code);
+    const code = item.dataset.code;
+    /* "device language" forgets a pick made earlier and follows the phone again */
+    if (code === 'auto') localStorage.removeItem(LANG_KEY);
+    else localStorage.setItem(LANG_KEY, code);
     langMenu.hidden = true; langBtn.setAttribute('aria-expanded', 'false');
     trState = {};          /* translations are per language: start fresh */
     shopTr = {};
     render();
+    /* a language without a bundled file is translated now; the screen redraws
+       in it as soon as the words arrive */
+    ensureLangDict().then(dict => { if (dict) render(); });
   });
   document.addEventListener('click', (e) => {
     if (!langMenu.hidden && !e.target.closest('#lang')) { langMenu.hidden = true; langBtn.setAttribute('aria-expanded', 'false'); }
@@ -2791,6 +3052,10 @@ function boot(){
   const dl = readDeepLink();
   if (dl) { deepLinkedId = dl; currentView = 'home'; render(); requestAnimationFrame(() => { const el = document.getElementById('p-' + dl); if (el) el.scrollIntoView({ block: 'center' }); }); }
   else render();
+
+  /* a language no bundled file carries: its words arrive in a moment, and the
+     screen is redrawn in them */
+  ensureLangDict().then(dict => { if (dict) render(); });
 
   ensureMedia();
   resolveShopMedia();

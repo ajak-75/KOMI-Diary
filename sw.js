@@ -1,10 +1,11 @@
 /* KOMI's K-Culture Diary — service worker (offline-first shell) */
-const CACHE = 'komidiary-v24';
+const CACHE = 'komidiary-v25';
 const SHELL = [
   './',
   './index.html',
   './styles.css',
   './app.js',
+  './i18n-world.js',
   './manifest.webmanifest',
   './icon.svg',
   './img/komi-diary-logo.png',
