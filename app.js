@@ -2896,10 +2896,10 @@ function updateOnline(){
 function buildLangMenu(){
   const auto = '<button type="button" class="lang-item" role="option" data-code="auto" aria-selected="false">'
     + '<span class="lang-label">' + esc(t('langAuto')) + ' · ' + esc(langName(deviceLang())) + '</span>'
-    + '<span class="tick">\u2713</span></button>';
+    + '<span class="tick" aria-hidden="true">\u2713</span></button>';
   $('#langMenu').innerHTML = auto + LANGS.map(l => (
     '<button type="button" class="lang-item" role="option" data-code="' + l.code + '" aria-selected="false">'
-    + '<span class="lang-label" lang="' + l.code + '">' + esc(l.label) + '</span><span class="tick">\u2713</span></button>'
+    + '<span class="lang-label" lang="' + l.code + '">' + esc(l.label) + '</span><span class="tick" aria-hidden="true">\u2713</span></button>'
   )).join('');
 }
 
