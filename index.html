@@ -9,6 +9,11 @@
 <meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
 
+<!-- Security: a request keeps its origin only, and the page may load nothing but
+     its own files, its own pictures/clips and the three translation endpoints. -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self'; connect-src 'self' data: blob: https://translate.googleapis.com https://clients5.google.com https://translate.astian.org; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="./icons/icon-192.png" sizes="192x192" type="image/png">
@@ -32,7 +37,7 @@
 
 <link rel="preload" as="image" href="./img/komi-diary-logo.png">
 <link rel="preload" as="image" href="./img/komi-avatar.jpg">
-<link rel="stylesheet" href="./styles.css?v=29">
+<link rel="stylesheet" href="./styles.css?v=30">
 </head>
 <body>
 <div class="app" id="app">
@@ -268,7 +273,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="./i18n-world.js?v=29"></script>
-<script src="./app.js?v=29"></script>
+<script src="./i18n-world.js?v=30"></script>
+<script src="./app.js?v=30"></script>
 </body>
 </html>

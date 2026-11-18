@@ -752,6 +752,23 @@ const esc = (s) => String(s == null ? '' : s)
 
 const escAttr = (s) => esc(s).replace(/\n/g,' ');
 
+/* A saved value only reaches the screen when its scheme is safe. A link is a real
+   web address or nothing; a picture or clip is one of this app's files, an object
+   URL, or an inline image/video. javascript:, data:text/html and vbscript: never
+   get through, even when they sit in localStorage. */
+const safeHref = (s) => (/^https?:\/\//i.test(String(s == null ? '' : s).trim()) ? String(s).trim() : '');
+function safeSrc(s){
+  const v = String(s == null ? '' : s).trim();
+  if (!v) return '';
+  if (/^(?:https?:\/\/|blob:|data:(?:image|video)\/(?:png|jpe?g|gif|webp|avif|bmp|svg\+xml|mp4|webm|quicktime|3gpp))/i.test(v)) return v;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(v)) return '';   /* any other scheme: refused */
+  return v;                                        /* a relative path */
+}
+
+/* A photo must be a raster picture: an SVG can carry script, so it is refused at
+   the picker (a photo is re-encoded to JPEG anyway before it is kept). */
+const isRasterImage = (type) => /^image\//i.test(String(type || '')) && !/svg|xml/i.test(String(type || ''));
+
 const uid = () => 'd' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 
 /* ---------- which language the visitor reads ----------
@@ -1274,7 +1291,7 @@ function openProfileSheet(){
 
 async function onProfilePhotoPick(file){
   if (!file) return;
-  if (!/^image\//.test(file.type || '')) { toast(t('profilePhotoBad')); return; }
+  if (!isRasterImage(file.type)) { toast(t('profilePhotoBad')); return; }
   try {
     const dataUrl = await squareAvatarDataURL(file);
     if (!dataUrl) throw new Error('encode');
@@ -1432,8 +1449,8 @@ function renderDraftMedia(){
   strip.innerHTML = draftMedia.map((m, i) => (
     '<div class="photo-thumb' + (m.kind === 'video' ? ' is-video' : '') + '">'
     + (m.kind === 'video'
-        ? '<video src="' + escAttr(m.url) + '" muted playsinline preload="metadata"></video><span class="thumb-play" aria-hidden="true">\u25b6</span>'
-        : '<img src="' + escAttr(m.url) + '" alt="">')
+        ? '<video src="' + escAttr(safeSrc(m.url)) + '" muted playsinline preload="metadata"></video><span class="thumb-play" aria-hidden="true">\u25b6</span>'
+        : '<img src="' + escAttr(safeSrc(m.url)) + '" alt="">')
     + '<button type="button" class="rm" data-i="' + i + '" aria-label="Remove">\u2715</button></div>'
   )).join('');
 }
@@ -1474,8 +1491,8 @@ function videoSeconds(file){
 async function addMediaFiles(files){
   for (const f of Array.from(files || [])) {
     if (draftMedia.length >= MAX_MEDIA) { toast(t('tooManyPhotos')); break; }
-    const isImage = /^image\//.test(f.type);
-    const isVideo = /^video\//.test(f.type);
+    const isImage = isRasterImage(f.type);
+    const isVideo = /^video\//.test(f.type || '');
     if (!isImage && !isVideo) continue;
     if (isVideo && f.size > MAX_VIDEO_BYTES) { toast(t('videoTooBig')); continue; }
     try {
@@ -1935,14 +1952,15 @@ function isMeWriter(p){
 }
 
 function profileAvatarSrc(){
-  return (state && state.me && typeof state.me.avatar === 'string' && state.me.avatar) ? state.me.avatar : ME_AVATAR;
+  const own = (state && state.me && typeof state.me.avatar === 'string' && state.me.avatar) ? safeSrc(state.me.avatar) : '';
+  return own || ME_AVATAR;
 }
 
 function avatarHTML(p, size){
   const cls = 'avatar-' + size;
   /* her own photo comes from the profile, so a new profile photo reaches every
      diary and reply she wrote without touching each of them */
-  const src = isMeWriter(p) ? profileAvatarSrc() : (p.avatar || '');
+  const src = safeSrc(isMeWriter(p) ? profileAvatarSrc() : (p.avatar || ''));
   if (src) return '<img class="avatar ' + cls + '" src="' + escAttr(src) + '" alt="" width="' + size + '" height="' + size + '">';
   const letter = (p.nick || '?').trim().charAt(0).toUpperCase();
   return '<span class="avatar-fallback ' + cls + '" aria-hidden="true">' + esc(letter) + '</span>';
@@ -1950,7 +1968,7 @@ function avatarHTML(p, size){
 
 function tagChipHTML(tag, i, count, label){
   const c = DC[i % DC.length];
-  const n = count ? '<b class="chip-n">' + count + '</b>' : '';
+  const n = count ? '<b class="chip-n">' + esc(count) + '</b>' : '';
   return '<button type="button" class="chip dc-chip" data-tag="' + escAttr(tag) + '" style="--dc: ' + c + '">#' + esc(label || tag) + n + '</button>';
 }
 
@@ -1975,13 +1993,14 @@ function mediaHTML(p){
   const vids = items.filter(x => x.kind === 'video').length;
   let inner = '';
   items.forEach((it, i) => {
+    const src = safeSrc(it.url);
     if (it.kind === 'video') {
-      inner += it.url
-        ? '<video class="ph-video" src="' + escAttr(it.url) + '" controls playsinline webkit-playsinline preload="metadata" data-video="' + i + '"></video>'
+      inner += src
+        ? '<video class="ph-video" src="' + escAttr(src) + '" controls playsinline webkit-playsinline preload="metadata" data-video="' + i + '"></video>'
         : '<div class="ph-skel ph-video-skel"><span>\u25b6</span></div>';
     } else {
-      inner += it.url
-        ? '<img src="' + escAttr(it.url) + '" alt="" loading="lazy" data-photo="' + i + '">'
+      inner += src
+        ? '<img src="' + escAttr(src) + '" alt="" loading="lazy" data-photo="' + i + '">'
         : '<div class="ph-skel"></div>';
     }
   });
@@ -2272,12 +2291,23 @@ function loadShop(){
     id: p.id,
     name: String(p.name || ''),
     price: String(p.price || ''),
-    link: String(p.link || ''),
+    link: normalizeShopLink(p.link),
     note: String(p.note || ''),
     mediaId: p.mediaId || null,
     ts: Number(p.ts) || Date.now(),
   }));
   shop = d;
+}
+
+/* A shop link is kept only when it is a web address: a bare domain gets https://,
+   anything else is dropped, so no javascript: link is ever stored. */
+function normalizeShopLink(raw){
+  const v = String(raw == null ? '' : raw).trim();
+  if (!v) return '';
+  if (/^https?:\/\//i.test(v)) return v;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(v)) return '';
+  if (/^[\w-]+(\.[\w-]+)+(?:[/?#]|$)/.test(v)) return 'https://' + v;
+  return '';
 }
 
 function saveShopStore(){
@@ -2368,8 +2398,9 @@ async function startShopTranslate(p, lang){
 
 function shopProductHTML(p){
   const hit = p.mediaId ? mediaURLs.get(p.mediaId) : null;
-  const photo = (hit && hit.url)
-    ? '<img class="shop-card-img" src="' + escAttr(hit.url) + '" alt="" loading="lazy" data-shop-view="' + escAttr(p.id) + '">'
+  const photoUrl = safeSrc(hit && hit.url);
+  const photo = photoUrl
+    ? '<img class="shop-card-img" src="' + escAttr(photoUrl) + '" alt="" loading="lazy" data-shop-view="' + escAttr(p.id) + '">'
     : '<div class="shop-card-noimg"><img src="./img/momo-avatar.jpg" alt="" width="56" height="56"></div>';
   const price = p.price ? '<div class="shop-card-price">' + esc(p.price) + '</div>' : '';
   const say = p.note
@@ -2378,8 +2409,9 @@ function shopProductHTML(p){
       + '<div class="shop-bubble"><p class="shop-bubble-text">' + esc(p.note) + '</p>' + shopTranslateRow(p) + '</div>'
       + '</div>'
     : '';
-  const open = p.link
-    ? '<a class="pill shop-open" href="' + escAttr(p.link) + '" target="_blank" rel="noopener noreferrer">' + esc(t('shopOpen')) + '</a>'
+  const href = safeHref(p.link);
+  const open = href
+    ? '<a class="pill shop-open" href="' + escAttr(href) + '" target="_blank" rel="noopener noreferrer">' + esc(t('shopOpen')) + '</a>'
     : '<span class="pill shop-open is-off">' + esc(t('shopNoLink')) + '</span>';
   return '<article class="shop-card" data-shop-id="' + escAttr(p.id) + '">'
     + photo
@@ -2472,7 +2504,7 @@ function openShopSheet(p){
 
 async function onShopPhotoPick(file){
   if (!file) return;
-  if (!/^image\//.test(file.type)) { toast(t('shopPhotoBad')); return; }
+  if (!isRasterImage(file.type)) { toast(t('shopPhotoBad')); return; }
   try {
     const blob = await downscaleImageBlob(file);
     if (shopDraftPhoto && shopDraftPhoto.url) { try { URL.revokeObjectURL(shopDraftPhoto.url); } catch (e) {} }
@@ -2496,9 +2528,9 @@ async function submitShop(){
   let link = ($('#shopLinkInput').value || '').trim();
   const note = ($('#shopNoteInput').value || '').trim();
   if (!name) { toast(t('shopNeedName')); $('#shopNameInput').focus(); return; }
-  if (link && !/^https?:\/\//i.test(link)) {
-    if (/^[\w-]+(\.[\w-]+)+/.test(link)) link = 'https://' + link;
-    else { toast(t('shopLinkBad')); $('#shopLinkInput').focus(); return; }
+  if (link) {
+    link = normalizeShopLink(link);
+    if (!link) { toast(t('shopLinkBad')); $('#shopLinkInput').focus(); return; }
   }
   const btn = $('#shopSubmit');
   if (btn) btn.disabled = true;
@@ -2581,7 +2613,7 @@ function postHTML(p){
     +       '<span class="byline-name">' + esc(p.nick) + '</span>'
     +       '<span class="byline-handle">' + esc(p.handle) + '</span>'
     +       '<span class="dot">\u00b7</span>'
-    +       '<span class="byline-time" data-ts="' + p.ts + '">' + timeAgo(p.ts) + '</span>'
+    +       '<span class="byline-time" data-ts="' + escAttr(p.ts) + '">' + timeAgo(p.ts) + '</span>'
     +       (p.editedAt ? '<span class="edited-mark">' + esc(t('edited')) + '</span>' : '')
     +       followBtn
     +     '</div>'
@@ -2878,7 +2910,9 @@ function onMainSubmit(e){
 }
 
 function openViewer(src){
-  $('#viewerImg').src = src;
+  const url = safeSrc(src);
+  if (!url) return;
+  $('#viewerImg').src = url;
   $('#viewer').hidden = false;
 }
 function closeViewer(){ $('#viewer').hidden = true; $('#viewerImg').src = ''; }
