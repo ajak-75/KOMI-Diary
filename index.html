@@ -10,9 +10,11 @@
 <meta name="format-detection" content="telephone=no">
 
 <!-- Security: a request keeps its origin only, and the page may load nothing but
-     its own files, its own pictures/clips and the three translation endpoints. -->
+     its own files, its own pictures/clips and the three translation endpoints.
+     frame-ancestors is not here on purpose: browsers ignore it in a meta tag and
+     log an error, so the frame guard in app.js keeps the page out of other frames. -->
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self'; connect-src 'self' data: blob: https://translate.googleapis.com https://clients5.google.com https://translate.astian.org; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; font-src 'self'; connect-src 'self' data: blob: https://translate.googleapis.com https://clients5.google.com https://translate.astian.org; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
@@ -274,6 +276,6 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="./i18n-world.js?v=30"></script>
-<script src="./app.js?v=30"></script>
+<script src="./app.js?v=31"></script>
 </body>
 </html>

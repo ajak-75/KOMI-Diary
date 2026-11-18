@@ -5,6 +5,20 @@
 (() => {
 'use strict';
 
+/* GitHub Pages cannot send a frame-ancestors response header, so the page keeps
+   itself out of anyone else's frame: a cross-origin parent is navigated away from
+   or, when it cannot be reached, left with nothing to show. Our own pages (the
+   same origin) may still frame it. */
+(function frameGuard(){
+  if (window.top === window.self) return;
+  try {
+    if (window.top.location.origin === window.location.origin) return;
+    window.top.location.href = window.location.href;
+  } catch (e) {
+    document.documentElement.style.display = 'none';
+  }
+})();
+
 /* ---------- constants ---------- */
 const STORE_KEY = 'komidiary.v1';
 const LANG_KEY  = 'komidiary.lang';
