@@ -2072,9 +2072,10 @@ async function translateText(text, target){
    request at all, and an offline revisit still reads right. If the endpoint
    refuses, the visitor simply keeps reading English. */
 const UI_CACHE = 'komi_ui_i18n_';
-const UI_CACHE_VER = 1;
+const UI_CACHE_VER = 2;
 const UI_KEEP = { shopLinkPh:1, shopPricePh:1, tagPlaceholder:1, dateLocale:1 };  /* the same words in every language */
-const PH_RE = /\{[a-zA-Z][a-zA-Z0-9_]*\}/g;
+/* a {token} and the app's own names travel through the translator untouched */
+const PH_RE = /\{[a-zA-Z][a-zA-Z0-9_]*\}|MOMO Shop|K-Star Kemi Match|KOMI's K-Culture Diary|K-Star|K-Culture|KOMI|MOMO|Kemi|Dancheong|Obangsaek/g;
 const PUA_RE = /[\uE000-\uE0FF]/g;
 let uiDictLoading = {};
 
@@ -2109,7 +2110,8 @@ function uiCacheWrite(code, dict){
 }
 
 /* a {token} has to survive the translator untouched, so it travels as a
-   private-use character, which every language passes through as it is */
+   private-use character, which every language passes through as it is. The
+   app's own names go the same way: MOMO Shop is not a "MOMO-winkel". */
 function phProtect(line){
   const box = [];
   const text = String(line).replace(PH_RE, (m) => { box.push(m); return String.fromCharCode(0xE000 + box.length - 1); });
