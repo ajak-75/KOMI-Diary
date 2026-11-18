@@ -782,6 +782,14 @@ function urlLang(){
   return m ? baseLang(m[1]) : '';
 }
 
+/* a language picked by hand replaces the one a ?lang= link asked for */
+function clearUrlLang(){
+  if (!urlLang()) return;
+  const rest = location.search.replace(/^\?/, '').split('&').filter(p => p && !/^lang=/i.test(p));
+  const url = location.pathname + (rest.length ? '?' + rest.join('&') : '') + location.hash;
+  try { history.replaceState(null, '', url); } catch (e) {}
+}
+
 function getLang(){ return urlLang() || pickedLang() || deviceLang(); }
 
 function isRTL(code){ return RTL.indexOf(String(code || '').split('-')[0]) >= 0; }
@@ -2939,6 +2947,7 @@ function bind(){
     if (!item) return;
     const code = item.dataset.code;
     /* "device language" forgets a pick made earlier and follows the phone again */
+    clearUrlLang();
     if (code === 'auto') localStorage.removeItem(LANG_KEY);
     else localStorage.setItem(LANG_KEY, code);
     langMenu.hidden = true; langBtn.setAttribute('aria-expanded', 'false');
